@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhythm Influence - With Passion and Purpose</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple: #d8b4fe;
+            --bg-overlay: rgba(10, 10, 10, 0.7);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: #000;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 1. Background Layer */
+        .background {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+        .background-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .background-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--bg-overlay);
+        }
+
+        /* 2. Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 60px;
+            opacity: 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo { 
+            font-weight: 900; 
+            font-size: 2rem; 
+            letter-spacing: -2px;
+            font-style: italic;
+            line-height: 1;
+        }
+        
+        .logo-subtitle {
+            font-size: 0.5rem;
+            letter-spacing: 2px;
+            font-weight: 300;
+            margin-top: 2px;
+        }
+        
+        .logo-subtitle .division {
+            color: var(--purple);
+        }
+        
+        .nav-links { 
+            display: flex; 
+            gap: 40px; 
+        }
+        
+        .nav-links a { 
+            color: #999; 
+            text-decoration: none; 
+            font-size: 0.95rem; 
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: white;
+        }
+        
+        .nav-links a.active {
+            color: var(--purple);
+        }
+        
+        .get-in-touch {
+            background: var(--purple);
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .get-in-touch .arrow {
+            font-size: 1.4rem;
+        }
+
+        /* 3. The Letter Mask (Starting Animation) */
+        .initial-mask {
+            position: absolute;
+            z-index: 50;
+            font-size: 40vw;
+            font-weight: 900;
+            color: white;
+            mix-blend-mode: destination-out;
+        }
+        .mask-wrapper {
+            position: absolute;
+            inset: 0;
+            z-index: 60;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        /* 4. Main Content Typography */
+        .main-content {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 1600px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .text-block {
+            line-height: 0.75;
+        }
+
+        /* LEFT SIDE - WITH PASSION (White) */
+        .font-heavy { 
+            font-size: 10rem; 
+            font-weight: 900; 
+            display: block;
+            letter-spacing: -8px;
+            text-transform: uppercase;
+        }
+        
+        .font-serif { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 10rem; 
+            font-style: italic;
+            display: block;
+            letter-spacing: -5px;
+            text-transform: capitalize;
+        }
+
+        .left-side {
+            color: white;
+            transform: translateX(-100px); 
+            opacity: 0;
+        }
+
+        /* RIGHT SIDE - AND PURPOSE (Purple) */
+        .right-side { 
+            color: var(--purple);
+            transform: translateX(100px); 
+            opacity: 0; 
+            text-align: left;
+        }
+
+        /* 5. Center Image Card */
+        .center-card {
+            position: relative;
+            width: 380px;
+            height: 520px;
+            background: linear-gradient(135deg, #ff6b3d 0%, #ff8c5a 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            z-index: 20;
+            transform: scale(0);
+            box-shadow: 0 50px 100px rgba(0,0,0,0.6);
+        }
+        
+        .center-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            mix-blend-mode: multiply;
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 1400px) {
+            .font-heavy { font-size: 7rem; }
+            .font-serif { font-size: 7rem; }
+            .center-card { width: 320px; height: 440px; }
+        }
+
+        @media (max-width: 1024px) {
+            .font-heavy { font-size: 5rem; }
+            .font-serif { font-size: 5rem; }
+            .center-card { width: 280px; height: 380px; }
+            .main-content { flex-direction: column; gap: 2rem; }
+            .left-side, .right-side { transform: none; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mask-wrapper" id="maskWrapper">
+        <div class="initial-mask" id="bigW">N</div>
+    </div>
+
+    <nav id="navbar">
+        <div class="logo-container">
+            <div class="logo">RHYTHM</div>
+            <div class="logo-subtitle">INFLUENCE <span class="division">A DIVISION</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="#">Our Work</a>
+            <a href="#" class="active">Company</a>
+            <a href="#">Services</a>
+        </div>
+        <a href="#" class="get-in-touch">
+            <span class="arrow">→</span>
+            <span>Get in Touch</span>
+        </a>
+    </nav>
+
+    <div class="hero-container">
+        <div class="background">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=2071" class="background-image">
+            <div class="background-overlay"></div>
+        </div>
+
+        <div class="main-content">
+            <div class="text-block left-side" id="leftText">
+                <span class="font-heavy">WITH</span>
+                <span class="font-serif">Passion</span>
+            </div>
+
+            <div class="center-card" id="centerCard">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1000" alt="Creator">
+            </div>
+
+            <div class="text-block right-side" id="rightText">
+                <span class="font-heavy">AND</span>
+                <span class="font-serif">Purpose</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+
+        // 1. Initial "W" zoom and fade out mask
+        tl.to("#bigW", {
+            scale: 50,
+            duration: 1.5,
+            ease: "power4.inOut"
+        })
+        .to("#maskWrapper", {
+            opacity: 0,
+            duration: 0.8
+        }, "-=0.5")
+
+        // 2. Text slides in from sides
+        .to("#leftText", {
+            x: 0,
+            opacity: 1,
+            duration: 1.2
+        }, "-=0.8")
+        .to("#rightText", {
+            x: 0,
+            opacity: 1,
+            duration: 1.2
+        }, "-=1.1")
+
+        // 3. Center card pops up
+        .to("#centerCard", {
+            scale: 1,
+            duration: 1.2,
+            ease: "back.out(1.2)"
+        }, "-=1")
+
+        // 4. Nav bar fades in
+        .to("#navbar", {
+            opacity: 1,
+            y: 10,
+            duration: 1
+        }, "-=0.5");
+
+        // Subtle background drift
+        gsap.to(".background-image", {
+            scale: 1.1,
+            duration: 10,
+            repeat: -1,
+            yoyo: true,
+            ease: "linear"
+        });
+    </script>
+</body>
+</html>
