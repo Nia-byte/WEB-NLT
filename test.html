@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhythm Influence - Line by Line Reveal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mission-container {
+    padding: 150px 10%;
+    min-height: 150vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mission-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #888;
+    margin-bottom: 80px;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: center;
+}
+
+.text-container {
+    max-width: 1400px;
+    width: 100%;
+    text-align: center;
+}
+
+.line-wrapper {
+    position: relative;
+    display: block;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.line {
+    font-size: clamp(2.5rem, 6vw, 6.5rem);
+    line-height: 1.05;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    display: block;
+}
+
+/* Base text is the "empty" gray state */
+.base-text {
+    color: #1a1a1a;
+}
+
+/* Fill text is the "active" white state */
+.fill-text {
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+}
+
+/* Script/cursive words */
+.script {
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-style: italic;
+    text-transform: none;
+    font-weight: 400;
+    font-size: 1.1em;
+    letter-spacing: 0.02em;
+}
+
+/* Pink highlighted words */
+.pink {
+    color: #c084ab;
+}
+
+/* Pink highlighted words in base text */
+.base-text .pink {
+    color: #4a2a3e;
+}
+
+/* Pink highlighted words in fill text */
+.fill-text .pink {
+    color: #c084ab;
+}
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Scroll Down</h1>
+    </section>
+
+    <section class="mission-container">
+        <p class="mission-label">OUR MISSION IS</p>
+        
+        <div class="text-container">
+            <!-- Line 1 -->
+            <div class="line-wrapper">
+                <div class="line base-text">
+                    TO HARNESS THE
+                </div>
+                <div class="line fill-text">
+                    TO HARNESS THE
+                </div>
+            </div>
+
+            <!-- Line 2 -->
+            <div class="line-wrapper">
+                <div class="line base-text">
+                    <span class="script pink">Power</span> OF
+                </div>
+                <div class="line fill-text">
+                    <span class="script pink">Power</span> OF
+                </div>
+            </div>
+
+            <!-- Line 3 -->
+            <div class="line-wrapper">
+                <div class="line base-text">
+                    <span class="pink">INFLUENCE</span> TO MAKE
+                </div>
+                <div class="line fill-text">
+                    <span class="pink">INFLUENCE</span> TO MAKE
+                </div>
+            </div>
+
+            <!-- Line 4 -->
+            <div class="line-wrapper">
+                <div class="line base-text">
+                    MEANINGFUL
+                </div>
+                <div class="line fill-text">
+                    MEANINGFUL
+                </div>
+            </div>
+
+            <!-- Line 5 -->
+            <div class="line-wrapper">
+                <div class="line base-text">
+                    CONNECTIONS WITH
+                </div>
+                <div class="line fill-text">
+                    CONNECTIONS WITH
+                </div>
+            </div>
+
+            <!-- Line 6 -->
+            <div class="line-wrapper">
+                <div class="line base-text">
+                    <span class="script pink">Brands</span>,
+                </div>
+                <div class="line fill-text">
+                    <span class="script pink">Brands</span>,
+                </div>
+            </div>
+
+            <!-- Line 7 -->
+            <div class="line-wrapper">
+                <div class="line base-text">
+                    <span class="pink">EMPOWERING</span>
+                </div>
+                <div class="line fill-text">
+                    <span class="pink">EMPOWERING</span>
+                </div>
+            </div>
+
+            <!-- Line 8 -->
+            <div class="line-wrapper">
+                <div class="line base-text">
+                    <span class="pink">VOICES</span> THAT DEFINE
+                </div>
+                <div class="line fill-text">
+                    <span class="pink">VOICES</span> THAT DEFINE
+                </div>
+            </div>
+
+            <!-- Line 9 -->
+            <div class="line-wrapper">
+                <div class="line base-text">
+                    <span class="script pink">Culture.</span>
+                </div>
+                <div class="line fill-text">
+                    <span class="script pink">Culture.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero" style="background: #111;"></section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        // Register ScrollTrigger plugin
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Get all line wrappers
+        const lines = document.querySelectorAll('.line-wrapper');
+
+        // Animate each line individually
+        lines.forEach((line, index) => {
+            const fillText = line.querySelector('.fill-text');
+            
+            gsap.to(fillText, {
+                clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+                ease: "none",
+                scrollTrigger: {
+                    trigger: line,
+                    start: "top 70%",
+                    end: "bottom 50%",
+                    scrub: 1,
+                    markers: false
+                }
+            });
+        });
+    </script>
+</body>
+</html>
