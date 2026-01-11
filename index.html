@@ -15,6 +15,23 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
+            /* Lenis Recommended CSS */
+        html.lenis, html.lenis body {
+            height: auto;
+        }
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
+        }
         
         body {
             background: #000;
@@ -259,6 +276,247 @@
               color: var(--purple);
         }
 
+        /*WHAT WE DO SECTION*/
+         /* Main scroll section container */
+        .scroll-section {
+            position: relative;
+            height: 400vh;
+            background: #000;
+        }
+
+        /* Pinned container that stays in viewport */
+        .pinned-container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+          
+        /* Header that stays visible */
+        .section-header {
+            position: absolute;
+            top: 80px;
+            left: 80px;
+            z-index: 10;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            font-weight: 300;
+        }
+
+        /* Horizontal sliding container */
+        .horizontal-wrapper {
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            will-change: transform;
+        }
+
+        /* Individual service blocks */
+        .service-block {
+            min-width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 80px;
+            position: relative;
+            margin-bottom: -90px;
+        }
+
+        /* Animated line above text */
+        .line-do {
+            position: absolute;
+            top: 40%;
+            left: 0;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+
+        /* Main service title */
+        .service-title {
+            font-size: 90px;
+            font-weight: 700;
+            line-height: 0.9;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        
+        /* Service description */
+        .service-description {
+            font-size: 20px;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateY(30px);
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 800px;
+            font-family: 'Nunito';
+        }
+
+         /* Image container */
+        .image-container {
+            position: absolute;
+            right: 100px;
+            top: 40%;
+            transform: translateY(-50%);
+            width: 450px;
+            height: 450px;
+            opacity: 0;
+        }
+
+        /* Blue outlined box */
+        .image-box {
+            width: 100%;
+            height: 100%;
+            border: 3px solid #000;
+            border-radius: 20px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 30px  #000;
+        }
+
+        .image-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #000;
+            border-radius: 18px;
+        }
+
+        /* Service image */
+        .service-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Gradient text effect */
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 0%, #888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+
+        /*WHAT DO YOU DO LAST ONE*/
+         .section-header-do {
+            position: sticky;
+            top: 90px;
+            left: 80px;
+            z-index: 100;
+            font-size: 12px;
+            font-weight: 700;
+              transform: translateX(90px);
+            letter-spacing: 2px;
+            opacity: 0;
+            font-family: 'Nunito';
+            pointer-events: none;
+        }
+
+        .service-section-do {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .bg-image-wrapper-do {
+            position: absolute;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30vw;
+            height: 40vw;
+            overflow: hidden;
+            clip-path: inset(100% 0 0 0);
+            z-index: 1;
+        }
+
+        .bg-image-wrapper-do img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            
+        }
+
+        .content-box-do {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .line-container-do {
+            width: 60%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .animated-line-do {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+        .service-title-do {
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 900;
+            line-height: 0.85;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            overflow: hidden;
+            
+        }
+
+        .service-title-do span {
+            display: block;
+            transform: translateY(100%);
+        }
+
+        .service-description-do {
+            font-size: 16px;
+            max-width: 400px;
+            color: #888;
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateY(30px);
+            font-family: 'Nunito';
+        }
+
+        .number-label-do {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: #4634e8;
+            margin-bottom: 10px;
+            display: block;
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .font-heavy { font-size: 5rem; }
@@ -299,7 +557,7 @@
         </div>
         <a href="#" class="get-in-touch">
             <span class="arrow">→</span>
-            <span>Get in Touch</span>
+            <span>Start A Project</span>
         </a>
     </nav>
 
@@ -419,9 +677,116 @@
         </div>
     </section>
 
+
+     <div class="section-header-do">
+        WHAT WE DO
+    </div>
+
+    <section class="scroll-container-do">
+        <div class="service-section-do">
+            <div class="bg-image-wrapper-do">
+                <img src="/images/programmer-night.jpg" alt="Web Dev">
+            </div>
+            <div class="content-box-do">
+                <span class="number-label-do">01.</span>
+                <h2 class="service-title-do"><span>Web<br>Development</span></h2>
+                <div class="line-container-do"><div class="animated-line-do"></div></div>
+                <p class="service-description-do">Building scalable digital infrastructure tailored to your business needs.</p>
+            </div>
+        </div>
+
+        <div class="service-section-do">
+            <div class="bg-image-wrapper-do">
+                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80" alt="Design">
+            </div>
+            <div class="content-box-do">
+                <span class="number-label-do">02.</span>
+                <h2 class="service-title-do"><span>Web<br>Revamps</span></h2>
+                <div class="line-container-do"><div class="animated-line-do"></div></div>
+                <p class="service-description-do">Modernizing brand identities through fresh designs and functionality.</p>
+            </div>
+        </div>
+
+        <div class="service-section-do">
+            <div class="bg-image-wrapper-do">
+                <img src="/images/hero-small.jpg" alt="Maintenance">
+            </div>
+            <div class="content-box-do">
+                <span class="number-label-do">03.</span>
+                <h2 class="service-title-do"><span>Ongoing<br>Maintenance</span></h2>
+                <div class="line-container-do"><div class="animated-line-do"></div></div>
+                <p class="service-description-do">Ensuring your platform remains secure, optimized, and ahead 24/7.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT WE DO SECTION 
+    <section class="scroll-section">
+        <div class="pinned-container">
+            <div class="section-header">
+                <span class="word-what">WHAT</span>
+                <span class="word-we">We</span>
+                <span class="word-do">DO</span>
+            </div>
+            
+            <div class="horizontal-wrapper">
+                 Service 1: Web Development 
+                <div class="service-block" data-service="1">
+                    <div class="line-do"></div>
+                    <h2 class="service-title gradient-text">Web<br>Development</h2>
+                    <p class="service-description">
+                        Crafting modern, responsive websites tailored to your business needs
+                    </p>
+                     <div class="image-container">
+                        <div class="image-box">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=800&fit=crop" 
+                                 alt="Web Development" 
+                                 class="service-image">
+                        </div>
+                    </div>
+                </div>
+
+                Service 2: Website Updates & Revamps 
+                <div class="service-block" data-service="2">
+                    <div class="line-do"></div>
+                    <h2 class="service-title gradient-text">Website<br>Updates<br>& Revamps</h2>
+                    <p class="service-description">
+                        Breathing new life into existing sites with fresh designs and functionality
+                    </p>
+                     <div class="image-container">
+                        <div class="image-box">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=800&fit=crop" 
+                                 alt="Web Development" 
+                                 class="service-image">
+                        </div>
+                    </div>
+                </div>
+
+                 Service 3: Website Maintenance 
+                <div class="service-block" data-service="3">
+                    <div class="line-do"></div>
+                    <h2 class="service-title gradient-text">Website<br>Maintenance</h2>
+                    <p class="service-description">
+                        Keeping your digital presence secure, updated, and running smoothly
+                    </p>
+
+                    <div class="image-container">
+                        <div class="image-box">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=800&fit=crop" 
+                                 alt="Web Development" 
+                                 class="service-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script> 
+
     <script>
         // Register ScrollTrigger plugin
         gsap.registerPlugin(ScrollTrigger);
@@ -466,6 +831,165 @@
                 }
             });
         });
+
+         // WHAT WE DO SECTION
+
+         // 1. Initialize Lenis Smooth Scroll
+        const lenis = new Lenis();
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Connect Lenis to ScrollTrigger
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 2. Section Animation Logic
+        const sections = document.querySelectorAll('.service-section-do');
+
+        sections.forEach((section, i) => {
+            const line = section.querySelector('.animated-line-do');
+            const title = section.querySelector('.service-title-do span');
+            const desc = section.querySelector('.service-description-do');
+            const imgWrapper = section.querySelector('.bg-image-wrapper-do');
+            
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 10%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+
+            tl.to(imgWrapper, {
+                clipPath: "inset(0% 0 0 0)",
+                duration: 1.2,
+                ease: "power4.inOut"
+            })
+            .to(title, {
+                y: "0%",
+                duration: 0.8,
+                ease: "power3.out"
+            }, "-=0.8")
+            .to(line, {
+                scaleX: 1,
+                duration: 0.8
+            }, "-=0.6")
+            .to(desc, {
+                opacity: 1,
+                y: 0,
+                duration: 0.6
+            }, "-=0.4");
+
+            // Previous section fade/out as next slides in
+            if (i > 0) {
+                gsap.to(sections[i-1], {
+                    opacity: 0,
+                    scale: 0.95,
+                    filter: "blur(0px)",
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top bottom",
+                        end: "top top",
+                        scrub: true
+                    }
+                });
+            }
+        });
+
+        // 3. Header Visibility
+        gsap.to(".section-header-do", {
+            opacity: 1,
+            scrollTrigger: {
+                trigger: ".scroll-container-do",
+                start: "top 50%",
+                end: "bottom bottom",
+                toggleActions: "play reverse play reverse"
+            }
+        });
+
+        /*
+         const horizontalWrapper = document.querySelector('.horizontal-wrapper');
+        const serviceBlocks = document.querySelectorAll('.service-block');
+        
+        // Calculate total scroll distance
+        const totalWidth = horizontalWrapper.scrollWidth - window.innerWidth;
+
+        // Create the horizontal scroll effect
+        gsap.to(horizontalWrapper, {
+            x: -totalWidth,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".scroll-section",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1,
+                pin: ".pinned-container",
+                anticipatePin: 1,
+                invalidateOnRefresh: true
+            }
+        });
+
+        // Animate each service block
+        serviceBlocks.forEach((block, index) => {
+            const line = block.querySelector('.line');
+            const title = block.querySelector('.service-title');
+            const description = block.querySelector('.service-description');
+            const imageContainer = block.querySelector('.image-container');
+
+            // Create timeline for this block
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: block,
+                    containerAnimation: gsap.getProperty(horizontalWrapper, 'x') ? 
+                        gsap.to(horizontalWrapper, { x: -totalWidth }) : null,
+                    start: "left 80%",
+                    end: "left 20%",
+                    scrub: 1,
+                    toggleActions: "play none none reverse"
+                }
+            });
+
+            // Animate line expansion
+            tl.to(line, {
+                scaleX: 1,
+                duration: 1,
+                ease: "power2.out"
+            }, 0);
+
+            // Staggered text reveal
+            tl.to(title, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out"
+            }, 0.2);
+
+            tl.to(description, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out"
+            }, 0.4);
+
+            // Animate image container
+            tl.to(imageContainer, {
+                opacity: 1,
+                scale: 1,
+                duration: 1,
+                ease: "power3.out"
+            }, 0.5);
+        });
+
+        // Refresh ScrollTrigger on resize
+        window.addEventListener('resize', () => {
+            ScrollTrigger.refresh();
+        });
+
+        */
     </script>
 </body>
 </html>
