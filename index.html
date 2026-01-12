@@ -69,7 +69,7 @@
 
         /* Navigation */
         nav {
-            position: absolute;
+            position: fixed;
             top: 0;
             width: 100%;
             z-index: 100;
@@ -119,21 +119,63 @@
         .nav-links a:hover, .nav-links a.active {
             color: var(--purple);
         }
-        
-        .get-in-touch {
-            background: var(--purple);
-            padding: 10px 28px;
-            border-radius: 30px;
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            font-family: 'Nunito';
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.80rem;
-        }
+     .get-in-touch {
+    background: var(--purple);
+    color: white;
+    padding: 10px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Nunito';
+    font-size: 0.80rem;
+    letter-spacing: 1px;
+    cursor: pointer;
 
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    transition: all 0.4s ease;
+}
+
+.get-in-touch { background: var(--purple);
+     padding: 10px 28px; 
+     border-radius: 30px; 
+     text-decoration: none; 
+     color: white; 
+     font-weight: 600; 
+     font-family: 'Nunito'; 
+     display: flex; 
+     align-items: center; 
+     gap: 8px; 
+     font-size: 0.80rem; }
+
+.get-in-touch::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: white;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+}
+
+.get-in-touch span {
+    position: relative;
+    z-index: 1;
+    transition: color 0.4s ease;
+}
+
+.get-in-touch:hover::before {
+    transform: translateX(0);
+}
+
+.get-in-touch:hover span {
+    color: var(--purple);
+}
+        
         /* Hero Typography */
         .main-content {
             position: relative;
@@ -276,142 +318,7 @@
               color: var(--purple);
         }
 
-        /*WHAT WE DO SECTION*/
-         /* Main scroll section container */
-        .scroll-section {
-            position: relative;
-            height: 400vh;
-            background: #000;
-        }
-
-        /* Pinned container that stays in viewport */
-        .pinned-container {
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-          
-        /* Header that stays visible */
-        .section-header {
-            position: absolute;
-            top: 80px;
-            left: 80px;
-            z-index: 10;
-            font-size: 1rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            opacity: 0.7;
-            font-weight: 300;
-        }
-
-        /* Horizontal sliding container */
-        .horizontal-wrapper {
-            display: flex;
-            height: 100vh;
-            align-items: center;
-            will-change: transform;
-        }
-
-        /* Individual service blocks */
-        .service-block {
-            min-width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-left: 80px;
-            position: relative;
-            margin-bottom: -90px;
-        }
-
-        /* Animated line above text */
-        .line-do {
-            position: absolute;
-            top: 40%;
-            left: 0;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.3);
-            transform-origin: left;
-            transform: scaleX(0);
-        }
-
-        /* Main service title */
-        .service-title {
-            font-size: 90px;
-            font-weight: 700;
-            line-height: 0.9;
-            margin-bottom: 30px;
-            opacity: 0;
-            transform: translateY(50px);
-        }
-
-        
-        /* Service description */
-        .service-description {
-            font-size: 20px;
-            font-weight: 300;
-            opacity: 0;
-            transform: translateY(30px);
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 800px;
-            font-family: 'Nunito';
-        }
-
-         /* Image container */
-        .image-container {
-            position: absolute;
-            right: 100px;
-            top: 40%;
-            transform: translateY(-50%);
-            width: 450px;
-            height: 450px;
-            opacity: 0;
-        }
-
-        /* Blue outlined box */
-        .image-box {
-            width: 100%;
-            height: 100%;
-            border: 3px solid #000;
-            border-radius: 20px;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 30px  #000;
-        }
-
-        .image-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: #000;
-            border-radius: 18px;
-        }
-
-        /* Service image */
-        .service-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 15px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Gradient text effect */
-        .gradient-text {
-            background: linear-gradient(135deg, #fff 0%, #888 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-
+       
         /*WHAT DO YOU DO LAST ONE*/
          .section-header-do {
             position: sticky;
@@ -515,6 +422,393 @@
             color: #4634e8;
             margin-bottom: 10px;
             display: block;
+        }
+        
+        .explore-btn {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 40px;
+    padding: 15px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #000;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.4s ease;
+    opacity: 0; /* Handled by GSAP */
+    transform: translateY(20px); /* Handled by GSAP */
+     background: #fff;
+}
+
+.explore-btn:hover {
+    background: #000;
+    color: #fff;
+    border-color: #fff;
+}
+
+.btn-arrow {
+    margin-left: 15px;
+    transition: transform 0.3s ease;
+}
+
+.explore-btn:hover .btn-arrow {
+    transform: translateX(5px);
+}
+
+
+/*CONTACT US*/
+        .contact-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Reduced font size for the main title */
+        .title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0; 
+            font-size: clamp(3rem, 10vw, 7rem); /* Smaller scale than before */
+            text-transform: uppercase;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .word-left { margin-right: 0.1em; }
+
+        /* The reveal box */
+        .image-reveal-wrapper {
+            width: 0; 
+            height: 1.2em;
+            overflow: hidden;
+            position: relative;
+            border-radius: 12px;
+            transform: scale(0.8);
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #222;
+        }
+
+        .image-reveal-wrapper img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            position: absolute;
+            /* Image movement removed */
+        }
+
+        .word-right {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            text-transform: none;
+            margin-left: 0.1em;
+        }
+
+        .cta-wrapper {
+            margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .subtext {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            font-weight: 400;
+            color: #ccc;
+              font-family: 'Nunito';
+        }
+
+        .magnetic-btn {
+            display: inline-block;
+            background:  #4634e8;
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .magnetic-btn span { display: inline-block; pointer-events: none; }
+
+
+         /* REVEAL FOOTER - FIXED POSITION */
+      /* PREMIUM FOOTER STYLES */
+        .footer-wrapper {
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-top-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(70, 52, 232, 0.5), transparent);
+            margin: 0 8%;
+            opacity: 0;
+        }
+
+        .footer-container {
+            padding: 100px 8% 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+            opacity: 0;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .footer-logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .footer-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--purple);
+            line-height: 1.4;
+            max-width: 320px;
+        }
+
+        .footer-description {
+            font-family: 'Nunito';
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #888;
+            max-width: 350px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-link {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--purple);
+            transform: scale(0);
+            border-radius: 50%;
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+
+        .social-link:hover::before {
+            transform: scale(1);
+        }
+
+        .social-link:hover {
+            border-color: var(--purple);
+            transform: translateY(-3px);
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-column-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .footer-link {
+            font-family: 'Nunito';
+            font-size: 0.95rem;
+            color: #888;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--purple);
+            transition: width 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--purple);
+            transform: translateX(5px);
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+        }
+
+        .footer-newsletter {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .newsletter-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 14px 18px;
+            border-radius: 8px;
+            color: white;
+            font-family: 'Nunito';
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--purple);
+            background: rgba(70, 52, 232, 0.1);
+        }
+
+        .newsletter-input::placeholder {
+            color: #666;
+        }
+
+        .newsletter-btn {
+            background: var(--purple);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 30px;
+            font-family: 'Nunito';
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: white;
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        .newsletter-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-btn:hover::before {
+            transform: translateX(0);
+        }
+
+        .newsletter-btn:hover span {
+            color: var(--purple);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Nunito';
+            font-size: 0.85rem;
+            color: #666;
+            opacity: 0;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-legal a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--purple);
+        }
+
+        .footer-heart {
+            color: var(--purple);
+            display: inline-block;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.1); }
+            20%, 40% { transform: scale(1); }
         }
 
         /* Responsive */
@@ -716,72 +1010,95 @@
                 <h2 class="service-title-do"><span>Ongoing<br>Maintenance</span></h2>
                 <div class="line-container-do"><div class="animated-line-do"></div></div>
                 <p class="service-description-do">Ensuring your platform remains secure, optimized, and ahead 24/7.</p>
+                <a href="/work" class="explore-btn">
+                    Explore Our Work
+                    <span class="btn-arrow">→</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- WHAT WE DO SECTION 
-    <section class="scroll-section">
-        <div class="pinned-container">
-            <div class="section-header">
-                <span class="word-what">WHAT</span>
-                <span class="word-we">We</span>
-                <span class="word-do">DO</span>
+    <!--CONTACT US SECTION-->
+    <section class="contact-section" id="trigger-section">
+    <div class="title-container">
+        <span class="word-left">Let's</span>
+        <div class="image-reveal-wrapper" id="img-box">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80" alt="Person">
+        </div>
+        <span class="word-right">Talk</span>
+    </div>
+    
+    <div class="cta-wrapper" id="footer-content">
+        <p class="subtext">Great things happen when vision meets execution.</p>
+        <a href="#" class="magnetic-btn" id="mag-btn">
+            <span>GET STARTED</span>
+        </a>
+    </div>
+    </section>
+
+ <!-- PREMIUM FOOTER -->
+    <footer class="footer-wrapper">
+        <div class="footer-top-divider"></div>
+        
+        <div class="footer-container">
+            <div class="footer-main">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    
+                    <p class="footer-tagline">Built With Purpose.<br>Designed With Allure.</p>
+                    <p class="footer-description">We transform visionary ideas into digital realities that captivate audiences and drive meaningful results.</p>
+                   
+                </div>
+
+                <!-- Services Column -->
+                <div class="footer-column">
+                    <h3 class="footer-column-title">Services</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Web Development</a>
+                        <a href="#" class="footer-link">Web Revamps</a>
+                        <a href="#" class="footer-link">Ongoing Maintenance</a>
+
+                    </div>
+                </div>
+
+                <!-- Company Column -->
+                <div class="footer-column">
+                    <h3 class="footer-column-title">Company</h3>
+                    <div class="footer-links">
+                        <a href="/work.html" class="footer-link">Our Work</a>
+                        <a href="/index.html" class="footer-link">Company</a>
+                        <a href="#" class="footer-link">Careers</a>
+                        <a href="#" class="footer-link">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Newsletter Column -->
+                <div class="footer-column">
+                    <h3 class="footer-column-title">Stay Updated</h3>
+                    <div class="footer-newsletter">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input">
+                        <button class="newsletter-btn"><span>Subscribe</span></button>
+                    </div>
+                </div>
             </div>
-            
-            <div class="horizontal-wrapper">
-                 Service 1: Web Development 
-                <div class="service-block" data-service="1">
-                    <div class="line-do"></div>
-                    <h2 class="service-title gradient-text">Web<br>Development</h2>
-                    <p class="service-description">
-                        Crafting modern, responsive websites tailored to your business needs
-                    </p>
-                     <div class="image-container">
-                        <div class="image-box">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=800&fit=crop" 
-                                 alt="Web Development" 
-                                 class="service-image">
-                        </div>
-                    </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © 2026 NiaLure Tech. 
                 </div>
-
-                Service 2: Website Updates & Revamps 
-                <div class="service-block" data-service="2">
-                    <div class="line-do"></div>
-                    <h2 class="service-title gradient-text">Website<br>Updates<br>& Revamps</h2>
-                    <p class="service-description">
-                        Breathing new life into existing sites with fresh designs and functionality
-                    </p>
-                     <div class="image-container">
-                        <div class="image-box">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=800&fit=crop" 
-                                 alt="Web Development" 
-                                 class="service-image">
-                        </div>
-                    </div>
-                </div>
-
-                 Service 3: Website Maintenance 
-                <div class="service-block" data-service="3">
-                    <div class="line-do"></div>
-                    <h2 class="service-title gradient-text">Website<br>Maintenance</h2>
-                    <p class="service-description">
-                        Keeping your digital presence secure, updated, and running smoothly
-                    </p>
-
-                    <div class="image-container">
-                        <div class="image-box">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=800&fit=crop" 
-                                 alt="Web Development" 
-                                 class="service-image">
-                        </div>
-                    </div>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookies</a>
                 </div>
             </div>
         </div>
-    </section>
--->
+    </footer>
+
+
+
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -855,6 +1172,7 @@
             const title = section.querySelector('.service-title-do span');
             const desc = section.querySelector('.service-description-do');
             const imgWrapper = section.querySelector('.bg-image-wrapper-do');
+            const btn = section.querySelector('.explore-btn'); // Target the button
             
             const tl = gsap.timeline({
                 scrollTrigger: {
@@ -884,6 +1202,15 @@
                 duration: 0.6
             }, "-=0.4");
 
+            // NEW: If the button exists (only on the last card), animate it too
+    if (btn) {
+        tl.to(btn, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6
+        }, "-=0.4");
+    }
+
             // Previous section fade/out as next slides in
             if (i > 0) {
                 gsap.to(sections[i-1], {
@@ -911,85 +1238,101 @@
             }
         });
 
-        /*
-         const horizontalWrapper = document.querySelector('.horizontal-wrapper');
-        const serviceBlocks = document.querySelectorAll('.service-block');
-        
-        // Calculate total scroll distance
-        const totalWidth = horizontalWrapper.scrollWidth - window.innerWidth;
+        /*CONTACT US*/
+         const imgBoxContact = document.querySelector('#img-box');
+    const footerContact = document.querySelector('#footer-content');
+    const btnContact = document.querySelector('#mag-btn');
 
-        // Create the horizontal scroll effect
-        gsap.to(horizontalWrapper, {
-            x: -totalWidth,
-            ease: "none",
+    // 1. SCROLL TRIGGERED OPENING ANIMATION
+    const t3 = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#trigger-section",
+            start: "top 70%", // Starts when the top of the section hits 70% of the viewport height
+            toggleActions: "play none none reverse" // Plays on enter, reverses on scroll back up
+        }
+    });
+
+    t3.to(imgBoxContact, {
+        width: "1em",
+        opacity: 1,
+        scale: 1,
+        duration: 1.2,
+        ease: "expo.inOut"
+    })
+    .to(footerContact, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out"
+    }, "-=0.6");
+
+    // 2. MAGNETIC BUTTON LOGIC (Remains interactive)
+    btnContact.addEventListener('mousemove', (e) => {
+        const rect = btnContact.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        gsap.to(btnContact, {
+            x: x * 0.7,
+            y: y * 0.7,
+            duration: 0.3,
+            ease: "power2.out"
+        });
+
+        gsap.to(btnContact.querySelector('span'), {
+            x: x * 0.3,
+            y: y * 0.3,
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    });
+
+    btnContact.addEventListener('mouseleave', () => {
+        gsap.to(btnContact, {
+            x: 0,
+            y: 0,
+            duration: 0.6,
+            ease: "elastic.out(1, 0.5)"
+        });
+        gsap.to(btnContact.querySelector('span'), {
+            x: 0,
+            y: 0,
+            duration: 0.6,
+            ease: "elastic.out(1, 0.5)"
+        });
+    });
+
+      // FOOTER ANIMATIONS
+        gsap.to(".footer-top-divider", {
+            opacity: 1,
             scrollTrigger: {
-                trigger: ".scroll-section",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 1,
-                pin: ".pinned-container",
-                anticipatePin: 1,
-                invalidateOnRefresh: true
+                trigger: ".footer-wrapper",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
             }
         });
 
-        // Animate each service block
-        serviceBlocks.forEach((block, index) => {
-            const line = block.querySelector('.line');
-            const title = block.querySelector('.service-title');
-            const description = block.querySelector('.service-description');
-            const imageContainer = block.querySelector('.image-container');
-
-            // Create timeline for this block
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: block,
-                    containerAnimation: gsap.getProperty(horizontalWrapper, 'x') ? 
-                        gsap.to(horizontalWrapper, { x: -totalWidth }) : null,
-                    start: "left 80%",
-                    end: "left 20%",
-                    scrub: 1,
-                    toggleActions: "play none none reverse"
-                }
-            });
-
-            // Animate line expansion
-            tl.to(line, {
-                scaleX: 1,
-                duration: 1,
-                ease: "power2.out"
-            }, 0);
-
-            // Staggered text reveal
-            tl.to(title, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out"
-            }, 0.2);
-
-            tl.to(description, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out"
-            }, 0.4);
-
-            // Animate image container
-            tl.to(imageContainer, {
-                opacity: 1,
-                scale: 1,
-                duration: 1,
-                ease: "power3.out"
-            }, 0.5);
+        gsap.to(".footer-main", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".footer-wrapper",
+                start: "top 70%",
+                toggleActions: "play none none reverse"
+            }
         });
 
-        // Refresh ScrollTrigger on resize
-        window.addEventListener('resize', () => {
-            ScrollTrigger.refresh();
+        gsap.to(".footer-bottom", {
+            opacity: 1,
+            scrollTrigger: {
+                trigger: ".footer-bottom",
+                start: "top 90%",
+                toggleActions: "play none none reverse"
+            }
         });
-
-        */
+  
     </script>
 </body>
 </html>

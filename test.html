@@ -4,225 +4,1060 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rhythm Influence - Line by Line Reveal</title>
+    <title>NiaLure-Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
     <style>
-        * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        :root {
+            --purple: #4634e8;
+            --bg-overlay: rgba(10, 10, 10, 0.909);
+            --footer-bg: #023530;
+        }
 
-body {
-    background-color: #000;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: white;
-    overflow-x: hidden;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        html.lenis, html.lenis body {
+            height: auto;
+        }
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
+        }
+        
+        body {
+            background: #000;
+            font-family: 'Inter', sans-serif, 'Nunito';
+            color: white;
+            overflow-x: hidden;
+        }
 
-.mission-container {
-    padding: 150px 10%;
-    min-height: 150vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+        /* HERO SECTION */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.mission-label {
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: #888;
-    margin-bottom: 80px;
-    text-transform: uppercase;
-    font-weight: 500;
-    text-align: center;
-}
+        .background {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+        .background-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .background-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--bg-overlay);
+        }
 
-.text-container {
-    max-width: 1400px;
-    width: 100%;
-    text-align: center;
-}
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 60px;
+            opacity: 0;
+        }
+        
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-.line-wrapper {
-    position: relative;
-    display: block;
-    margin-bottom: 5px;
-    overflow: hidden;
-}
+        .logo-img {
+            height: 60px !important;
+            width: auto;
+            display: block;
+        }
 
-.line {
-    font-size: clamp(2.5rem, 6vw, 6.5rem);
-    line-height: 1.05;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    display: block;
-}
+        .logo-text {
+            font-family: 'Inter', sans-serif, 'Nunito';
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: white;
+        }
+        
+        .nav-links { 
+            display: flex; 
+            gap: 40px; 
+            margin-left: -90px;
+        }
+        
+        .nav-links a { 
+            color: white; 
+            text-decoration: none; 
+            font-size: 0.85rem; 
+            font-weight: 400;
+            font-family: 'Nunito';
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--purple);
+        }
+        
+        .get-in-touch {
+            background: var(--purple);
+            padding: 10px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-family: 'Nunito';
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.80rem;
+        }
 
-/* Base text is the "empty" gray state */
-.base-text {
-    color: #1a1a1a;
-}
+        /* Hero Typography */
+        .main-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-/* Fill text is the "active" white state */
-.fill-text {
-    color: #fff;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
-}
+        .text-block {
+            line-height: 0.85;
+            position: absolute;
+            opacity: 0; 
+        }
 
-/* Script/cursive words */
-.script {
-    font-family: 'Mrs Saint Delafield', cursive;
-    font-style: italic;
-    text-transform: none;
-    font-weight: 400;
-    font-size: 1.1em;
-    letter-spacing: 0.02em;
-}
+        .font-heavy { 
+            font-size: 9rem; 
+            font-weight: 900; 
+            display: block;
+            letter-spacing: -8px;
+            text-transform: uppercase;
+        }
+        
+        .font-serif { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 8rem; 
+            font-style: italic;
+            display: block;
+            letter-spacing: 5px;
+            text-transform: capitalize;
+        }
 
-/* Pink highlighted words */
-.pink {
-    color: #c084ab;
-}
+        .left-side {
+            color: white;
+            left: 10%;
+            margin-bottom: 100px;
+            text-align: left;
+        }
 
-/* Pink highlighted words in base text */
-.base-text .pink {
-    color: #4a2a3e;
-}
+        .right-side { 
+            color: var(--purple);
+            text-align: left;
+            right: 15%;
+            margin-top: 290px;
+        }
 
-/* Pink highlighted words in fill text */
-.fill-text .pink {
-    color: #c084ab;
-}
+        .hero-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #000);
+            z-index: 2;
+        }
+
+        /* MISSION SECTION */
+        .mission-container {
+            padding: 150px 10%;
+            min-height: 150vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+
+        .mission-label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #888;
+            margin-bottom: 80px;
+            text-transform: uppercase;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .text-container {
+            max-width: 1400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .line-wrapper {
+            position: relative;
+            display: block;
+            margin-bottom: 5px;
+            overflow: hidden;
+        }
+
+        .line {
+            font-size: clamp(2.5rem, 6vw, 6.5rem);
+            line-height: 1.05;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            display: block;
+        }
+
+        .base-text {
+            color: #1a1a1a;
+        }
+
+        .fill-text {
+            color: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+        }
+
+        .script {
+            font-family: 'Playfair Display', serif; 
+            font-style: italic;
+            text-transform: none;
+            font-weight: 400;
+            font-size: 1.1em;
+            letter-spacing: 0.02em;
+        }
+
+        .pink {
+            color: var(--purple);
+        }
+
+        .base-text .pink {
+            color: #0d2453;
+        }
+
+        .fill-text .pink {
+            color: var(--purple);
+        }
+
+        /* WHAT DO YOU DO */
+        .section-header-do {
+            position: sticky;
+            top: 90px;
+            left: 80px;
+            z-index: 100;
+            font-size: 12px;
+            font-weight: 700;
+            transform: translateX(90px);
+            letter-spacing: 2px;
+            opacity: 0;
+            font-family: 'Nunito';
+            pointer-events: none;
+        }
+
+        .service-section-do {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .bg-image-wrapper-do {
+            position: absolute;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30vw;
+            height: 40vw;
+            overflow: hidden;
+            clip-path: inset(100% 0 0 0);
+            z-index: 1;
+        }
+
+        .bg-image-wrapper-do img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content-box-do {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .line-container-do {
+            width: 60%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .animated-line-do {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+        .service-title-do {
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 900;
+            line-height: 0.85;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        .service-title-do span {
+            display: block;
+            transform: translateY(100%);
+        }
+
+        .service-description-do {
+            font-size: 16px;
+            max-width: 400px;
+            color: #888;
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateY(30px);
+            font-family: 'Nunito';
+        }
+
+        .number-label-do {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: #4634e8;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .explore-btn {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 40px;
+            padding: 15px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .explore-btn:hover {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        .btn-arrow {
+            margin-left: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .explore-btn:hover .btn-arrow {
+            transform: translateX(5px);
+        }
+
+        /* CONTACT US */
+        .contact-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #fff;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 700px;
+        }
+
+        .title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0; 
+            font-size: clamp(3rem, 10vw, 7rem);
+            text-transform: uppercase;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .word-left { margin-right: 0.1em; }
+
+        .image-reveal-wrapper {
+            width: 0; 
+            height: 1.2em;
+            overflow: hidden;
+            position: relative;
+            border-radius: 12px;
+            transform: scale(0.8);
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #222;
+        }
+
+        .image-reveal-wrapper img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            position: absolute;
+        }
+
+        .word-right {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            text-transform: none;
+            margin-left: 0.1em;
+        }
+
+        .cta-wrapper {
+            margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .subtext {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            font-weight: 400;
+            color: #ccc;
+            font-family: 'Nunito';
+        }
+
+        .magnetic-btn {
+            display: inline-block;
+            background: #4634e8;
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .magnetic-btn span { display: inline-block; pointer-events: none; }
+
+        /* REVEAL FOOTER - FIXED POSITION */
+      /* PREMIUM FOOTER STYLES */
+        .footer-wrapper {
+            background: red;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-top-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(70, 52, 232, 0.5), transparent);
+            margin: 0 8%;
+            opacity: 0;
+        }
+
+        .footer-container {
+            padding: 100px 8% 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+            opacity: 0;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .footer-logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .footer-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--purple);
+            line-height: 1.4;
+            max-width: 320px;
+        }
+
+        .footer-description {
+            font-family: 'Nunito';
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #888;
+            max-width: 350px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-link {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--purple);
+            transform: scale(0);
+            border-radius: 50%;
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+
+        .social-link:hover::before {
+            transform: scale(1);
+        }
+
+        .social-link:hover {
+            border-color: var(--purple);
+            transform: translateY(-3px);
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-column-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .footer-link {
+            font-family: 'Nunito';
+            font-size: 0.95rem;
+            color: #888;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--purple);
+            transition: width 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--purple);
+            transform: translateX(5px);
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+        }
+
+        .footer-newsletter {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .newsletter-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 14px 18px;
+            border-radius: 8px;
+            color: white;
+            font-family: 'Nunito';
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--purple);
+            background: rgba(70, 52, 232, 0.1);
+        }
+
+        .newsletter-input::placeholder {
+            color: #666;
+        }
+
+        .newsletter-btn {
+            background: var(--purple);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-family: 'Nunito';
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: white;
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        .newsletter-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-btn:hover::before {
+            transform: translateX(0);
+        }
+
+        .newsletter-btn:hover span {
+            color: var(--purple);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Nunito';
+            font-size: 0.85rem;
+            color: #666;
+            opacity: 0;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-legal a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--purple);
+        }
+
+        .footer-heart {
+            color: var(--purple);
+            display: inline-block;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.1); }
+            20%, 40% { transform: scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .font-heavy { font-size: 5rem; }
+            .font-serif { font-size: 5rem; }
+            .left-side { left: 5%; }
+            .right-side { right: 5%; }
+            
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+                gap: 50px;
+            }
+            
+            footer {
+                height: 900px;
+            }
+            
+            .contact-section {
+                margin-bottom: 900px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .font-heavy { font-size: 3.5rem; letter-spacing: -2px;}
+            .font-serif { font-size: 3rem; }
+            .left-side, .right-side { 
+                position: relative; 
+                left: auto;
+                right: auto;
+                margin: 0;
+                text-align: center;
+            }
+            .main-content { 
+                flex-direction: column; 
+                gap: 1rem; 
+            }
+            
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            footer {
+                height: 1200px;
+                padding: 60px 6%;
+            }
+            
+            .contact-section {
+                margin-bottom: 1200px;
+            }
+        }
     </style>
 </head>
 <body>
-    <section class="hero">
-        <h1>Scroll Down</h1>
-    </section>
+
+    <nav id="navbar">
+        <div class="logo-wrapper">
+           <img src="/images/logo.png" alt="NiaLure-Tech" class="logo-img">
+           <span class="logo-text">Nialure Tech</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">Our Work</a>
+            <a href="#" class="active">Company</a>
+            <a href="#">Services</a>
+        </div>
+        <a href="#" class="get-in-touch">
+            <span class="arrow">→</span>
+            <span>Start A Project</span>
+        </a>
+    </nav>
+
+    <div class="hero-container">
+        <div class="background">
+            <img src="/images/hero.jpg" class="background-image">
+            <div class="background-overlay"></div>
+        </div>
+
+        <div class="main-content">
+            <div class="text-block left-side" id="leftText">
+                <span class="font-heavy">Build With</span>
+                <span class="font-serif">Purpose</span>
+            </div>
+
+            <div class="text-block right-side" id="rightText">
+                <span class="font-heavy">And</span>
+                <span class="font-serif">Allure</span>
+            </div>
+        </div>
+    </div>
 
     <section class="mission-container">
         <p class="mission-label">OUR MISSION IS</p>
         
         <div class="text-container">
-            <!-- Line 1 -->
             <div class="line-wrapper">
-                <div class="line base-text">
-                    TO HARNESS THE
-                </div>
-                <div class="line fill-text">
-                    TO HARNESS THE
-                </div>
+                <div class="line base-text">TO TURN IDEAS</div>
+                <div class="line fill-text">TO TURN IDEAS</div>
             </div>
 
-            <!-- Line 2 -->
             <div class="line-wrapper">
-                <div class="line base-text">
-                    <span class="script pink">Power</span> OF
-                </div>
-                <div class="line fill-text">
-                    <span class="script pink">Power</span> OF
-                </div>
+                <div class="line base-text">INTO <span class="script pink">Digital</span></div>
+                <div class="line fill-text">INTO <span class="script pink">Digital</span></div>
             </div>
 
-            <!-- Line 3 -->
             <div class="line-wrapper">
-                <div class="line base-text">
-                    <span class="pink">INFLUENCE</span> TO MAKE
-                </div>
-                <div class="line fill-text">
-                    <span class="pink">INFLUENCE</span> TO MAKE
-                </div>
+                <div class="line base-text"><span class="script pink">Experiences</span> THAT</div>
+                <div class="line fill-text"><span class="script pink">Experiences</span> THAT</div>
             </div>
 
-            <!-- Line 4 -->
             <div class="line-wrapper">
-                <div class="line base-text">
-                    MEANINGFUL
-                </div>
-                <div class="line fill-text">
-                    MEANINGFUL
-                </div>
+                <div class="line base-text">FEEL INTENTIONAL,</div>
+                <div class="line fill-text">FEEL INTENTIONAL,</div>
             </div>
 
-            <!-- Line 5 -->
             <div class="line-wrapper">
-                <div class="line base-text">
-                    CONNECTIONS WITH
-                </div>
-                <div class="line fill-text">
-                    CONNECTIONS WITH
-                </div>
+                <div class="line base-text">MOVE WITH</div>
+                <div class="line fill-text">MOVE WITH</div>
             </div>
 
-            <!-- Line 6 -->
             <div class="line-wrapper">
-                <div class="line base-text">
-                    <span class="script pink">Brands</span>,
-                </div>
-                <div class="line fill-text">
-                    <span class="script pink">Brands</span>,
-                </div>
+                <div class="line base-text">PRECISION,</div>
+                <div class="line fill-text">PRECISION,</div>
             </div>
 
-            <!-- Line 7 -->
             <div class="line-wrapper">
-                <div class="line base-text">
-                    <span class="pink">EMPOWERING</span>
-                </div>
-                <div class="line fill-text">
-                    <span class="pink">EMPOWERING</span>
-                </div>
+                <div class="line base-text">AND SCALE</div>
+                <div class="line fill-text">AND SCALE</div>
             </div>
 
-            <!-- Line 8 -->
             <div class="line-wrapper">
-                <div class="line base-text">
-                    <span class="pink">VOICES</span> THAT DEFINE
-                </div>
-                <div class="line fill-text">
-                    <span class="pink">VOICES</span> THAT DEFINE
-                </div>
+                <div class="line base-text">WITHOUT</div>
+                <div class="line fill-text">WITHOUT</div>
             </div>
 
-            <!-- Line 9 -->
             <div class="line-wrapper">
-                <div class="line base-text">
-                    <span class="script pink">Culture.</span>
-                </div>
-                <div class="line fill-text">
-                    <span class="script pink">Culture.</span>
-                </div>
+                <div class="line base-text"><span class="script pink">Compromise.</span></div>
+                <div class="line fill-text"><span class="script pink">Compromise.</span></div>
             </div>
         </div>
     </section>
 
-    <section class="hero" style="background: #111;"></section>
+    <div class="section-header-do">WHAT WE DO</div>
+
+    <section class="scroll-container-do">
+        <div class="service-section-do">
+            <div class="bg-image-wrapper-do">
+                <img src="/images/programmer-night.jpg" alt="Web Dev">
+            </div>
+            <div class="content-box-do">
+                <span class="number-label-do">01.</span>
+                <h2 class="service-title-do"><span>Web<br>Development</span></h2>
+                <div class="line-container-do"><div class="animated-line-do"></div></div>
+                <p class="service-description-do">Building scalable digital infrastructure tailored to your business needs.</p>
+            </div>
+        </div>
+
+        <div class="service-section-do">
+            <div class="bg-image-wrapper-do">
+                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80" alt="Design">
+            </div>
+            <div class="content-box-do">
+                <span class="number-label-do">02.</span>
+                <h2 class="service-title-do"><span>Web<br>Revamps</span></h2>
+                <div class="line-container-do"><div class="animated-line-do"></div></div>
+                <p class="service-description-do">Modernizing brand identities through fresh designs and functionality.</p>
+            </div>
+        </div>
+
+        <div class="service-section-do">
+            <div class="bg-image-wrapper-do">
+                <img src="/images/hero-small.jpg" alt="Maintenance">
+            </div>
+            <div class="content-box-do">
+                <span class="number-label-do">03.</span>
+                <h2 class="service-title-do"><span>Ongoing<br>Maintenance</span></h2>
+                <div class="line-container-do"><div class="animated-line-do"></div></div>
+                <p class="service-description-do">Ensuring your platform remains secure, optimized, and ahead 24/7.</p>
+                <a href="/work" class="explore-btn">
+                    Explore Our Work
+                    <span class="btn-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="trigger-section">
+        <div class="title-container">
+            <span class="word-left">Let's</span>
+            <div class="image-reveal-wrapper" id="img-box">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80" alt="Person">
+            </div>
+            <span class="word-right">Talk</span>
+        </div>
+        
+        <div class="cta-wrapper" id="footer-content">
+            <p class="subtext">Great things happen when vision meets execution.</p>
+            <a href="#" class="magnetic-btn" id="mag-btn">
+                <span>GET STARTED</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- PREMIUM FOOTER -->
+    <footer class="footer-wrapper">
+        <div class="footer-top-divider"></div>
+        
+        <div class="footer-container">
+            <div class="footer-main">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <div class="footer-logo-wrapper">
+                        <img src="/images/logo.png" alt="NiaLure-Tech" class="footer-logo-img">
+                        <span class="footer-logo-text">Nialure Tech</span>
+                    </div>
+                    <p class="footer-tagline">Crafting digital experiences with purpose and precision.</p>
+                    <p class="footer-description">We transform visionary ideas into stunning digital realities that captivate audiences and drive meaningful results.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">𝕏</a>
+                        <a href="#" class="social-link">in</a>
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">ig</a>
+                    </div>
+                </div>
+
+                <!-- Services Column -->
+                <div class="footer-column">
+                    <h3 class="footer-column-title">Services</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Web Development</a>
+                        <a href="#" class="footer-link">Web Revamps</a>
+                        <a href="#" class="footer-link">Ongoing Maintenance</a>
+                        <a href="#" class="footer-link">UI/UX Design</a>
+                        <a href="#" class="footer-link">Brand Strategy</a>
+                    </div>
+                </div>
+
+                <!-- Company Column -->
+                <div class="footer-column">
+                    <h3 class="footer-column-title">Company</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">About Us</a>
+                        <a href="#" class="footer-link">Our Work</a>
+                        <a href="#" class="footer-link">Careers</a>
+                        <a href="#" class="footer-link">Blog</a>
+                        <a href="#" class="footer-link">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Newsletter Column -->
+                <div class="footer-column">
+                    <h3 class="footer-column-title">Stay Updated</h3>
+                    <div class="footer-newsletter">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input">
+                        <button class="newsletter-btn"><span>Subscribe</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © 2026 NiaLure Tech. 
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
     <script>
-        // Register ScrollTrigger plugin
         gsap.registerPlugin(ScrollTrigger);
 
-        // Get all line wrappers
+        const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.5 }});
+
+        tl.fromTo("#leftText", 
+            { x: -200, opacity: 0 }, 
+            { x: 0, opacity: 1 }, 
+            0.5
+        );
+
+        tl.fromTo("#rightText", 
+            { x: 200, opacity: 0 }, 
+            { x: 0, opacity: 1 }, 
+            0.8 
+        );
+
+        tl.to("#navbar", { opacity: 1, duration: 1 }, "-=0.5");
+
         const lines = document.querySelectorAll('.line-wrapper');
 
-        // Animate each line individually
         lines.forEach((line, index) => {
             const fillText = line.querySelector('.fill-text');
             
@@ -237,6 +1072,177 @@ body {
                     markers: false
                 }
             });
+        });
+
+        const lenis = new Lenis();
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        lenis.on('scroll', ScrollTrigger.update);
+
+        const sections = document.querySelectorAll('.service-section-do');
+
+        sections.forEach((section, i) => {
+            const line = section.querySelector('.animated-line-do');
+            const title = section.querySelector('.service-title-do span');
+            const desc = section.querySelector('.service-description-do');
+            const imgWrapper = section.querySelector('.bg-image-wrapper-do');
+            const btn = section.querySelector('.explore-btn');
+            
+            const tl2 = gsap.timeline({
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 10%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+
+            tl2.to(imgWrapper, {
+                clipPath: "inset(0% 0 0 0)",
+                duration: 1.2,
+                ease: "power4.inOut"
+            })
+            .to(title, {
+                y: "0%",
+                duration: 0.8,
+                ease: "power3.out"
+            }, "-=0.8")
+            .to(line, {
+                scaleX: 1,
+                duration: 0.8
+            }, "-=0.6")
+            .to(desc, {
+                opacity: 1,
+                y: 0,
+                duration: 0.6
+            }, "-=0.4");
+
+            if (btn) {
+                tl2.to(btn, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6
+                }, "-=0.4");
+            }
+
+            if (i > 0) {
+                gsap.to(sections[i-1], {
+                    opacity: 0,
+                    scale: 0.95,
+                    filter: "blur(0px)",
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top bottom",
+                        end: "top top",
+                        scrub: true
+                    }
+                });
+            }
+        });
+
+        gsap.to(".section-header-do", {
+            opacity: 1,
+            scrollTrigger: {
+                trigger: ".scroll-container-do",
+                start: "top 50%",
+                end: "bottom bottom",
+                toggleActions: "play reverse play reverse"
+            }
+        });
+
+        const imgBoxContact = document.querySelector('#img-box');
+        const footerContact = document.querySelector('#footer-content');
+        const btnContact = document.querySelector('#mag-btn');
+
+        const t3 = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#trigger-section",
+                start: "top 70%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        t3.to(imgBoxContact, {
+            width: "1em",
+            opacity: 1,
+            scale: 1,
+            duration: 1.2,
+            ease: "expo.inOut"
+        })
+        .to(footerContact, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out"
+        }, "-=0.6");
+
+        btnContact.addEventListener('mousemove', (e) => {
+            const rect = btnContact.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            gsap.to(btnContact, {
+                x: x * 0.7,
+                y: y * 0.7,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+
+            gsap.to(btnContact.querySelector('span'), {
+                x: x * 0.3,
+                y: y * 0.3,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+
+        btnContact.addEventListener('mouseleave', () => {
+            gsap.to(btnContact, {
+                x: 0,
+                y: 0,
+                duration: 0.6,
+                ease: "elastic.out(1, 0.5)"
+            });
+            gsap.to(btnContact.querySelector('span'), {
+                x: 0,
+                y: 0,
+                duration: 0.6,
+                ease: "elastic.out(1, 0.5)"
+            });
+        });
+
+        // FOOTER ANIMATIONS
+        gsap.to(".footer-top-divider", {
+            opacity: 1,
+            scrollTrigger: {
+                trigger: ".footer-wrapper",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        gsap.to(".footer-main", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".footer-wrapper",
+                start: "top 70%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        gsap.to(".footer-bottom", {
+            opacity: 1,
+            scrollTrigger: {
+                trigger: ".footer-bottom",
+                start: "top 90%",
+                toggleActions: "play none none reverse"
+            }
         });
     </script>
 </body>
