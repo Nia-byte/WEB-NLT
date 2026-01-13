@@ -1,72 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NiaLure-Tech</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+    <title>Action Inspired Content</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
     <style>
-        :root {
-            --purple: #4634e8;
-            --bg-overlay: rgba(10, 10, 10, 0.909);
-            --footer-bg: #023530;
-        }
-
+        :root { --purple: #b894d6; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #000; color: #fff; font-family: 'Helvetica', sans-serif; overflow-x: hidden; }
 
-        html.lenis, html.lenis body {
-            height: auto;
-        }
-        .lenis.lenis-smooth {
-            scroll-behavior: auto !important;
-        }
-        .lenis.lenis-smooth [data-lenis-prevent] {
-            overscroll-behavior: contain;
-        }
-        .lenis.lenis-stopped {
-            overflow: hidden;
-        }
-        .lenis.lenis-scrolling iframe {
-            pointer-events: none;
-        }
-        
-        body {
-            background: #000;
-            font-family: 'Inter', sans-serif, 'Nunito';
-            color: white;
-            overflow-x: hidden;
-        }
 
-        /* HERO SECTION */
-        .hero-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .background {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-        }
-        .background-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .background-overlay {
-            position: absolute;
-            inset: 0;
-            background: var(--bg-overlay);
-        }
-
-        /* Navigation */
+         /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -118,704 +65,147 @@
         .nav-links a:hover, .nav-links a.active {
             color: var(--purple);
         }
-        
-        .get-in-touch {
-            background: var(--purple);
-            padding: 10px 28px;
-            border-radius: 30px;
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            font-family: 'Nunito';
+     .get-in-touch {
+    background: var(--purple);
+    color: white;
+    padding: 10px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Nunito';
+    font-size: 0.80rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    transition: all 0.4s ease;
+}
+
+.get-in-touch { background: var(--purple);
+     padding: 10px 28px; 
+     border-radius: 30px; 
+     text-decoration: none; 
+     color: white; 
+     font-weight: 600; 
+     font-family: 'Nunito'; 
+     display: flex; 
+     align-items: center; 
+     gap: 8px; 
+     font-size: 0.80rem; }
+
+.get-in-touch::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: white;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+}
+
+.get-in-touch span {
+    position: relative;
+    z-index: 1;
+    transition: color 0.4s ease;
+}
+
+.get-in-touch:hover::before {
+    transform: translateX(0);
+}
+
+.get-in-touch:hover span {
+    color: var(--purple);
+}
+        .hero-section { position: relative; width: 100%; }
+
+        .hero-content {
+            height: 100vh;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.80rem;
-        }
-
-        /* Hero Typography */
-        .main-content {
+            overflow: hidden;
             position: relative;
-            z-index: 10;
-            width: 100%;
+        }
+
+        /* TRACK WRAPPER: This holds both the Text and the Cards */
+        .horizontal-track {
             display: flex;
-            justify-content: center;
             align-items: center;
-        }
-
-        .text-block {
-            line-height: 0.85;
-            position: absolute;
-            opacity: 0; 
-        }
-
-        .font-heavy { 
-            font-size: 9rem; 
-            font-weight: 900; 
-            display: block;
-            letter-spacing: -8px;
-            text-transform: uppercase;
-        }
-        
-        .font-serif { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 8rem; 
-            font-style: italic;
-            display: block;
-            letter-spacing: 5px;
-            text-transform: capitalize;
-        }
-
-        .left-side {
-            color: white;
-            left: 10%;
-            margin-bottom: 100px;
-            text-align: left;
-        }
-
-        .right-side { 
-            color: var(--purple);
-            text-align: left;
-            right: 15%;
-            margin-top: 290px;
-        }
-
-        .hero-container::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: linear-gradient(to bottom, transparent, #000);
-            z-index: 2;
-        }
-
-        /* MISSION SECTION */
-        .mission-container {
-            padding: 150px 10%;
-            min-height: 150vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #000;
-        }
-
-        .mission-label {
-            font-size: 11px;
-            letter-spacing: 3px;
-            color: #888;
-            margin-bottom: 80px;
-            text-transform: uppercase;
-            font-weight: 500;
-            text-align: center;
+            padding-left: 5vw; /* Initial left padding for the text */
+            will-change: transform;
         }
 
         .text-container {
-            max-width: 1400px;
-            width: 100%;
-            text-align: center;
+            width: 60vw; /* Takes up 60% of viewport width */
+            flex-shrink: 0;
+            padding-right: 5vw;
         }
 
-        .line-wrapper {
-            position: relative;
-            display: block;
-            margin-bottom: 5px;
-            overflow: hidden;
-        }
-
-        .line {
-            font-size: clamp(2.5rem, 6vw, 6.5rem);
-            line-height: 1.05;
-            font-weight: 700;
+        .text-container h1 {
+            font-size: clamp(50px, 8vw, 110px);
+            line-height: 0.85;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: -0.02em;
-            display: block;
         }
+        .italic { font-style: italic; font-family: serif; text-transform: none; }
+        .action { color: var(--purple); }
 
-        .base-text {
-            color: #1a1a1a;
-        }
-
-        .fill-text {
-            color: #fff;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
-        }
-
-        .script {
-            font-family: 'Playfair Display', serif; 
-            font-style: italic;
-            text-transform: none;
-            font-weight: 400;
-            font-size: 1.1em;
-            letter-spacing: 0.02em;
-        }
-
-        .pink {
-            color: var(--purple);
-        }
-
-        .base-text .pink {
-            color: #0d2453;
-        }
-
-        .fill-text .pink {
-            color: var(--purple);
-        }
-
-        /* WHAT DO YOU DO */
-        .section-header-do {
-            position: sticky;
-            top: 90px;
-            left: 80px;
-            z-index: 100;
-            font-size: 12px;
-            font-weight: 700;
-            transform: translateX(90px);
-            letter-spacing: 2px;
-            opacity: 0;
-            font-family: 'Nunito';
-            pointer-events: none;
-        }
-
-        .service-section-do {
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            width: 100%;
+        .cards-container {
             display: flex;
             align-items: center;
-            padding: 0 8%;
-            background: #000;
-            overflow: hidden;
+            gap: 15vw; /* Space between cards */
+            padding-right: 60vw; /* Space after the last card */
         }
 
-        .bg-image-wrapper-do {
-            position: absolute;
-            right: 8%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 30vw;
-            height: 40vw;
-            overflow: hidden;
-            clip-path: inset(100% 0 0 0);
-            z-index: 1;
+        .video-card {
+            width: 320px;
+            flex-shrink: 0;
+            transition: opacity 0.5s ease, filter 0.5s ease;
+            opacity: 0.2;
+            filter: grayscale(100%);
         }
 
-        .bg-image-wrapper-do img {
+        /* Active State: Full color and opacity */
+        .video-card.is-active { 
+            opacity: 1; 
+            filter: grayscale(0%);
+        }
+
+        .video-wrapper {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .content-box-do {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-        }
-
-        .line-container-do {
-            width: 60%;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            margin: 30px 0;
-            position: relative;
-        }
-
-        .animated-line-do {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            transform: scaleX(0);
-            transform-origin: left;
-        }
-
-        .service-title-do {
-            font-size: clamp(3.5rem, 8vw, 7rem);
-            font-weight: 900;
-            line-height: 0.85;
-            text-transform: uppercase;
-            margin-bottom: 25px;
+            height: 450px;
+            border-radius: 20px;
             overflow: hidden;
+            background: #111;
+            margin-bottom: 20px;
         }
 
-        .service-title-do span {
-            display: block;
-            transform: translateY(100%);
-        }
+        video { width: 100%; height: 100%; object-fit: cover; }
 
-        .service-description-do {
-            font-size: 16px;
-            max-width: 400px;
-            color: #888;
-            line-height: 1.5;
-            opacity: 0;
-            transform: translateY(30px);
-            font-family: 'Nunito';
-        }
-
-        .number-label-do {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.5rem;
-            color: #4634e8;
-            margin-bottom: 10px;
-            display: block;
+        .card-info { 
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: all 0.5s ease; 
         }
         
-        .explore-btn {
-            display: inline-flex;
-            align-items: center;
-            margin-top: 40px;
-            padding: 15px 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            text-decoration: none;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(20px);
+        .video-card.is-active .card-info { 
+            opacity: 1; 
+            transform: translateY(0); 
         }
 
-        .explore-btn:hover {
-            background: #fff;
-            color: #000;
-            border-color: #fff;
-        }
+        .card-info p { font-size: 10px; color: #666; margin-bottom: 5px; letter-spacing: 1px; }
+        .card-info h3 { font-size: 16px; text-transform: uppercase; font-weight: bold; }
 
-        .btn-arrow {
-            margin-left: 15px;
-            transition: transform 0.3s ease;
-        }
-
-        .explore-btn:hover .btn-arrow {
-            transform: translateX(5px);
-        }
-
-        /* CONTACT US */
-        .contact-section {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: #fff;
-            position: relative;
-            z-index: 1;
-            margin-bottom: 700px;
-        }
-
-        .title-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0; 
-            font-size: clamp(3rem, 10vw, 7rem);
-            text-transform: uppercase;
-            line-height: 1;
-            white-space: nowrap;
-        }
-
-        .word-left { margin-right: 0.1em; }
-
-        .image-reveal-wrapper {
-            width: 0; 
-            height: 1.2em;
-            overflow: hidden;
-            position: relative;
-            border-radius: 12px;
-            transform: scale(0.8);
-            opacity: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #222;
-        }
-
-        .image-reveal-wrapper img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            position: absolute;
-        }
-
-        .word-right {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            text-transform: none;
-            margin-left: 0.1em;
-        }
-
-        .cta-wrapper {
-            margin-top: 30px;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .subtext {
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-            font-weight: 400;
-            color: #ccc;
-            font-family: 'Nunito';
-        }
-
-        .magnetic-btn {
-            display: inline-block;
-            background: #4634e8;
-            color: #ffffff;
-            padding: 14px 28px;
-            border-radius: 100px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            position: relative;
-        }
-
-        .magnetic-btn span { display: inline-block; pointer-events: none; }
-
-        /* REVEAL FOOTER - FIXED POSITION */
-      /* PREMIUM FOOTER STYLES */
-        .footer-wrapper {
-            background: red;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer-top-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(70, 52, 232, 0.5), transparent);
-            margin: 0 8%;
-            opacity: 0;
-        }
-
-        .footer-container {
-            padding: 100px 8% 40px;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
-        .footer-main {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 80px;
-            opacity: 0;
-        }
-
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .footer-logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .footer-logo-img {
-            height: 50px;
-            width: auto;
-        }
-
-        .footer-logo-text {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: white;
-        }
-
-        .footer-tagline {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.3rem;
-            color: var(--purple);
-            line-height: 1.4;
-            max-width: 320px;
-        }
-
-        .footer-description {
-            font-family: 'Nunito';
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: #888;
-            max-width: 350px;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .social-link {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-link::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--purple);
-            transform: scale(0);
-            border-radius: 50%;
-            transition: transform 0.4s ease;
-            z-index: -1;
-        }
-
-        .social-link:hover::before {
-            transform: scale(1);
-        }
-
-        .social-link:hover {
-            border-color: var(--purple);
-            transform: translateY(-3px);
-        }
-
-        .footer-column {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .footer-column-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: white;
-            margin-bottom: 25px;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .footer-link {
-            font-family: 'Nunito';
-            font-size: 0.95rem;
-            color: #888;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-            position: relative;
-        }
-
-        .footer-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--purple);
-            transition: width 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: var(--purple);
-            transform: translateX(5px);
-        }
-
-        .footer-link:hover::after {
-            width: 100%;
-        }
-
-        .footer-newsletter {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .newsletter-input {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 14px 18px;
-            border-radius: 8px;
-            color: white;
-            font-family: 'Nunito';
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-input:focus {
-            outline: none;
-            border-color: var(--purple);
-            background: rgba(70, 52, 232, 0.1);
-        }
-
-        .newsletter-input::placeholder {
-            color: #666;
-        }
-
-        .newsletter-btn {
-            background: var(--purple);
-            color: white;
-            border: none;
-            padding: 14px 24px;
-            border-radius: 8px;
-            font-family: 'Nunito';
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .newsletter-btn::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: white;
-            transform: translateX(-100%);
-            transition: transform 0.4s ease;
-        }
-
-        .newsletter-btn span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .newsletter-btn:hover::before {
-            transform: translateX(0);
-        }
-
-        .newsletter-btn:hover span {
-            color: var(--purple);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Nunito';
-            font-size: 0.85rem;
-            color: #666;
-            opacity: 0;
-        }
-
-        .footer-legal {
-            display: flex;
-            gap: 30px;
-        }
-
-        .footer-legal a {
-            color: #666;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-legal a:hover {
-            color: var(--purple);
-        }
-
-        .footer-heart {
-            color: var(--purple);
-            display: inline-block;
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            10%, 30% { transform: scale(1.1); }
-            20%, 40% { transform: scale(1); }
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .font-heavy { font-size: 5rem; }
-            .font-serif { font-size: 5rem; }
-            .left-side { left: 5%; }
-            .right-side { right: 5%; }
-            
-            .footer-main {
-                grid-template-columns: 1fr 1fr;
-                gap: 50px;
-            }
-            
-            footer {
-                height: 900px;
-            }
-            
-            .contact-section {
-                margin-bottom: 900px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .font-heavy { font-size: 3.5rem; letter-spacing: -2px;}
-            .font-serif { font-size: 3rem; }
-            .left-side, .right-side { 
-                position: relative; 
-                left: auto;
-                right: auto;
-                margin: 0;
-                text-align: center;
-            }
-            .main-content { 
-                flex-direction: column; 
-                gap: 1rem; 
-            }
-            
-            .footer-main {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-            
-            footer {
-                height: 1200px;
-                padding: 60px 6%;
-            }
-            
-            .contact-section {
-                margin-bottom: 1200px;
-            }
-        }
+        .past-collabs { min-height: 100vh; background: #000; padding: 100px 5vw; }
     </style>
 </head>
 <body>
 
+     <!-- HERO SECTION -->
     <nav id="navbar">
         <div class="logo-wrapper">
            <img src="/images/logo.png" alt="NiaLure-Tech" class="logo-img">
@@ -824,7 +214,7 @@
         <div class="nav-links">
             <a href="#">Our Work</a>
             <a href="#" class="active">Company</a>
-            <a href="#">Services</a>
+           
         </div>
         <a href="#" class="get-in-touch">
             <span class="arrow">→</span>
@@ -832,417 +222,158 @@
         </a>
     </nav>
 
-    <div class="hero-container">
-        <div class="background">
-            <img src="/images/hero.jpg" class="background-image">
-            <div class="background-overlay"></div>
-        </div>
+    <div class="hero-section">
+        <div class="hero-content">
+            <div class="horizontal-track">
+                
+                <div class="text-container">
+                    <h1 id="main-heading">
+                        <span class="italic">C</span>ONTENT<br>
+                        THAT<br>
+                        <span class="italic">I</span>NSPIRES<br>
+                        <span class="action">ACTION</span>
+                    </h1>
+                </div>
 
-        <div class="main-content">
-            <div class="text-block left-side" id="leftText">
-                <span class="font-heavy">Build With</span>
-                <span class="font-serif">Purpose</span>
-            </div>
+                <div class="cards-container">
+                    <div class="video-card" id="card-1">
+                        <div class="video-wrapper">
+                            <video src="video1.mp4" muted loop playsinline></video>
+                        </div>
+                        <div class="card-info">
+                            <p>WE PARTNERED WITH</p>
+                            <h3>JALEN ALLEN TO CREATE CONTENT FOR STARBUCKS</h3>
+                        </div>
+                    </div>
 
-            <div class="text-block right-side" id="rightText">
-                <span class="font-heavy">And</span>
-                <span class="font-serif">Allure</span>
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video src="video2.mp4" muted loop playsinline></video>
+                        </div>
+                        <div class="card-info">
+                            <p>WE PARTNERED WITH</p>
+                            <h3>DAVID QUARLES IV FOR PENNINGTON</h3>
+                        </div>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video src="video3.mp4" muted loop playsinline></video>
+                        </div>
+                        <div class="card-info">
+                            <p>WE PARTNERED WITH</p>
+                            <h3>MATT STICKLER TO CREATE CONTENT FOR LINCOLN</h3>
+                        </div>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video src="video4.mp4" muted loop playsinline></video>
+                        </div>
+                        <div class="card-info">
+                            <p>WE PARTNERED WITH</p>
+                            <h3>HAPPYKELLI FOR OUTSHINE SNACKS</h3>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 
-    <section class="mission-container">
-        <p class="mission-label">OUR MISSION IS</p>
-        
-        <div class="text-container">
-            <div class="line-wrapper">
-                <div class="line base-text">TO TURN IDEAS</div>
-                <div class="line fill-text">TO TURN IDEAS</div>
-            </div>
-
-            <div class="line-wrapper">
-                <div class="line base-text">INTO <span class="script pink">Digital</span></div>
-                <div class="line fill-text">INTO <span class="script pink">Digital</span></div>
-            </div>
-
-            <div class="line-wrapper">
-                <div class="line base-text"><span class="script pink">Experiences</span> THAT</div>
-                <div class="line fill-text"><span class="script pink">Experiences</span> THAT</div>
-            </div>
-
-            <div class="line-wrapper">
-                <div class="line base-text">FEEL INTENTIONAL,</div>
-                <div class="line fill-text">FEEL INTENTIONAL,</div>
-            </div>
-
-            <div class="line-wrapper">
-                <div class="line base-text">MOVE WITH</div>
-                <div class="line fill-text">MOVE WITH</div>
-            </div>
-
-            <div class="line-wrapper">
-                <div class="line base-text">PRECISION,</div>
-                <div class="line fill-text">PRECISION,</div>
-            </div>
-
-            <div class="line-wrapper">
-                <div class="line base-text">AND SCALE</div>
-                <div class="line fill-text">AND SCALE</div>
-            </div>
-
-            <div class="line-wrapper">
-                <div class="line base-text">WITHOUT</div>
-                <div class="line fill-text">WITHOUT</div>
-            </div>
-
-            <div class="line-wrapper">
-                <div class="line base-text"><span class="script pink">Compromise.</span></div>
-                <div class="line fill-text"><span class="script pink">Compromise.</span></div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-header-do">WHAT WE DO</div>
-
-    <section class="scroll-container-do">
-        <div class="service-section-do">
-            <div class="bg-image-wrapper-do">
-                <img src="/images/programmer-night.jpg" alt="Web Dev">
-            </div>
-            <div class="content-box-do">
-                <span class="number-label-do">01.</span>
-                <h2 class="service-title-do"><span>Web<br>Development</span></h2>
-                <div class="line-container-do"><div class="animated-line-do"></div></div>
-                <p class="service-description-do">Building scalable digital infrastructure tailored to your business needs.</p>
-            </div>
-        </div>
-
-        <div class="service-section-do">
-            <div class="bg-image-wrapper-do">
-                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80" alt="Design">
-            </div>
-            <div class="content-box-do">
-                <span class="number-label-do">02.</span>
-                <h2 class="service-title-do"><span>Web<br>Revamps</span></h2>
-                <div class="line-container-do"><div class="animated-line-do"></div></div>
-                <p class="service-description-do">Modernizing brand identities through fresh designs and functionality.</p>
-            </div>
-        </div>
-
-        <div class="service-section-do">
-            <div class="bg-image-wrapper-do">
-                <img src="/images/hero-small.jpg" alt="Maintenance">
-            </div>
-            <div class="content-box-do">
-                <span class="number-label-do">03.</span>
-                <h2 class="service-title-do"><span>Ongoing<br>Maintenance</span></h2>
-                <div class="line-container-do"><div class="animated-line-do"></div></div>
-                <p class="service-description-do">Ensuring your platform remains secure, optimized, and ahead 24/7.</p>
-                <a href="/work" class="explore-btn">
-                    Explore Our Work
-                    <span class="btn-arrow">→</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact-section" id="trigger-section">
-        <div class="title-container">
-            <span class="word-left">Let's</span>
-            <div class="image-reveal-wrapper" id="img-box">
-                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80" alt="Person">
-            </div>
-            <span class="word-right">Talk</span>
-        </div>
-        
-        <div class="cta-wrapper" id="footer-content">
-            <p class="subtext">Great things happen when vision meets execution.</p>
-            <a href="#" class="magnetic-btn" id="mag-btn">
-                <span>GET STARTED</span>
-            </a>
-        </div>
-    </section>
-
-    <!-- PREMIUM FOOTER -->
-    <footer class="footer-wrapper">
-        <div class="footer-top-divider"></div>
-        
-        <div class="footer-container">
-            <div class="footer-main">
-                <!-- Brand Column -->
-                <div class="footer-brand">
-                    <div class="footer-logo-wrapper">
-                        <img src="/images/logo.png" alt="NiaLure-Tech" class="footer-logo-img">
-                        <span class="footer-logo-text">Nialure Tech</span>
-                    </div>
-                    <p class="footer-tagline">Crafting digital experiences with purpose and precision.</p>
-                    <p class="footer-description">We transform visionary ideas into stunning digital realities that captivate audiences and drive meaningful results.</p>
-                    <div class="footer-social">
-                        <a href="#" class="social-link">𝕏</a>
-                        <a href="#" class="social-link">in</a>
-                        <a href="#" class="social-link">f</a>
-                        <a href="#" class="social-link">ig</a>
-                    </div>
-                </div>
-
-                <!-- Services Column -->
-                <div class="footer-column">
-                    <h3 class="footer-column-title">Services</h3>
-                    <div class="footer-links">
-                        <a href="#" class="footer-link">Web Development</a>
-                        <a href="#" class="footer-link">Web Revamps</a>
-                        <a href="#" class="footer-link">Ongoing Maintenance</a>
-                        <a href="#" class="footer-link">UI/UX Design</a>
-                        <a href="#" class="footer-link">Brand Strategy</a>
-                    </div>
-                </div>
-
-                <!-- Company Column -->
-                <div class="footer-column">
-                    <h3 class="footer-column-title">Company</h3>
-                    <div class="footer-links">
-                        <a href="#" class="footer-link">About Us</a>
-                        <a href="#" class="footer-link">Our Work</a>
-                        <a href="#" class="footer-link">Careers</a>
-                        <a href="#" class="footer-link">Blog</a>
-                        <a href="#" class="footer-link">Contact</a>
-                    </div>
-                </div>
-
-                <!-- Newsletter Column -->
-                <div class="footer-column">
-                    <h3 class="footer-column-title">Stay Updated</h3>
-                    <div class="footer-newsletter">
-                        <input type="email" placeholder="Enter your email" class="newsletter-input">
-                        <button class="newsletter-btn"><span>Subscribe</span></button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <div class="footer-copyright">
-                    © 2026 NiaLure Tech. 
-                </div>
-                <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookies</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <div class="past-collabs">
+        <h2 style="font-size: 80px;">PAST COLLABS</h2>
+    </div>
 
     <script>
-        gsap.registerPlugin(ScrollTrigger);
-
-        const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.5 }});
-
-        tl.fromTo("#leftText", 
-            { x: -200, opacity: 0 }, 
-            { x: 0, opacity: 1 }, 
-            0.5
-        );
-
-        tl.fromTo("#rightText", 
-            { x: 200, opacity: 0 }, 
-            { x: 0, opacity: 1 }, 
-            0.8 
-        );
-
-        tl.to("#navbar", { opacity: 1, duration: 1 }, "-=0.5");
-
-        const lines = document.querySelectorAll('.line-wrapper');
-
-        lines.forEach((line, index) => {
-            const fillText = line.querySelector('.fill-text');
-            
-            gsap.to(fillText, {
-                clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-                ease: "none",
-                scrollTrigger: {
-                    trigger: line,
-                    start: "top 70%",
-                    end: "bottom 50%",
-                    scrub: 1,
-                    markers: false
-                }
-            });
-        });
-
         const lenis = new Lenis();
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
 
-        lenis.on('scroll', ScrollTrigger.update);
+        gsap.registerPlugin(ScrollTrigger);
 
-        const sections = document.querySelectorAll('.service-section-do');
+        const track = document.querySelector('.horizontal-track');
+        const textContainer = document.querySelector('.text-container');
+        const heading = document.getElementById('main-heading');
+        const cards = gsap.utils.toArray('.video-card');
 
-        sections.forEach((section, i) => {
-            const line = section.querySelector('.animated-line-do');
-            const title = section.querySelector('.service-title-do span');
-            const desc = section.querySelector('.service-description-do');
-            const imgWrapper = section.querySelector('.bg-image-wrapper-do');
-            const btn = section.querySelector('.explore-btn');
+        
+        // PAGE LOAD ANIMATION
+        window.addEventListener('load', () => {
+            gsap.to(heading, {
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                ease: "power4.out"
+            });
             
-            const tl2 = gsap.timeline({
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top 10%",
-                    toggleActions: "play none none reverse"
+            const firstCard = document.getElementById('card-1');
+            firstCard.classList.add('is-active');
+            firstCard.querySelector('video').play();
+        }); 
+
+      
+
+        // Main Horizontal Timeline
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".hero-section",
+                start: "top top",
+                end: "+=4000",
+                scrub: 1,
+                pin: true,
+            }
+        });
+
+        // Move the entire track (Text + Cards)
+        tl.to(track, {
+            x: () => -(track.scrollWidth - window.innerWidth),
+            ease: "none"
+        });
+
+        // Fade out the main text header as it moves
+        tl.to(textContainer, {
+            opacity: 0,
+            filter: "blur(10px)",
+            scale: 0.9,
+            duration: 0.2 // Fades quickly at the start of the scroll
+        }, 0);
+
+        // Control Video playback and "Active" state
+        // 3. Card behavior
+        cards.forEach((card, i) => {
+            const video = card.querySelector('video');
+            
+            ScrollTrigger.create({
+                trigger: card,
+                containerAnimation: tl,
+                start: "left 75%", // Triggers slightly earlier
+                end: "right 25%", 
+                onEnter: () => {
+                    card.classList.add('is-active');
+                    video.play();
+                },
+                onLeave: () => {
+                    card.classList.remove('is-active');
+                    video.pause();
+                },
+                onEnterBack: () => {
+                    card.classList.add('is-active');
+                    video.play();
+                },
+                onLeaveBack: () => {
+                    card.classList.remove('is-active');
+                    // Special case: Keep card 1 active if we are at the very top
+                    if(i !== 0) video.pause();
                 }
             });
-
-            tl2.to(imgWrapper, {
-                clipPath: "inset(0% 0 0 0)",
-                duration: 1.2,
-                ease: "power4.inOut"
-            })
-            .to(title, {
-                y: "0%",
-                duration: 0.8,
-                ease: "power3.out"
-            }, "-=0.8")
-            .to(line, {
-                scaleX: 1,
-                duration: 0.8
-            }, "-=0.6")
-            .to(desc, {
-                opacity: 1,
-                y: 0,
-                duration: 0.6
-            }, "-=0.4");
-
-            if (btn) {
-                tl2.to(btn, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.6
-                }, "-=0.4");
-            }
-
-            if (i > 0) {
-                gsap.to(sections[i-1], {
-                    opacity: 0,
-                    scale: 0.95,
-                    filter: "blur(0px)",
-                    scrollTrigger: {
-                        trigger: section,
-                        start: "top bottom",
-                        end: "top top",
-                        scrub: true
-                    }
-                });
-            }
         });
 
-        gsap.to(".section-header-do", {
-            opacity: 1,
-            scrollTrigger: {
-                trigger: ".scroll-container-do",
-                start: "top 50%",
-                end: "bottom bottom",
-                toggleActions: "play reverse play reverse"
-            }
-        });
-
-        const imgBoxContact = document.querySelector('#img-box');
-        const footerContact = document.querySelector('#footer-content');
-        const btnContact = document.querySelector('#mag-btn');
-
-        const t3 = gsap.timeline({
-            scrollTrigger: {
-                trigger: "#trigger-section",
-                start: "top 70%",
-                toggleActions: "play none none reverse"
-            }
-        });
-
-        t3.to(imgBoxContact, {
-            width: "1em",
-            opacity: 1,
-            scale: 1,
-            duration: 1.2,
-            ease: "expo.inOut"
-        })
-        .to(footerContact, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out"
-        }, "-=0.6");
-
-        btnContact.addEventListener('mousemove', (e) => {
-            const rect = btnContact.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-
-            gsap.to(btnContact, {
-                x: x * 0.7,
-                y: y * 0.7,
-                duration: 0.3,
-                ease: "power2.out"
-            });
-
-            gsap.to(btnContact.querySelector('span'), {
-                x: x * 0.3,
-                y: y * 0.3,
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        });
-
-        btnContact.addEventListener('mouseleave', () => {
-            gsap.to(btnContact, {
-                x: 0,
-                y: 0,
-                duration: 0.6,
-                ease: "elastic.out(1, 0.5)"
-            });
-            gsap.to(btnContact.querySelector('span'), {
-                x: 0,
-                y: 0,
-                duration: 0.6,
-                ease: "elastic.out(1, 0.5)"
-            });
-        });
-
-        // FOOTER ANIMATIONS
-        gsap.to(".footer-top-divider", {
-            opacity: 1,
-            scrollTrigger: {
-                trigger: ".footer-wrapper",
-                start: "top 80%",
-                toggleActions: "play none none reverse"
-            }
-        });
-
-        gsap.to(".footer-main", {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-                trigger: ".footer-wrapper",
-                start: "top 70%",
-                toggleActions: "play none none reverse"
-            }
-        });
-
-        gsap.to(".footer-bottom", {
-            opacity: 1,
-            scrollTrigger: {
-                trigger: ".footer-bottom",
-                start: "top 90%",
-                toggleActions: "play none none reverse"
-            }
+        // Force the first video to play on load
+        window.addEventListener('load', () => {
+            const firstCard = document.getElementById('card-1');
+            firstCard.classList.add('is-active');
+            firstCard.querySelector('video').play();
         });
     </script>
 </body>
