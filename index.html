@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NiaLure-Tech</title>
+    <title>NiaLure Tech</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
@@ -68,23 +68,151 @@
         }
 
         /* Navigation */
-        nav {
-            position: fixed;
+          /* Navbar Pill */
+    .navbar-container {
+      padding: 25px 30px;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      top: 0;
+    }
+
+    .navbar-pill {
+      background: #ffffff94;
+      color: rgb(28, 27, 27);
+      border-radius: 60px;
+      padding: 10px 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .logo span {
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    /* Hamburger Menu Icon */
+    .menu-toggle {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* Overlay Styling */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: black;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      overflow: hidden;
+    }
+
+    /* Decorative illustrations */
+    .menu-decoration {
+      position: absolute;
+      pointer-events: none;
+    }
+
+     .background-menu {
+            position: absolute;
             top: 0;
+            left: 0;
             width: 100%;
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px 60px;
-            opacity: 0;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(99,102,241,0.15) 100%);
         }
-        
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+  
+
+    .menu-content {
+      position: relative;
+      z-index: 2;
+      width: 90%;
+      max-width: 900px;
+      margin-bottom: -90px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .menu-item {
+      background: white;
+      color: #4634e8;
+      padding: 50px 40px;
+      border-radius: 30px;
+      text-align: center;
+      font-weight: 900;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      letter-spacing: -0.02em;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .menu-item:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .menu-item-icon {
+      width: 50px;
+      height: 50px;
+    }
+
+    .full-width {
+      grid-column: span 2;
+    }
+
+    .tagline {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--brand-yellow);
+      margin-top: 50px;
+      letter-spacing: -0.03em;
+      opacity: 0;
+    }
 
         .logo-img {
             height: 60px !important;
@@ -92,7 +220,7 @@
             display: block;
         }
 
-        .logo-text {
+       .logo-text {
             font-family: 'Inter', sans-serif, 'Nunito';
             font-weight: 700;
             font-size: 1.2rem;
@@ -101,80 +229,7 @@
             color: white;
         }
         
-        .nav-links { 
-            display: flex; 
-            gap: 40px; 
-            margin-left: -90px;
-        }
         
-        .nav-links a { 
-            color: white; 
-            text-decoration: none; 
-            font-size: 0.85rem; 
-            font-weight: 400;
-            font-family: 'Nunito';
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--purple);
-        }
-     .get-in-touch {
-    background: var(--purple);
-    color: white;
-    padding: 10px 28px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    font-family: 'Nunito';
-    font-size: 0.80rem;
-    letter-spacing: 1px;
-    cursor: pointer;
-
-    position: relative;
-    overflow: hidden;
-
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    transition: all 0.4s ease;
-}
-
-.get-in-touch { background: var(--purple);
-     padding: 10px 28px; 
-     border-radius: 30px; 
-     text-decoration: none; 
-     color: white; 
-     font-weight: 600; 
-     font-family: 'Nunito'; 
-     display: flex; 
-     align-items: center; 
-     gap: 8px; 
-     font-size: 0.80rem; }
-
-.get-in-touch::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: white;
-    transform: translateX(-100%);
-    transition: transform 0.4s ease;
-}
-
-.get-in-touch span {
-    position: relative;
-    z-index: 1;
-    transition: color 0.4s ease;
-}
-
-.get-in-touch:hover::before {
-    transform: translateX(0);
-}
-
-.get-in-touch:hover span {
-    color: var(--purple);
-}
         
         /* Hero Typography */
         .main-content {
@@ -193,7 +248,7 @@
         }
 
         .font-heavy { 
-            font-size: 9rem; 
+            font-size: 7rem; 
             font-weight: 900; 
             display: block;
             letter-spacing: -8px;
@@ -202,7 +257,7 @@
         
         .font-serif { 
             font-family: 'Playfair Display', serif; 
-            font-size: 8rem; 
+            font-size: 6rem; 
             font-style: italic;
             display: block;
             letter-spacing: 5px;
@@ -211,7 +266,7 @@
 
         .left-side {
             color: white;
-            left: 10%;
+            left: 15%;
             margin-bottom: 100px;
             text-align: left;
         }
@@ -219,9 +274,62 @@
         .right-side { 
             color: var(--purple);
             text-align: left;
-            right: 15%;
-            margin-top: 290px;
+            right: 16%;
+            margin-top: 160px;
         }
+
+            /* CTA Button */
+        .hero-cta {
+            position: absolute;
+            bottom: 12%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 15;
+            opacity: 0;
+        }
+
+        .cta-button {
+            position: relative;
+            padding: 18px 48px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: white;
+            background: transparent;
+            border: 2px solid white;
+            border-radius: 60px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--purple);
+            transition: left 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            border-color: var(--purple);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
 
         /* Bottom Fade */
         .hero-container::after {
@@ -838,23 +946,65 @@
 </head>
 <body>
 
-    <!-- HERO SECTION -->
-    <nav id="navbar">
-        <div class="logo-wrapper">
-           <img src="/images/logo.png" alt="NiaLure-Tech" class="logo-img">
-           <span class="logo-text">Nialure Tech</span>
-        </div>
-        <div class="nav-links">
-            <a href="#">Our Work</a>
-            <a href="#" class="active">Company</a>
-           
-        </div>
-        <a href="#" class="get-in-touch">
-            <span class="arrow">→</span>
-            <span>Start A Project</span>
-        </a>
+    <!-- NAV BAR SECTION -->
+    <nav class="navbar-container" id="navbar">
+      <div class="navbar-pill">
+        <div class="logo">
+         <img src="/images/logo.png" alt="NiaLure-Tech" class="logo-img">
+         <span class="logo-text">Nialure Tech</span>
+       </div>
+       <div class="menu-toggle" id="menuToggle">
+         <span></span>
+         <span></span>
+         <span></span>
+       </div>
+     </div>
     </nav>
 
+   <div class="menu-overlay" id="menuOverlay">
+  <div class="menu-content">
+    <div class="menu-grid">
+      <div class="menu-item">
+        <a href="./index.html" style="text-decoration:none;color:inherit;display:contents;">
+          <span>COMPANY</span>
+          <svg class="menu-item-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="35" width="60" height="40" fill="none" stroke="#4634e8" stroke-width="3" rx="5"/>
+            <circle cx="50" cy="55" r="8" fill="#4634e8"/>
+            <path d="M 50 47 L 50 30 M 50 30 L 35 40 M 50 30 L 65 40" stroke="#4634e8" stroke-width="3" fill="none"/>
+          </svg>
+        </a>
+      </div>
+      <div class="menu-item">
+        <a href="./work.html" style="text-decoration:none;color:inherit;display:contents;">
+          <span>OUR WORK</span>
+          <svg class="menu-item-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="15" y="25" width="70" height="50" fill="none" stroke="#4634e8" stroke-width="3" rx="3"/>
+            <line x1="15" y1="35" x2="85" y2="35" stroke="#4634e8" stroke-width="3"/>
+            <circle cx="22" cy="30" r="2" fill="#4634e8"/>
+            <circle cx="30" cy="30" r="2" fill="#4634e8"/>
+            <circle cx="38" cy="30" r="2" fill="#4634e8"/>
+            <rect x="25" y="45" width="50" height="3" fill="#4634e8"/>
+            <rect x="25" y="54" width="35" height="3" fill="#4634e8"/>
+          </svg>
+        </a>
+      </div>
+      <div class="menu-item full-width">
+        <a href="/start-a-project" style="text-decoration:none;color:inherit;display:contents;">
+          <svg class="menu-item-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="30" width="60" height="45" fill="none" stroke="#4634e8" stroke-width="3" rx="3"/>
+            <path d="M 20 30 L 50 55 L 80 30" stroke="#4634e8" stroke-width="3" fill="none"/>
+          </svg>
+          <span>START A PROJECT</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="tagline">Trusted by clients worldwide</div>
+
+  </div>
+</div>
+
+     <!-- HERO SECTION -->
     <div class="hero-container">
         <div class="background">
             <img src="/images/hero.jpg" class="background-image">
@@ -871,6 +1021,10 @@
                 <span class="font-heavy">And</span>
                 <span class="font-serif">Allure</span>
             </div>
+        </div>
+        <!-- CTA Button -->
+        <div class="hero-cta" id="ctaButton">
+            <button class="cta-button">Request A Quote</button>
         </div>
     </div>
 
@@ -1108,10 +1262,102 @@
         // Register ScrollTrigger plugin
         gsap.registerPlugin(ScrollTrigger);
 
+        /*NAVIGATION*/
+        const menuToggle = document.getElementById('menuToggle');
+const menuOverlay = document.getElementById('menuOverlay');
+const menuItems = document.querySelectorAll('.menu-item');
+const tagline = document.querySelector('.tagline');
+
+let isOpen = false;
+
+menuToggle.addEventListener('click', () => {
+  if (!isOpen) {
+    // Open Menu
+    gsap.set(menuOverlay, { display: 'flex' });
+    
+    // Fade in overlay
+    gsap.fromTo(menuOverlay, 
+      { opacity: 0 }, 
+      { opacity: 1, duration: 0.4, ease: "power2.out" }
+    );
+    
+    // High-end staggered pop-in effect for menu items
+    gsap.fromTo(menuItems, 
+      { y: 60, opacity: 0, scale: 0.85, rotationX: -15 }, 
+      { 
+        y: 0, 
+        opacity: 1, 
+        scale: 1, 
+        rotationX: 0,
+        duration: 0.7, 
+        stagger: 0.12, 
+        ease: "back.out(1.5)",
+        delay: 0.1
+      }
+    );
+    
+    // Animate tagline
+    gsap.fromTo(tagline,
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", delay: 0.5 }
+    );
+
+    
+    // Transform hamburger to X with smooth animation
+    gsap.to(menuToggle.children[0], { rotate: 45, y: 8, duration: 0.4, ease: "power2.inOut" });
+    gsap.to(menuToggle.children[1], { opacity: 0, duration: 0.3, ease: "power2.inOut" });
+    gsap.to(menuToggle.children[2], { rotate: -45, y: -8, duration: 0.4, ease: "power2.inOut" });
+    
+  } else {
+    // Close Menu - reverse animations
+    gsap.to(menuItems, { 
+      y: -40, 
+      opacity: 0, 
+      scale: 0.9,
+      duration: 0.3, 
+      stagger: 0.05,
+      ease: "power2.in"
+    });
+    
+    gsap.to([ tagline], { 
+      opacity: 0, 
+      duration: 0.3,
+      ease: "power2.in"
+    });
+    
+    gsap.to(menuOverlay, { 
+      opacity: 0, 
+      duration: 0.4, 
+      delay: 0.2,
+      ease: "power2.in",
+      onComplete: () => {
+        gsap.set(menuOverlay, { display: 'none' });
+      }
+    });
+    
+    // Reverse Hamburger
+    gsap.to(menuToggle.children[0], { rotate: 0, y: 0, duration: 0.4, ease: "power2.inOut" });
+    gsap.to(menuToggle.children[1], { opacity: 1, duration: 0.3, ease: "power2.inOut" });
+    gsap.to(menuToggle.children[2], { rotate: 0, y: 0, duration: 0.4, ease: "power2.inOut" });
+  }
+  
+  isOpen = !isOpen;
+});
+
+// Close menu when clicking on menu items
+menuItems.forEach(item => {
+  item.addEventListener('click', () => {
+    if (isOpen) {
+      menuToggle.click();
+    }
+  });
+});
+
         // HERO ANIMATION
         const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.5 }});
 
-        
+        // Set initial navbar state
+        gsap.set(".navbar-container", { opacity: 0 });
 
         // 2. Animate Left Text
         tl.fromTo("#leftText", 
@@ -1128,7 +1374,14 @@
         );
 
         // 4. Fade in Navbar
-        tl.to("#navbar", { opacity: 1, duration: 1 }, "-=0.5");
+       tl.to(".navbar-container", { opacity: 1, duration: 1 }, "-=0.5");
+
+         // Animate CTA Button
+        tl.fromTo("#ctaButton",
+            { y: 30, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1 },
+            1.3
+        );
 
         // MISSION SECTION - LINE BY LINE REVEAL
         const lines = document.querySelectorAll('.line-wrapper');
