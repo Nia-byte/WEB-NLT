@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | NiaLure Tech</title>
+    <link rel="icon" type="image/png" href="/assets/android-chrome-512x512.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --purple: #4634e8;
+            --accent-purple: #5a4ae3;
+            --bg-overlay: rgba(10, 10, 10, 0.909);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        ::selection { background: #000000; color: var(--purple); }
+
+        body {
+            background: #000;
+            font-family: 'Inter', sans-serif, 'Nunito';
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* ── NAVIGATION ── */
+        .navbar-container {
+            padding: 25px 30px;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+        }
+        .navbar-pill {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 60px;
+            padding: 10px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo-img { height: 60px !important; width: auto; display: block; }
+        .logo-text { font-family: 'Inter', sans-serif, 'Nunito'; font-weight: 800 !important; font-size: 1.2rem; letter-spacing: 1px; text-transform: uppercase; color: white; }
+        .menu-toggle { cursor: pointer; display: flex; flex-direction: column; gap: 5px; padding: 8px; }
+        .menu-toggle span { display: block; width: 28px; height: 3px; background: white; border-radius: 2px; transition: 0.3s; }
+        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: black; display: none; justify-content: center; align-items: center; z-index: 999; overflow: hidden; }
+        .background-menu { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(99,102,241,0.15) 100%); }
+        .menu-content { position: relative; z-index: 2; width: 90%; max-width: 900px; margin-bottom: -90px; }
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; }
+        .menu-item { background: white; color: #4634e8; padding: 50px 40px; border-radius: 30px; text-align: center; font-weight: 900; font-size: 1.8rem; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; display: flex; align-items: center; justify-content: center; gap: 15px; letter-spacing: -0.02em; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); }
+        .menu-item:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25); }
+        .menu-item-icon { width: 50px; height: 50px; }
+        .full-width { grid-column: span 2; }
+        .tagline { text-align: center; font-size: 2.5rem; font-weight: 900; margin-top: 50px; letter-spacing: -0.03em; opacity: 0; }
+
+        /* ── PRIVACY HERO ── */
+        .terms-hero {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 200px 8% 20px;
+        }
+        .eyebrow {
+            font-size: 12px;
+            letter-spacing: 0.5em;
+            color: var(--purple);
+            font-weight: 700;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 20px;
+        }
+        .terms-title {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+        .terms-title .font-serif {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 700;
+            text-transform: none;
+            color: var(--purple);
+            letter-spacing: 0;
+        }
+        .last-updated {
+            font-family: 'Nunito';
+            font-size: 1rem;
+            color: #999;
+            margin-top: 25px;
+        }
+        .terms-intro {
+            font-family: 'Nunito';
+            font-size: 1.05rem;
+            color: #ccc;
+            max-width: 600px;
+            margin-top: 25px;
+            line-height: 1.6;
+        }
+
+        /* ── PRIVACY LIST ── */
+        .terms-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 8% 120px;
+        }
+        .terms-item {
+            display: grid;
+            grid-template-columns: 70px 1fr;
+            gap: 30px;
+            padding: 50px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .terms-number {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--purple);
+        }
+        .terms-item h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            margin-bottom: 18px;
+        }
+        .terms-item p {
+            font-family: 'Nunito';
+            font-size: 1.05rem;
+            color: #ccc;
+            line-height: 1.7;
+            max-width: 640px;
+        }
+        .terms-item a { color: var(--purple); text-decoration: none; }
+        .terms-item a:hover { text-decoration: underline; }
+
+        /* ── FOOTER ── */
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Nunito';
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .footer-links { display: flex; gap: 30px; }
+        .footer-links a { color: #666; text-decoration: none; transition: color 0.3s ease; font-family: 'Nunito'; }
+        .footer-links a:hover { color: var(--purple); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 700px) {
+            .terms-hero { padding: 170px 8% 20px; }
+            .terms-item { grid-template-columns: 1fr; gap: 12px; padding: 40px 0; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .footer-bottom { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar-container" id="navbar">
+      <div class="navbar-pill">
+        <div class="logo">
+         <img src="/assets/logo.png" alt="NiaLure-Tech" class="logo-img">
+         <span class="logo-text">Nialure Tech</span>
+       </div>
+       <div class="menu-toggle" id="menuToggle">
+         <span></span>
+         <span></span>
+         <span></span>
+       </div>
+     </div>
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay">
+      <div class="menu-content">
+        <div class="menu-grid">
+          <div class="menu-item">
+            <a href="/index.html" style="text-decoration:none;color:inherit;display:contents;">
+              <span>COMPANY</span>
+              <svg class="menu-item-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="20" y="35" width="60" height="40" fill="none" stroke="#4634e8" stroke-width="3" rx="5"/>
+                <circle cx="50" cy="55" r="8" fill="#4634e8"/>
+                <path d="M 50 47 L 50 30 M 50 30 L 35 40 M 50 30 L 65 40" stroke="#4634e8" stroke-width="3" fill="none"/>
+              </svg>
+            </a>
+          </div>
+          <div class="menu-item">
+            <a href="/pages/work.html" style="text-decoration:none;color:inherit;display:contents;">
+              <span>OUR WORK</span>
+              <svg class="menu-item-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="15" y="25" width="70" height="50" fill="none" stroke="#4634e8" stroke-width="3" rx="3"/>
+                <line x1="15" y1="35" x2="85" y2="35" stroke="#4634e8" stroke-width="3"/>
+                <circle cx="22" cy="30" r="2" fill="#4634e8"/>
+                <circle cx="30" cy="30" r="2" fill="#4634e8"/>
+                <circle cx="38" cy="30" r="2" fill="#4634e8"/>
+                <rect x="25" y="45" width="50" height="3" fill="#4634e8"/>
+                <rect x="25" y="54" width="35" height="3" fill="#4634e8"/>
+              </svg>
+            </a>
+          </div>
+          <div class="menu-item full-width">
+            <a href="/pages/contact.html" style="text-decoration:none;color:inherit;display:contents;">
+              <svg class="menu-item-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="20" y="30" width="60" height="45" fill="none" stroke="#4634e8" stroke-width="3" rx="3"/>
+                <path d="M 20 30 L 50 55 L 80 30" stroke="#4634e8" stroke-width="3" fill="none"/>
+              </svg>
+              <span>START A PROJECT</span>
+            </a>
+          </div>
+        </div>
+        <div class="tagline">Trusted by clients Nationwide</div>
+      </div>
+    </div>
+
+    <!-- ── PRIVACY HERO ── -->
+    <section class="terms-hero">
+        <span class="eyebrow">Legal</span>
+        <h1 class="terms-title">
+            <span class="title-word">Privacy</span> <span class="font-serif title-word">Policy</span>
+        </h1>
+        <p class="last-updated">Last updated: July 30, 2026</p>
+        <p class="terms-intro">Nialure Tech ("we", "us") respects your privacy. This policy explains what information we collect, how we use it, and the choices you have.</p>
+    </section>
+
+    <!-- ── PRIVACY CONTENT ── -->
+    <div class="terms-container">
+        <div class="terms-item">
+            <span class="terms-number">01.</span>
+            <div>
+                <h2>Information We Collect</h2>
+                <p>We collect information you provide directly to us — your name, email, phone number, and project details — when you fill out our quote request or contact forms. We also collect basic analytics data (pages visited, device type, approximate location) to understand how visitors use our site.</p>
+            </div>
+        </div>
+        <div class="terms-item">
+            <span class="terms-number">02.</span>
+            <div>
+                <h2>How We Use Your Information</h2>
+                <p>We use the information you share to respond to inquiries, prepare project proposals, deliver the services you request, and — with your consent — send occasional updates about our work. We never sell your personal information to third parties.</p>
+            </div>
+        </div>
+        <div class="terms-item">
+            <span class="terms-number">03.</span>
+            <div>
+                <h2>Cookies &amp; Analytics</h2>
+                <p>Our site uses cookies and similar technologies to remember your preferences and measure site performance. You can disable cookies in your browser at any time; some features may not work as intended without them.</p>
+            </div>
+        </div>
+        <div class="terms-item">
+            <span class="terms-number">04.</span>
+            <div>
+                <h2>Data Sharing</h2>
+                <p>We may share information with trusted service providers (hosting, email delivery, payment processing) strictly to deliver our services — never for their own marketing purposes. We disclose information if required by law.</p>
+            </div>
+        </div>
+        <div class="terms-item">
+            <span class="terms-number">05.</span>
+            <div>
+                <h2>Data Retention</h2>
+                <p>We retain project and contact information for as long as needed to fulfil our engagement with you and to meet legal, accounting, or reporting obligations, after which it is securely deleted.</p>
+            </div>
+        </div>
+        <div class="terms-item">
+            <span class="terms-number">06.</span>
+            <div>
+                <h2>Your Rights</h2>
+                <p>You may request access to, correction of, or deletion of your personal data at any time by contacting us at <a href="mailto:nialuretech@gmail.com">nialuretech@gmail.com</a>. We will respond within a reasonable timeframe.</p>
+            </div>
+        </div>
+        <div class="terms-item">
+            <span class="terms-number">07.</span>
+            <div>
+                <h2>Contact</h2>
+                <p>Questions about this policy? Reach out at <a href="mailto:nialuretech@gmail.com">nialuretech@gmail.com</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── FOOTER ── -->
+    <footer class="footer-bottom">
+        <div class="footer-copyright">© 2026 NiaLure Tech.</div>
+        <div class="footer-links">
+            <a href="/pages/privacy.html">Privacy Policy</a>
+            <a href="/pages/terms.html">Terms of Service</a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        /* ── LENIS SMOOTH SCROLL ── */
+        const lenis = new Lenis();
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+        lenis.on('scroll', ScrollTrigger.update);
+
+        /* ── NAVIGATION ── */
+        const menuToggle = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuItems = document.querySelectorAll('.menu-item');
+        const tagline = document.querySelector('.tagline');
+        let isOpen = false;
+
+        menuToggle.addEventListener('click', () => {
+          if (!isOpen) {
+            gsap.set(menuOverlay, { display: 'flex' });
+            gsap.fromTo(menuOverlay, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" });
+            gsap.fromTo(menuItems, { y: 60, opacity: 0, scale: 0.85, rotationX: -15 }, { y: 0, opacity: 1, scale: 1, rotationX: 0, duration: 0.7, stagger: 0.12, ease: "back.out(1.5)", delay: 0.1 });
+            gsap.fromTo(tagline, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", delay: 0.5 });
+            gsap.to(menuToggle.children[0], { rotate: 45, y: 8, duration: 0.4, ease: "power2.inOut" });
+            gsap.to(menuToggle.children[1], { opacity: 0, duration: 0.3, ease: "power2.inOut" });
+            gsap.to(menuToggle.children[2], { rotate: -45, y: -8, duration: 0.4, ease: "power2.inOut" });
+          } else {
+            gsap.to(menuItems, { y: -40, opacity: 0, scale: 0.9, duration: 0.3, stagger: 0.05, ease: "power2.in" });
+            gsap.to([tagline], { opacity: 0, duration: 0.3, ease: "power2.in" });
+            gsap.to(menuOverlay, { opacity: 0, duration: 0.4, delay: 0.2, ease: "power2.in", onComplete: () => { gsap.set(menuOverlay, { display: 'none' }); } });
+            gsap.to(menuToggle.children[0], { rotate: 0, y: 0, duration: 0.4, ease: "power2.inOut" });
+            gsap.to(menuToggle.children[1], { opacity: 1, duration: 0.3, ease: "power2.inOut" });
+            gsap.to(menuToggle.children[2], { rotate: 0, y: 0, duration: 0.4, ease: "power2.inOut" });
+          }
+          isOpen = !isOpen;
+        });
+
+        menuItems.forEach(item => {
+          item.addEventListener('click', () => { if (isOpen) menuToggle.click(); });
+        });
+
+        /* ── ENTRANCE ANIMATIONS ── */
+        gsap.set(".navbar-container", { y: -130 });
+
+        const intro = gsap.timeline({ defaults: { ease: "expo.out" }});
+        intro
+        .to(".navbar-container", { y: 0, duration: 1 })
+        .from(".eyebrow", { y: 20, opacity: 0, duration: 0.8 }, "-=0.6")
+        .from(".title-word", { y: 80, opacity: 0, skewY: 5, stagger: 0.12, duration: 1.2 }, "-=0.6")
+        .from(".last-updated, .terms-intro", { y: 20, opacity: 0, stagger: 0.1, duration: 0.8 }, "-=0.8");
+
+        /* ── SCROLL REVEAL FOR PRIVACY ITEMS ── */
+        gsap.utils.toArray(".terms-item").forEach(item => {
+            gsap.from(item, {
+                y: 40, opacity: 0, duration: 0.8, ease: "expo.out",
+                scrollTrigger: { trigger: item, start: "top 88%" }
+            });
+        });
+    </script>
+</body>
+</html>

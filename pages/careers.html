@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | NiaLure Tech</title>
+    <link rel="icon" type="image/png" href="/assets/android-chrome-512x512.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --purple: #4634e8;
+            --accent-purple: #5a4ae3;
+            --bg-overlay: rgba(10, 10, 10, 0.909);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        ::selection { background: #000000; color: var(--purple); }
+
+        body {
+            background: #000;
+            font-family: 'Inter', sans-serif, 'Nunito';
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* ── NAVIGATION ── */
+        .navbar-container {
+            padding: 25px 30px;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+        }
+        .navbar-pill {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 60px;
+            padding: 10px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo-img { height: 60px !important; width: auto; display: block; }
+        .logo-text { font-family: 'Inter', sans-serif, 'Nunito'; font-weight: 800 !important; font-size: 1.2rem; letter-spacing: 1px; text-transform: uppercase; color: white; }
+        .menu-toggle { cursor: pointer; display: flex; flex-direction: column; gap: 5px; padding: 8px; }
+        .menu-toggle span { display: block; width: 28px; height: 3px; background: white; border-radius: 2px; transition: 0.3s; }
+        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: black; display: none; justify-content: center; align-items: center; z-index: 999; overflow: hidden; }
+        .background-menu { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(99,102,241,0.15) 100%); }
+        .menu-content { position: relative; z-index: 2; width: 90%; max-width: 900px; margin-bottom: -90px; }
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; }
+        .menu-item { background: white; color: #4634e8; padding: 50px 40px; border-radius: 30px; text-align: center; font-weight: 900; font-size: 1.8rem; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; display: flex; align-items: center; justify-content: center; gap: 15px; letter-spacing: -0.02em; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); }
+        .menu-item:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25); }
+        .menu-item-icon { width: 50px; height: 50px; }
+        .full-width { grid-column: span 2; }
+        .tagline { text-align: center; font-size: 2.5rem; font-weight: 900; margin-top: 50px; letter-spacing: -0.03em; opacity: 0; }
+
+        /* ── CAREERS HERO ── */
+        .careers-hero {
+            padding: 200px 8% 60px;
+            text-align: center;
+        }
+        .eyebrow {
+            font-size: 12px;
+            letter-spacing: 0.5em;
+            color: var(--purple);
+            font-weight: 700;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 20px;
+        }
+        .careers-title {
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+        .careers-title .font-serif {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 700;
+            text-transform: none;
+            color: var(--purple);
+            letter-spacing: 0;
+        }
+        .careers-subtext {
+            font-family: 'Nunito';
+            font-size: 1.1rem;
+            color: #ccc;
+            max-width: 480px;
+            margin: 25px auto 0;
+            line-height: 1.5;
+        }
+
+        /* ── OPEN POSITIONS ── */
+        .positions-section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 8% 60px;
+        }
+        .section-heading {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            margin-bottom: 30px;
+        }
+        .positions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .position-card {
+            background: #141414;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            padding: 30px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .position-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(70, 52, 232, 0.5);
+        }
+        .position-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: white;
+        }
+        .position-status {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--purple);
+            white-space: nowrap;
+        }
+
+        /* ── CV FORM ── */
+        .cv-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 8% 120px;
+        }
+        .cv-form { display: flex; flex-direction: column; gap: 35px; margin-top: 40px; }
+        .form-group { display: flex; flex-direction: column; gap: 12px; }
+        .form-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: white;
+        }
+        .form-input {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--purple);
+            padding: 12px 0;
+            color: white;
+            font-family: 'Nunito';
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        .form-input::placeholder { color: #888; }
+        .form-input:focus {
+            outline: none;
+            border-bottom-color: var(--accent-purple);
+        }
+        textarea.form-input { resize: vertical; min-height: 110px; }
+
+        /* position select card */
+        .select-card {
+            background: #141414;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            padding: 25px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .select-input {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--purple);
+            padding: 10px 0;
+            color: white;
+            font-family: 'Nunito';
+            font-size: 1rem;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='white' stroke-width='1.5'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 5px center;
+        }
+        .select-input:focus { outline: none; border-bottom-color: var(--accent-purple); }
+        .select-input option { background: #141414; color: white; }
+
+        /* file upload */
+        .file-drop {
+            border: 2px dashed rgba(255, 255, 255, 0.25);
+            border-radius: 8px;
+            padding: 22px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+            font-family: 'Nunito';
+        }
+        .file-drop:hover { border-color: var(--purple); }
+        .file-drop-text { color: #888; font-size: 1rem; }
+        .file-drop-browse { color: var(--purple); font-weight: 700; font-size: 1rem; }
+        .file-drop input { display: none; }
+
+        .submit-wrapper { display: flex; justify-content: flex-end; margin-top: 10px; }
+        .submit-btn {
+            background: white;
+            color: #0a0a0a;
+            border: none;
+            padding: 22px 48px;
+            border-radius: 100px;
+            font-family: 'Nunito';
+            font-weight: 900;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .submit-btn:hover {
+            background: var(--purple);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(70, 52, 232, 0.35);
+        }
+
+        /* ── FOOTER ── */
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Nunito';
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .footer-links { display: flex; gap: 30px; }
+        .footer-links a { color: #666; text-decoration: none; transition: color 0.3s ease; font-family: 'Nunito'; }
+        .footer-links a:hover { color: var(--purple); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1100px) {
+            .positions-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 850px) {
+            .positions-grid { grid-template-columns: repeat(2, 1fr); }
+            .careers-hero { padding: 170px 8% 40px; }
+        }
+        @media (max-width: 600px) {
+            .positions-grid { grid-template-columns: 1fr; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .footer-bottom { flex-direction: column; gap: 20px; }
+            .submit-wrapper { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar-container" id="navbar">
+      <div class="navbar-pill">
+        <div class="logo">
+         <img src="/assets/logo.png" alt="NiaLure-Tech" class="logo-img">
+         <span class="logo-text">Nialure Tech</span>
+       </div>
+       <div class="menu-toggle" id="menuToggle">
+         <span></span>
+         <span></span>
+         <span></span>
+       </div>
+     </div>
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay">
+      <div class="menu-content">
+        <div class="menu-grid">
+          <div class="menu-item">
+            <a href="/index.html" style="text-decoration:none;color:inherit;display:contents;">
+              <span>COMPANY</span>
+              <svg class="menu-item-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="20" y="35" width="60" height="40" fill="none" stroke="#4634e8" stroke-width="3" rx="5"/>
+                <circle cx="50" cy="55" r="8" fill="#4634e8"/>
+                <path d="M 50 47 L 50 30 M 50 30 L 35 40 M 50 30 L 65 40" stroke="#4634e8" stroke-width="3" fill="none"/>
+              </svg>
+            </a>
+          </div>
+          <div class="menu-item">
+            <a href="/pages/work.html" style="text-decoration:none;color:inherit;display:contents;">
+              <span>OUR WORK</span>
+              <svg class="menu-item-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="15" y="25" width="70" height="50" fill="none" stroke="#4634e8" stroke-width="3" rx="3"/>
+                <line x1="15" y1="35" x2="85" y2="35" stroke="#4634e8" stroke-width="3"/>
+                <circle cx="22" cy="30" r="2" fill="#4634e8"/>
+                <circle cx="30" cy="30" r="2" fill="#4634e8"/>
+                <circle cx="38" cy="30" r="2" fill="#4634e8"/>
+                <rect x="25" y="45" width="50" height="3" fill="#4634e8"/>
+                <rect x="25" y="54" width="35" height="3" fill="#4634e8"/>
+              </svg>
+            </a>
+          </div>
+          <div class="menu-item full-width">
+            <a href="/pages/contact.html" style="text-decoration:none;color:inherit;display:contents;">
+              <svg class="menu-item-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="20" y="30" width="60" height="45" fill="none" stroke="#4634e8" stroke-width="3" rx="3"/>
+                <path d="M 20 30 L 50 55 L 80 30" stroke="#4634e8" stroke-width="3" fill="none"/>
+              </svg>
+              <span>START A PROJECT</span>
+            </a>
+          </div>
+        </div>
+        <div class="tagline">Trusted by clients Nationwide</div>
+      </div>
+    </div>
+
+    <!-- ── CAREERS HERO ── -->
+    <section class="careers-hero">
+        <span class="eyebrow">Careers</span>
+        <h1 class="careers-title">
+            <span class="title-word">Build It</span> <span class="font-serif title-word">With Us</span>
+        </h1>
+        <p class="careers-subtext">We're a small studio that moves fast and cares about craft. If that sounds like you, we'd love to hear from you.</p>
+    </section>
+
+    <!-- ── OPEN POSITIONS ── -->
+    <section class="positions-section">
+        <h2 class="section-heading">Open Positions</h2>
+        <div class="positions-grid">
+            <div class="position-card">
+                <span class="position-name">UI/UX Designer</span>
+                <span class="position-status">Open</span>
+            </div>
+            <div class="position-card">
+                <span class="position-name">Client Success</span>
+                <span class="position-status">Open</span>
+            </div>
+            <div class="position-card">
+                <span class="position-name">Marketing &amp; Growth</span>
+                <span class="position-status">Open</span>
+            </div>
+            <!-- <div class="position-card">
+                <span class="position-name">AI &amp; Software Developer</span>
+                <span class="position-status">Closed</span>
+            </div>
+            <div class="position-card">
+                <span class="position-name">Front-End Developer</span>
+                <span class="position-status">Closed</span>
+            </div>
+            <div class="position-card">
+                <span class="position-name">Web Designer</span>
+                <span class="position-status">Closed</span>
+            </div>
+            <div class="position-card">
+                <span class="position-name">Project Administrator</span>
+                <span class="position-status">Closed</span>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- ── SUBMIT YOUR CV ── -->
+    <section class="cv-section">
+        <h2 class="section-heading">Submit Your CV</h2>
+        <form class="cv-form" id="cvForm">
+            <div class="form-group">
+                <label class="form-label" for="fullName">Full Name</label>
+                <input class="form-input" type="text" id="fullName" name="fullName" placeholder="Full name" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-input" type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="select-card">
+                <label class="form-label" for="position">Position You're Applying For</label>
+                <select class="select-input" id="position" name="position" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option>UI/UX Designer</option>
+                    <option>Client Success</option>
+                    <option>Marketing &amp; Growth</option>
+                    <!-- <option>Front-End Developer</option>
+                    <option>Web Designer</option>
+                    <option>Project Administrator</option>
+                    <option>AI &amp; Software Developer</option> -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="cvFile">Upload Your CV</label>
+                <label class="file-drop" for="cvFile">
+                    <span class="file-drop-text" id="fileDropText">PDF, DOC — click to upload</span>
+                    <span class="file-drop-browse">Browse</span>
+                    <input type="file" id="cvFile" name="cvFile" accept=".pdf,.doc,.docx">
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="pitch">For fun — what value would you bring to Nialure Tech?</label>
+                <textarea class="form-input" id="pitch" name="pitch" placeholder="Tell us something a resume can't..." rows="4"></textarea>
+            </div>
+            <div class="submit-wrapper">
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer class="footer-bottom">
+        <div class="footer-copyright">© 2026 NiaLure Tech.</div>
+        <div class="footer-links">
+            <a href="/pages/careers.html">Careers</a>
+            <a href="/index.html">Company</a>
+            <a href="/pages/contact.html">Contact</a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        /* ── LENIS SMOOTH SCROLL ── */
+        const lenis = new Lenis();
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+        lenis.on('scroll', ScrollTrigger.update);
+
+        /* ── NAVIGATION ── */
+        const menuToggle = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuItems = document.querySelectorAll('.menu-item');
+        const tagline = document.querySelector('.tagline');
+        let isOpen = false;
+
+        menuToggle.addEventListener('click', () => {
+          if (!isOpen) {
+            gsap.set(menuOverlay, { display: 'flex' });
+            gsap.fromTo(menuOverlay, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" });
+            gsap.fromTo(menuItems, { y: 60, opacity: 0, scale: 0.85, rotationX: -15 }, { y: 0, opacity: 1, scale: 1, rotationX: 0, duration: 0.7, stagger: 0.12, ease: "back.out(1.5)", delay: 0.1 });
+            gsap.fromTo(tagline, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", delay: 0.5 });
+            gsap.to(menuToggle.children[0], { rotate: 45, y: 8, duration: 0.4, ease: "power2.inOut" });
+            gsap.to(menuToggle.children[1], { opacity: 0, duration: 0.3, ease: "power2.inOut" });
+            gsap.to(menuToggle.children[2], { rotate: -45, y: -8, duration: 0.4, ease: "power2.inOut" });
+          } else {
+            gsap.to(menuItems, { y: -40, opacity: 0, scale: 0.9, duration: 0.3, stagger: 0.05, ease: "power2.in" });
+            gsap.to([tagline], { opacity: 0, duration: 0.3, ease: "power2.in" });
+            gsap.to(menuOverlay, { opacity: 0, duration: 0.4, delay: 0.2, ease: "power2.in", onComplete: () => { gsap.set(menuOverlay, { display: 'none' }); } });
+            gsap.to(menuToggle.children[0], { rotate: 0, y: 0, duration: 0.4, ease: "power2.inOut" });
+            gsap.to(menuToggle.children[1], { opacity: 1, duration: 0.3, ease: "power2.inOut" });
+            gsap.to(menuToggle.children[2], { rotate: 0, y: 0, duration: 0.4, ease: "power2.inOut" });
+          }
+          isOpen = !isOpen;
+        });
+
+        menuItems.forEach(item => {
+          item.addEventListener('click', () => { if (isOpen) menuToggle.click(); });
+        });
+
+        /* ── ENTRANCE ANIMATIONS ── */
+        gsap.set(".navbar-container", { y: -130 });
+
+        const intro = gsap.timeline({ defaults: { ease: "expo.out" }});
+        intro
+        .to(".navbar-container", { y: 0, duration: 1 })
+        .from(".eyebrow", { y: 20, opacity: 0, duration: 0.8 }, "-=0.6")
+        .from(".title-word", { y: 80, opacity: 0, skewY: 5, stagger: 0.12, duration: 1.2 }, "-=0.6")
+        .from(".careers-subtext", { y: 20, opacity: 0, duration: 0.8 }, "-=0.8");
+
+        /* ── SCROLL REVEALS ── */
+        gsap.from(".positions-section .section-heading", {
+            y: 30, opacity: 0, duration: 0.8, ease: "expo.out",
+            scrollTrigger: { trigger: ".positions-section", start: "top 85%" }
+        });
+        gsap.from(".position-card", {
+            opacity: 0, duration: 0.6, stagger: 0.08, ease: "power2.out",
+            clearProps: "all",
+            scrollTrigger: { trigger: ".positions-grid", start: "top 88%" }
+        });
+        window.addEventListener('load', () => ScrollTrigger.refresh());
+        gsap.from(".cv-section .section-heading, .cv-form > *", {
+            y: 40, opacity: 0, duration: 0.8, stagger: 0.08, ease: "expo.out",
+            scrollTrigger: { trigger: ".cv-section", start: "top 85%" }
+        });
+
+        /* ── FILE UPLOAD LABEL ── */
+        const cvFile = document.getElementById('cvFile');
+        const fileDropText = document.getElementById('fileDropText');
+        cvFile.addEventListener('change', () => {
+            fileDropText.textContent = cvFile.files.length ? cvFile.files[0].name : 'PDF, DOC — click to upload';
+            fileDropText.style.color = cvFile.files.length ? 'white' : '#888';
+        });
+
+        /* ── FORM SUBMIT (mailto fallback) ── */
+        document.getElementById('cvForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const position = document.getElementById('position').value;
+            const pitch = document.getElementById('pitch').value;
+            const fileName = cvFile.files.length ? cvFile.files[0].name : 'Not attached';
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPosition: ${position}\nCV file: ${fileName} (please attach your CV to this email)\n\n${pitch}`);
+            window.location.href = `mailto:nialuretech@gmail.com?subject=${encodeURIComponent('Job application: ' + position + ' — ' + name)}&body=${body}`;
+        });
+    </script>
+</body>
+</html>

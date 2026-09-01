@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Work | NiaLure Tech</title>
+    <link rel="icon" type="image/png" href="/assets/android-chrome-512x512.png">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
@@ -12,6 +13,12 @@
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
     <style>
         :root { --purple: #4634e8;
+             --black: #0a0a0a;
+    --dark: #181818;
+    --card: #1e1e1e;
+    --yellow: #4634e8;
+    --white: #ffffff;
+    --gray: #888;
 ; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: #000; color: #fff; font-family: 'Helvetica', sans-serif; overflow-x: hidden; }
@@ -25,6 +32,10 @@
       width: 100%;
       z-index: 1000;
       top: 0;
+          opacity: 0;
+    pointer-events: none;
+    transform: translateY(-100%);
+    transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
     .navbar-pill {
@@ -237,7 +248,7 @@
 
         .video-wrapper {
             width: 100%;
-            height: 450px;
+            height: 550px ;
             border-radius: 20px;
             overflow: hidden;
             background: #111;
@@ -315,7 +326,7 @@
   font-weight: 600;
   margin-bottom: 20px;
   opacity: 0.7;
-  font-family: 'Playfair Display', serif !important;
+
 }
 
 /* Quote text */
@@ -419,9 +430,9 @@
         /* Main Container */
         .workflow-container {
             padding: 150px 5% 100px;
-            max-width: 1400px;
+            max-width: 1900px;
             margin: 0 auto;
-            background: linear-gradient(135deg, #000 0%, #4634e8 50%, #000 100%);
+            background: linear-gradient(135deg, #000 0%, #2858b6 50%, #4634e8 100%);
         }
 
         /* Step Section */
@@ -545,6 +556,7 @@
             border: none;
             cursor: pointer;
             transition: transform 0.3s ease;
+            font-family:'Nunito' !important;
         }
 
         .quote-btn:hover {
@@ -659,8 +671,8 @@
 
     /* ── REVIEW CARD ── */
     .review-card {
-      background: linear-gradient(135deg, #000 0%, #4634e8 50%, #4634e8 100%);
-      color: #000;
+      background:  #4634e8;
+      color: #d8d4d4;
       border-radius: 28px;
       padding: 44px 44px 52px;
       position: relative;
@@ -677,6 +689,7 @@
       letter-spacing: 0.05em;
       color: rgba(0,0,0,0.28);
       margin-bottom: 14px;
+      font-family:'Nunito';
     }
 
     .card-icon {
@@ -712,12 +725,14 @@
       font-size: 1rem;
       font-weight: 900;
       flex-shrink: 0;
+      font-family:'Nunito';
     }
 
     .r-name {
       font-size: 1.05rem;
       font-weight: 900;
       color: #000;
+      font-family:'Nunito';
     }
 
     .r-role {
@@ -725,6 +740,7 @@
       font-weight: 600;
       color: rgba(0,0,0,0.42);
       margin-top: 3px;
+      font-family: 'Nunito';
     }
 
     .card-stars {
@@ -732,7 +748,7 @@
       gap: 2px;
       margin-bottom: 18px;
       font-size: 1.1rem;
-      color: #000;
+      color: #ffffff81;
     }
 
     .big-quote {
@@ -742,7 +758,7 @@
       font-size: 9rem;
       line-height: 1;
       font-family: Georgia, serif;
-      color: rgba(0,0,0,0.06);
+      color: rgba(0, 0, 0, 0.201);
       pointer-events: none;
       user-select: none;
     }
@@ -751,8 +767,9 @@
       font-size: 1.06rem;
       line-height: 1.68;
       font-weight: 500;
-      color: #111;
+      color: #b1b1b1;
       max-width: 520px;
+      font-family: 'Nunito';
     }
 
     .review-text strong { font-weight: 900; }
@@ -861,6 +878,7 @@
             color: #fff;
             font-weight: 400;
             max-width: 90%;
+            font-family: 'Nunito';
         }
 
         .faq-answer-content p {
@@ -1041,9 +1059,280 @@
         /* Selection */
         ::selection {
             background: #000000;
-            color: #F6F930;
+            color: var(--purple);
         }
 
+
+
+        
+  /* ── REQUEST SECTION ── */
+  .request-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 24px 80px;
+    text-align: center;
+  }
+
+  .request-section h1 {
+    font-size: clamp(56px, 9vw, 110px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -2px;
+    color: var(--white);
+    margin-bottom: 52px;
+  }
+
+  .btn-instagram {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border: 2.5px solid var(--yellow);
+    border-radius: 999px;
+    padding: 18px 40px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    margin-bottom: 28px;
+  }
+
+  .btn-instagram:hover {
+    background: var(--yellow);
+    color: var(--black);
+  }
+
+  .btn-instagram .arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--yellow);
+    color: var(--black);
+    font-size: 14px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-instagram:hover .arrow {
+    background: var(--black);
+    color: var(--yellow);
+  }
+
+  .or-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    font-family:'Nunito';
+  }
+
+  /* ── FORM ── */
+  .form-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 40px 60px;
+  }
+
+  .field-group {
+    margin-bottom: 12px;
+  }
+
+  .field-group label {
+    display: block;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 10px;
+    font-family:'Nunito';
+  }
+
+  .field-group input,
+  .field-group textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--yellow);
+    color: var(--white);
+    font-family:'Nunito';
+    font-size: 16px;
+    padding: 12px 0;
+    outline: none;
+    resize: none;
+    transition: border-color 0.2s;
+  }
+
+  .field-group textarea {
+    min-height: 80px;
+  }
+
+  .field-group input::placeholder,
+  .field-group textarea::placeholder {
+    color: transparent;
+  }
+
+  .field-group input:focus,
+  .field-group textarea:focus {
+    border-color: var(--white);
+  }
+
+  /* ── SERVICE SELECTOR ── */
+  .services-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 40px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .service-col h3 {
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.1;
+  }
+
+  /* Checkboxes */
+  .check-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card);
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+    font-family:'Nunito';
+  }
+
+  .check-item:hover { background: #252525; }
+
+  .check-item span {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--white);
+  }
+
+  .check-item .box {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--black);
+    border: 2px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+    flex-shrink: 0;
+  }
+
+  .check-item.checked .box {
+    background: var(--yellow);
+    border-color: var(--yellow);
+  }
+
+  .check-item .box svg {
+    display: none;
+    width: 16px;
+    height: 16px;
+    stroke: var(--black);
+    stroke-width: 3;
+    fill: none;
+  }
+
+  .check-item.checked .box svg { display: block; }
+
+  /* Dropdowns */
+  .drop-item {
+    background: var(--card);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .drop-item label {
+    display: block;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 6px;
+    pointer-events: none;
+    font-family:'Nunito';
+  }
+
+  .drop-item select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--yellow);
+    color: var(--white);
+    font-family:'Nunito';
+    font-size: 15px;
+    font-weight: 600;
+    padding: 4px 0;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .drop-item select option { background: var(--dark); color: var(--white); }
+
+  .drop-arrow {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    pointer-events: none;
+    color: var(--white);
+    font-size: 14px;
+  }
+
+  /* ── SUBMIT ── */
+  .submit-row {
+    max-width: 1200px;
+    margin: 30px auto 80px;
+    padding: 0 40px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    border-radius: 999px;
+    padding: 20px 48px;
+    background: var(--white);
+    color: var(--black);
+    font-family:'Nunito' !important;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+  }
+
+  .btn-submit:hover {
+    background: var(--yellow);
+    transform: scale(1.03);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .services-section { grid-template-columns: 1fr; gap: 40px; }
+    .form-section, .services-section, .submit-row { padding-left: 24px; padding-right: 24px; }
+  }
 
          /* REVEAL FOOTER - FIXED POSITION */
       /* PREMIUM FOOTER STYLES */
@@ -1346,7 +1635,7 @@
     <nav class="navbar-container" id="navbar">
       <div class="navbar-pill">
         <div class="logo">
-         <img src="/images/logo.png" alt="NiaLure-Tech" class="logo-img">
+         <img src="/assets/logo.png" alt="NiaLure-Tech" class="logo-img">
          <span class="logo-text">Nialure Tech</span>
        </div>
        <div class="menu-toggle" id="menuToggle">
@@ -1361,7 +1650,7 @@
   <div class="menu-content">
     <div class="menu-grid">
       <div class="menu-item">
-        <a href="./index.html" style="text-decoration:none;color:inherit;display:contents;">
+        <a href="/index.html" style="text-decoration:none;color:inherit;display:contents;">
           <span>COMPANY</span>
           <svg class="menu-item-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <rect x="20" y="35" width="60" height="40" fill="none" stroke="#4634e8" stroke-width="3" rx="5"/>
@@ -1371,7 +1660,7 @@
         </a>
       </div>
       <div class="menu-item">
-        <a href="./work.html" style="text-decoration:none;color:inherit;display:contents;">
+        <a href="/pages/work.html" style="text-decoration:none;color:inherit;display:contents;">
           <span>OUR WORK</span>
           <svg class="menu-item-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <rect x="15" y="25" width="70" height="50" fill="none" stroke="#4634e8" stroke-width="3" rx="3"/>
@@ -1395,7 +1684,7 @@
       </div>
     </div>
 
-    <div class="tagline">Trusted by clients worldwide</div>
+    <div class="tagline">Trusted by clients Nationwide</div>
 
   </div>
 </div>
@@ -1417,41 +1706,45 @@
                 <div class="cards-container">
                     <div class="video-card" id="card-1">
                         <div class="video-wrapper">
-                            <video src="video1.mp4" muted loop playsinline></video>
+                            <video src="/assets/videos/MARATHON-M.mp4" muted loop playsinline></video>
                         </div>
                         <div class="card-info">
                             <p>WE PARTNERED WITH</p>
                             <h3>MARATHON M</h3>
+                           
                         </div>
                     </div>
 
                     <div class="video-card">
                         <div class="video-wrapper">
-                            <video src="video2.mp4" muted loop playsinline></video>
+                            <video src="/assets/videos/VELVET & EDGE.mp4" muted loop playsinline></video>
                         </div>
                         <div class="card-info">
                             <p>WE PARTNERED WITH</p>
                             <h3>VELVET & EDGE SOLUTIONS</h3>
+                           
                         </div>
                     </div>
 
                     <div class="video-card">
                         <div class="video-wrapper">
-                            <video src="video3.mp4" muted loop playsinline></video>
+                            <video src="/assets/videos/GEFFPHOTOGRAPHY.mp4" muted loop playsinline></video>
                         </div>
                         <div class="card-info">
                             <p>WE PARTNERED WITH</p>
                             <h3>GEFFPHOTOGRAPHY</h3>
+                            
                         </div>
                     </div>
 
                     <div class="video-card">
                         <div class="video-wrapper">
-                            <video src="video4.mp4" muted loop playsinline></video>
+                            <video src="/assets/videos/NIAIMANI.mp4" muted loop playsinline></video>
                         </div>
                         <div class="card-info">
                             <p>WE PARTNERED WITH</p>
                             <h3>NIAIMANI CLEANING SERVICES</h3>
+                           
                         </div>
                     </div>
                 </div>
@@ -1467,7 +1760,7 @@
         <section class="step-section" data-step="1">
             <div class="illustration-container">
                 <div class="step-number-large">01</div>
-                <img src="/images/medium-shot-man-working-desk.jpg" alt="Step 1 illustration" class="illustration">
+                <img src="/assets/medium-shot-man-working-desk.jpg" alt="Step 1 illustration" class="illustration">
                 <div class="floating-element circle" style="width: 30px; height: 30px; top: 20%; left: 10%;"></div>
                 <div class="floating-element plus" style="top: 60%; left: 5%;">+</div>
             </div>
@@ -1487,7 +1780,7 @@
             </div>
             <div class="illustration-container">
                 <div class="step-number-large">02</div>
-                  <img src="/images/homepage-seen-laptop-screen.jpg" alt="Step 1 illustration" class="illustration">
+                  <img src="/assets/homepage-seen-laptop-screen.jpg" alt="Step 1 illustration" class="illustration">
                 <div class="floating-element circle" style="width: 25px; height: 25px; top: 25%; right: 15%;"></div>
                 <div class="floating-element circle" style="width: 35px; height: 35px; bottom: 20%; left: 10%;"></div>
                 <div class="floating-element plus" style="bottom: 10%; right: 10%;">+</div>
@@ -1498,7 +1791,7 @@
         <section class="step-section" data-step="4">
             <div class="illustration-container">
                 <div class="step-number-large">03</div>
-                 <img src="/images/industrial-designer-working-3d-model.jpg" alt="Step 1 illustration" class="illustration">
+                 <img src="/assets/industrial-designer-working-3d-model.jpg" alt="Step 1 illustration" class="illustration">
                 <div class="floating-element circle" style="width: 25px; height: 25px; top: 30%; left: 20%;"></div>
                 <div class="floating-element plus" style="top: 15%; right: 25%;">+</div>
                 <div class="floating-element circle" style="width: 20px; height: 20px; bottom: 25%; left: 5%;"></div>
@@ -1521,7 +1814,7 @@
             </div>
             <div class="illustration-container">
                 <div class="step-number-large">04</div>
-                 <img src="/images/closeup-programmer-man-hand-typing-website-script-computer-working-remote-from-home-african-american-hacker-worker-programming-binary-code-using-network-security-system-concept-coding.jpg" alt="Step 1 illustration" class="illustration">
+                 <img src="/assets/closeup-programmer-man-hand-typing-website-script-computer-working-remote-from-home-african-american-hacker-worker-programming-binary-code-using-network-security-system-concept-coding.jpg" alt="Step 1 illustration" class="illustration">
                 <div class="floating-element circle" style="width: 20px; height: 20px; top: 15%; left: 5%;"></div>
                 <div class="floating-element plus" style="top: 70%; left: 15%;">+</div>
                 <div class="floating-element circle" style="width: 30px; height: 30px; bottom: 15%; right: 5%;"></div>
@@ -1543,8 +1836,8 @@
 
   <!-- STICKY LEFT -->
   <div class="left-col">
-    <p class="eyebrow">Client Reviews</p>
-    <h2>What Our<br/><em>Clients</em><br/>Say</h2>
+    <p class="eyebrow"></p>
+    <h2>What Our<br/><em class="action">Clients</em><br/>Say</h2>
     <p class="left-sub">Real words from real businesses we've helped grow online.</p>
   </div>
 
@@ -1748,6 +2041,138 @@
   
 </section>
 
+
+<!-- REQUEST SECTION -->
+<section class="request-section">
+  <h1>Request a quote</h1>
+  <p class="or-text">Fill the form below</p>
+</section>
+
+<!-- CONTACT FIELDS -->
+<section class="form-section">
+  <div class="field-group">
+    <label>Name</label>
+    <input type="text" placeholder="Name">
+  </div>
+  <div class="field-group">
+    <label>Email</label>
+    <input type="email" placeholder="Email">
+  </div>
+  <div class="field-group">
+    <label>Phone</label>
+    <input type="tel" placeholder="Phone">
+  </div>
+  <div class="field-group">
+    <label>Briefly describe your project</label>
+    <textarea placeholder="Project description"></textarea>
+  </div>
+</section>
+
+<!-- SERVICE SELECTION -->
+<section class="services-section">
+
+  <!-- Website Goals -->
+  <div class="service-col">
+    <h3>Website &amp;<br>Goals</h3>
+    <div class="check-item" onclick="toggle(this)">
+      <span>Generate leads</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+    <div class="check-item" onclick="toggle(this)">
+      <span>Showcase services</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+    <div class="check-item" onclick="toggle(this)">
+      <span>Sell products (E-commerce)</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+    <div class="check-item" onclick="toggle(this)">
+      <span>Promote services or programmes</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+    <div class="check-item" onclick="toggle(this)">
+      <span>Improve existing website</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+  </div>
+
+  <!-- Websites -->
+  <div class="service-col">
+    <h3>Websites</h3>
+    <div class="drop-item">
+      <label>Website Type</label>
+      <select>
+        <option value="" disabled selected>Select an option</option>
+        <option>Landing Page</option>
+        <option>E-commerce</option>
+        <option>Portfolio</option>
+        <option>Corporate</option>
+        <option>Blog</option>
+      </select>
+      <span class="drop-arrow">&#10551;</span>
+    </div>
+    <div class="drop-item">
+      <label>Complexity</label>
+      <select>
+        <option value="" disabled selected>Select an option</option>
+        <option>Simple</option>
+        <option>Moderate</option>
+        <option>Complex</option>
+      </select>
+      <span class="drop-arrow">&#10551;</span>
+    </div>
+    <div class="drop-item">
+      <label>Website Size</label>
+      <select>
+        <option value="" disabled selected>Select an option</option>
+        <option>1–5 pages</option>
+        <option>6–15 pages</option>
+        <option>16–30 pages</option>
+        <option>30+ pages</option>
+      </select>
+      <span class="drop-arrow">&#10551;</span>
+    </div>
+    <div class="drop-item">
+      <label>Languages</label>
+      <select>
+        <option value="" disabled selected>Select an option</option>
+        <option>1 Language</option>
+        <option>2 Languages</option>
+        <option>3+ Languages</option>
+      </select>
+      <span class="drop-arrow">&#10551;</span>
+    </div>
+  </div>
+
+  <!-- Advanced Services -->
+  <div class="service-col">
+    <h3>Advanced<br>Services</h3>
+    <div class="check-item" onclick="toggle(this)">
+      <span>App development</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+    <div class="check-item" onclick="toggle(this)">
+      <span>AI Automation</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+    <div class="check-item" onclick="toggle(this)">
+      <span>API Integrations</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+    <div class="check-item" onclick="toggle(this)">
+      <span>SEO</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- SUBMIT -->
+<div class="submit-row">
+  <button class="btn-submit" onclick="handleSubmit()">Request Quote</button>
+</div>
+
+
      <!-- PREMIUM FOOTER -->
     <footer class="footer-wrapper">
         <div class="footer-top-divider"></div>
@@ -1757,40 +2182,9 @@
                 <!-- Brand Column -->
                 <div class="footer-brand">
                     
-                    <p class="footer-tagline">Built With Purpose.<br>Designed With Allure.</p>
-                    <p class="footer-description">We transform visionary ideas into digital realities that captivate audiences and drive meaningful results.</p>
+                    <p class="footer-tagline">Build With Purpose.<br>Designed With Allure.</p>
+                    
                    
-                </div>
-
-                <!-- Services Column -->
-                <div class="footer-column">
-                    <h3 class="footer-column-title">Services</h3>
-                    <div class="footer-links">
-                        <a href="#" class="footer-link">Web Development</a>
-                        <a href="#" class="footer-link">Web Revamps</a>
-                        <a href="#" class="footer-link">Ongoing Maintenance</a>
-
-                    </div>
-                </div>
-
-                <!-- Company Column -->
-                <div class="footer-column">
-                    <h3 class="footer-column-title">Company</h3>
-                    <div class="footer-links">
-                        <a href="/work.html" class="footer-link">Our Work</a>
-                        <a href="/index.html" class="footer-link">Company</a>
-                        <a href="#" class="footer-link">Careers</a>
-                        <a href="#" class="footer-link">Contact</a>
-                    </div>
-                </div>
-
-                <!-- Newsletter Column -->
-                <div class="footer-column">
-                    <h3 class="footer-column-title">Stay Updated</h3>
-                    <div class="footer-newsletter">
-                        <input type="email" placeholder="Enter your email" class="newsletter-input">
-                        <button class="newsletter-btn"><span>Subscribe</span></button>
-                    </div>
                 </div>
             </div>
 
@@ -1800,9 +2194,9 @@
                     © 2026 NiaLure Tech. 
                 </div>
                 <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookies</a>
+                    <a href="/pages/work.html">Our Work</a>
+                    <a href="/index.html">Company </a>
+                    <a href="#">Contact</a>
                 </div>
             </div>
         </div>
@@ -1821,6 +2215,35 @@
         const textContainer = document.querySelector('.text-container');
         const heading = document.getElementById('main-heading');
         const cards = gsap.utils.toArray('.video-card');
+
+        // NAVBAR HIDE/SHOW ON HERO
+const navbar = document.getElementById('navbar');
+
+
+// Add transition to your navbar via JS so it's guaranteed to apply
+navbar.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+
+ScrollTrigger.create({
+    trigger: ".hero-section",
+    start: "top top",
+    end: "+=4000",   // matches your hero pin distance exactly
+    onLeave: () => {
+        // Hero pin finished — show navbar with animation
+        gsap.fromTo(navbar,
+            { opacity: 0, y: -60 },
+            { opacity: 1, y: 0, duration: 0.6, ease: "power3.out",
+              onStart: () => { navbar.style.pointerEvents = 'auto'; }
+            }
+        );
+    },
+    onEnterBack: () => {
+        // Scrolled back into hero — hide navbar
+        gsap.to(navbar, {
+            opacity: 0, y: -60, duration: 0.4, ease: "power2.in",
+            onComplete: () => { navbar.style.pointerEvents = 'none'; }
+        });
+    }
+});
 
         
         // PAGE LOAD ANIMATION
@@ -2232,6 +2655,23 @@ menuItems.forEach(item => {
         window.addEventListener('load', () => {
             ScrollTrigger.refresh();
         });
+
+
+        /*REQUEEST QUOTE SECTION*/
+
+         function toggle(el) {
+    el.classList.toggle('checked');
+  }
+
+  function handleSubmit() {
+    const name = document.querySelector('input[type="text"]').value.trim();
+    const email = document.querySelector('input[type="email"]').value.trim();
+    if (!name || !email) {
+      alert('Please fill in at least your name and email.');
+      return;
+    }
+    alert('Quote request submitted! We\'ll be in touch shortly.');
+  }
 
          // FOOTER ANIMATIONS
         gsap.to(".footer-top-divider", {
