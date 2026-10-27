@@ -1,0 +1,3209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work | NiaLure Tech</title>
+    <link rel="icon" type="image/png" href="/assets/android-chrome-512x512.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Flip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <style>
+        :root { --purple: #4634e8;
+             --black: #0a0a0a;
+    --dark: #181818;
+    --card: #1e1e1e;
+    --yellow: #4634e8;
+    --white: #ffffff;
+    --gray: #888;
+; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #000; color: #fff; font-family: 'Helvetica', sans-serif; overflow-x: hidden; }
+        /* clip (not hidden) keeps body from becoming a scroll container, so sticky + Lenis still work,
+           and stops wide sections from widening the mobile layout viewport */
+        html, body { overflow-x: clip; }
+
+
+       
+        /* Navigation */
+    .navbar-container {
+      padding: 25px 30px;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+          opacity: 0;
+    pointer-events: none;
+    transform: translateY(-100%);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .navbar-pill {
+      background: #ffffff94;
+      color: rgb(28, 27, 27);
+      border-radius: 60px;
+      padding: 10px 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .logo span {
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    /* Hamburger Menu Icon */
+    .menu-toggle {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* Overlay Styling */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: black;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      overflow: hidden;
+    }
+
+    /* Decorative illustrations */
+    .menu-decoration {
+      position: absolute;
+      pointer-events: none;
+    }
+
+     .background-menu {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(99,102,241,0.15) 100%);
+        }
+  
+
+    .menu-content {
+      position: relative;
+      z-index: 2;
+      width: 90%;
+      max-width: 900px;
+      margin-bottom: -90px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .menu-item {
+      background: white;
+      color: #4634e8;
+      padding: 50px 40px;
+      border-radius: 30px;
+      text-align: center;
+      font-weight: 900;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      letter-spacing: -0.02em;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .menu-item:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .menu-item-icon {
+      width: 50px;
+      height: 50px;
+    }
+
+    .full-width {
+      grid-column: span 2;
+    }
+
+    .tagline {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--brand-yellow);
+      margin-top: 50px;
+      letter-spacing: -0.03em;
+      opacity: 0;
+    }
+
+        .logo-img {
+            height: 60px !important;
+            width: auto;
+            display: block;
+        }
+
+        .logo-text {
+            font-family: 'Inter', sans-serif, 'Nunito';
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: white;
+        }
+       
+        .action { color: var(--purple);  font-family: 'Playfair Display', serif; font-style: italic;}
+
+        /*WORK HERO — intro loader, infinite gallery, case view*/
+        .wk {
+            --wk-bg: #F5F3EF;
+            --wk-ink: #111;
+            --wk-ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --wk-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            /* card size: 4:5, bottom-anchored; width capped so the row fits under the header */
+            --cw: min(28vw, 57.6svh);
+            --ch: calc(var(--cw) * 1.25);
+            --gap: 0.5vw;
+            --row-bottom: 3svh;
+        }
+        @media (max-width: 1023px) { .wk { --cw: min(45vw, 56svh); --gap: 1vw; --row-bottom: 2svh; } }
+        @media (max-width: 767px)  { .wk { --cw: min(79vw, 60svh); --gap: 2vw; --row-bottom: 0px; } }
+
+        .wk-mask { display: block; overflow: hidden; }
+        .wk-mask > span { display: block; }
+
+        /* Header (blend: reads dark on the off-white hero, light on the black page/menu) */
+        .wk-header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1001;
+            display: grid; grid-template-columns: repeat(4, 1fr) auto; align-items: start;
+            padding: 15px; color: #fff; mix-blend-mode: difference;
+            font: 400 12px/1.1 var(--wk-font); text-transform: uppercase; letter-spacing: 0.01em;
+            pointer-events: none;
+        }
+        .wk-header a, .wk-header button { pointer-events: auto; color: inherit; text-decoration: none; background: none; border: 0; font: inherit; text-transform: inherit; cursor: pointer; padding: 0; text-align: left; }
+        .wk-sign { width: 96px; height: 44px; margin-top: -6px; }
+        .wk-sign path { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+        .wk-nav { display: flex; flex-direction: column; align-items: flex-start; }
+        .wk-circle { width: 52px; height: 52px; display: block; }
+        .wk-circle svg { width: 100%; height: 100%; overflow: visible; }
+        .wk-circle circle { fill: none; stroke: currentColor; stroke-width: 1; }
+        @media (max-width: 767px) {
+            .wk-header { grid-template-columns: 1.1fr 2fr auto; }
+            .wk-sign-wrap, .wk-clock { display: none; }
+            .wk-nav { flex-direction: row; justify-content: space-around; }
+            .wk-circle { width: 44px; height: 44px; }
+        }
+
+        /* Hero / gallery */
+        .wk-hero {
+            position: relative; height: 100svh; overflow: hidden; overflow: clip;
+            background: var(--wk-bg); color: var(--wk-ink); font-family: var(--wk-font);
+        }
+        .wk-track {
+            position: absolute; left: 0; right: 0; bottom: var(--row-bottom);
+            height: calc(var(--ch) + 24px); column-gap: var(--gap); /* read by JS as the resolved gap */
+            cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none;
+        }
+        .wk-track.is-dragging { cursor: grabbing; }
+        .wk-card {
+            position: absolute; left: 0; bottom: 0; width: var(--cw);
+            display: block; color: inherit; text-decoration: none;
+            transform-origin: 50% calc(100% - var(--ch) / 2); /* centre of the image */
+            -webkit-tap-highlight-color: transparent;
+        }
+        .wk-card:focus-visible { outline: 1px solid var(--wk-ink); outline-offset: 4px; }
+        .wk-card-label { font-size: 11px; line-height: 1; text-transform: uppercase; margin-bottom: 8px; }
+        .wk-card-media { position: relative; width: var(--cw); height: var(--ch); overflow: hidden; background: #e6e3dd; }
+        .wk-card-zoom { position: absolute; inset: 0; transition: transform 1.2s var(--wk-ease); }
+        .wk-card-img, .wk-stack-layer img {
+            position: absolute; top: 0; left: -9%; width: 118%; height: 100%;
+            object-fit: cover; display: block; pointer-events: none;
+        }
+        @media (hover: hover) { .wk-card:hover .wk-card-zoom { transform: scale(1.03); } }
+
+        /* Intro loader */
+        .wk-stack {
+            position: fixed; left: 50%; top: 50%; z-index: 5;
+            width: calc(var(--cw) * 0.72); height: calc(var(--cw) * 0.9);
+            transform: translate(-50%, -50%); clip-path: inset(50% 50% 50% 50%);
+            pointer-events: none; will-change: transform, clip-path;
+        }
+        .wk-stack-layer { position: absolute; inset: 0; overflow: hidden; background: #e6e3dd; }
+        .wk:not(.is-intro) .wk-stack { display: none; }
+        .wk.is-intro .wk-card { visibility: hidden; }
+        .wk.is-intro [data-wk-line] { transform: translateY(100%); }
+        .wk.is-intro .wk-sign path, .wk.is-intro .wk-ring { stroke-dasharray: 1; stroke-dashoffset: 1; }
+        .wk.is-intro .wk-dot { opacity: 0; }
+
+        /* Case view (z-index sits under the page menu overlay, over everything else) */
+        .wk-case {
+            position: fixed; inset: 0; z-index: 998; overflow-y: auto; overscroll-behavior: contain;
+            background: var(--wk-bg); color: var(--wk-ink); font-family: var(--wk-font);
+            visibility: hidden; outline: none;
+        }
+        .wk-case.is-open { visibility: visible; }
+        .wk-case-intro { position: relative; height: 100svh; }
+        .wk-case-media {
+            --hm: min(37.3vw, 84svh);
+            position: absolute; top: 8svh; left: calc(50% - var(--hm) * 0.375);
+            width: calc(var(--hm) * 0.75); height: var(--hm);
+        }
+        .wk-case-frame { position: absolute; inset: 0; overflow: hidden; background: #e6e3dd; }
+        .wk-case-frame video { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .wk-case-head { position: absolute; left: 15px; bottom: 15px; width: 30vw; }
+        .wk-case-title { font-size: 4vw; font-weight: 400; line-height: 1; letter-spacing: -0.035em; text-transform: lowercase; margin-bottom: 2.2vw; }
+        .wk-case-title .wk-line { padding-bottom: 0.12em; margin-bottom: -0.12em; }
+        .wk-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 11px; line-height: 1.15; text-transform: uppercase; }
+        .wk-col { width: min(28vw, 63svh); margin: 0 auto; }
+        .wk-case-body { padding: 8px 0 18vh; }
+        .wk-case-body .wk-img { aspect-ratio: 3 / 4; margin-bottom: 6vh; }
+        .wk-copy { font-size: max(1.5vw, 18px); line-height: 1.12; letter-spacing: -0.01em; }
+        .wk-line { display: block; overflow: hidden; }
+        .wk-line > span { display: block; }
+        .wk-section { padding: 0 15px 16vh; }
+        .wk-section-title { font-size: 11px; text-transform: uppercase; margin-bottom: 12px; }
+        .wk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .wk-img { position: relative; overflow: hidden; background: #e6e3dd; aspect-ratio: 828 / 1500; }
+        .wk-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .wk-next { display: flex; justify-content: space-between; align-items: flex-end; padding: 0 15px 15px; color: inherit; text-decoration: none; }
+        .wk-next small { display: block; font-size: 11px; text-transform: uppercase; margin-bottom: 1vw; }
+        .wk-next strong { display: block; font-size: 8vw; font-weight: 400; line-height: 0.95; letter-spacing: -0.04em; text-transform: lowercase; }
+        .wk-next .wk-img { width: 12vw; flex-shrink: 0; }
+        .wk-reveal { clip-path: inset(100% 0 0 0); }
+        @media (max-width: 767px) {
+            .wk-case-intro { height: auto; padding: 70px 4vw 0; }
+            .wk-case-media { position: relative; left: 0; top: 0; width: 92vw; height: auto; aspect-ratio: 4 / 5; }
+            .wk-case-head { position: static; width: auto; padding-top: 8vh; }
+            .wk-case-title { font-size: 10vw; margin-bottom: 4vh; }
+            .wk-col { width: auto; margin: 0 4vw; }
+            .wk-case-body { padding-top: 5vh; }
+            .wk-case-body .wk-img { display: none; }
+            .wk-copy { font-size: 6vw; }
+            .wk-section { padding: 0 4vw 10vh; }
+            .wk-grid { grid-template-columns: 1fr; gap: 4vw; }
+            .wk-next strong { font-size: 10vw; }
+            .wk-next .wk-img { width: 28vw; }
+        }
+
+        /* the page's mobile body padding (FAQ styles) must not inset the full-bleed hero */
+        @media (max-width: 768px) { .wk { margin: -40px -24px 0; } }
+        @media (max-width: 480px) { .wk { margin: -30px -20px 0; } }
+
+        @media (prefers-reduced-motion: reduce) {
+            .wk-card-zoom { transition: none; }
+        }
+
+        
+        /*STEPS SECTION*/
+           /* Video matches: Header section has yellow background */
+        .steps-header-section {
+            height: 60vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 5% 100px 5%;
+        }
+
+        .steps-header-section h2 {
+            font-size: clamp(2rem, 7vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            color: #fff;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Cards Container */
+        /* Cards Container */
+.cards-container-steps {
+  background-color: var(--lemontree-black);
+}
+
+/* Sticky wrapper */
+.card-wrapper-steps {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: linear-gradient(135deg, #000 0%, #1446aa 50%, #4634e8 100%);
+  border-radius: 60px;
+}
+
+/* Card */
+.steps-card {
+  width: 55%;
+  max-width: 700px;
+  padding: 40px;
+  background: transparent;
+  text-align: center;
+}
+
+/* Step label */
+.step-label {
+  display: block;
+  font-size: 5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 20px;
+  opacity: 0.7;
+
+}
+
+/* Quote text */
+.steps-quote {
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  line-height: 1.4;
+  font-weight: 500;
+  margin: 0;
+  font-family: 'Nunito';
+}
+
+        /* CTA Section */
+        .cta-section-steps {
+            background-color:  #000000;;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .request-btn-steps {
+            background: white;
+            border: none;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .request-btn-steps:hover {
+            transform: scale(1.05);
+            background: var(--purple);
+        }
+
+        /* Smooth scroll optimization */
+        html.lenis {
+            height: auto;
+        }
+        .lenis.lenis-smooth {
+            scroll-behavior: auto;
+        }
+
+        /*WHAT WE DO SECTION*/
+          /* Header */
+        .header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #e8f4f8 0%, #b8dce8 50%, #a8d5e2 100%) !important;
+            border-radius: 50px;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 1200px;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .logo-icon {
+            width: 30px;
+            height: 30px;
+            background: #4634e8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .menu-icon {
+            width: 40px;
+            height: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .menu-icon span {
+            width: 100%;
+            height: 3px;
+            background: #fff;
+            border-radius: 2px;
+        }
+
+        /* Main Container */
+        .workflow-container {
+            padding: 150px 5% 100px;
+            max-width: 1900px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #000 0%, #2858b6 50%, #4634e8 100%);
+        }
+
+        /* Step Section */
+        .step-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px 0;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .step-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        /* When step-content comes after illustration, add left padding instead */
+        .illustration-container + .step-content {
+            padding-left: 100px;
+            padding-right: 0;
+        }
+
+        /* When step-content comes before illustration, add right padding */
+        .step-content:first-child {
+            padding-right: 100px;
+        }
+
+        .step-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .step-description {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            max-width: 500px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.15);
+            border-radius: 50px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            width: 0%;
+            height: 100%;
+            background-color: #000;
+            border-radius: 50px;
+            transition: width 0.3s ease;
+        }
+
+        /* Illustration Container */
+        .illustration-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 400px;
+        }
+
+        .step-number-large {
+            position: absolute;
+            font-size: 10rem;
+            font-weight: 900;
+            opacity: 0.3;
+            right: 10%;
+            top: -50px;
+        }
+
+        /* Illustration SVGs */
+        .illustration {
+            width: 200px;
+            height: 250px;
+            position: relative;
+            z-index: 2;
+            border-radius: 20px;
+        }
+
+        /* Decorative Elements */
+        .floating-element {
+            position: absolute;
+            opacity: 0.3;
+        }
+
+        .circle {
+            border: 3px solid #000;
+            border-radius: 50%;
+        }
+
+        .plus {
+            font-size: 2rem;
+            font-weight: 300;
+        }
+
+        /* CTA Section */
+        .cta-container {
+            text-align: center;
+            padding: 100px 0;
+            opacity: 0;
+        }
+
+        .quote-btn {
+            background: #000;
+            color: #4634e8;
+            padding: 25px 60px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            font-family:'Nunito' !important;
+        }
+
+        .quote-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .step-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-content,
+            .illustration-container + .step-content,
+            .step-content:first-child {
+                padding-right: 0;
+                padding-left: 0;
+                max-width: 100%;
+            }
+
+            .step-title {
+                font-size: 3.5rem;
+            }
+
+            .illustration-container {
+                margin-top: 50px;
+            }
+
+            .step-number-large {
+                font-size: 6rem;
+                right: 50%;
+                transform: translateX(50%);
+            }
+        }
+
+          /* ─────────────────────────────────
+       SECTION
+    ───────────────────────────────── */
+    .testimonials-section {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      padding: 0 6vw;
+    }
+
+    /* ── STICKY LEFT ── */
+    .left-col {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 44%;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 4vw;
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #4634e8;
+      margin-bottom: 22px;
+    }
+
+    .left-col h2 {
+      font-size: clamp(3.2rem, 5.5vw, 6rem);
+      font-weight: 900;
+      line-height: 0.93;
+      letter-spacing: -0.03em;
+    }
+
+    .left-col h2 em {
+      font-style: normal;
+      color: #4634e8;
+    }
+
+    .left-sub {
+      margin-top: 26px;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: #555;
+      max-width: 300px;
+    }
+
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 30px;
+    }
+    .star { color: #4634e8; font-size: 1.2rem; }
+    .rating-label {
+      margin-left: 8px;
+      font-size: 0.82rem;
+      color: #444;
+      font-weight: 700;
+    }
+
+    /* ── RIGHT CARDS COL ── */
+    .right-col {
+      flex: 1;
+      padding-top: 20vh;
+      padding-bottom: 20vh;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* ── REVIEW CARD ── */
+    .review-card {
+      background:  #4634e8;
+      color: #d8d4d4;
+      border-radius: 28px;
+      padding: 44px 44px 52px;
+      position: relative;
+      overflow: hidden;
+      /* GSAP will animate from here */
+      transform: translateX(120px);
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+
+    .card-num {
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      color: rgba(0,0,0,0.28);
+      margin-bottom: 14px;
+      font-family:'Nunito';
+    }
+
+    .card-icon {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      width: 62px;
+      height: 62px;
+      background: #000;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .reviewer-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #000;
+      color: #4634e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 900;
+      flex-shrink: 0;
+      font-family:'Nunito';
+    }
+
+    .r-name {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: #000;
+      font-family:'Nunito';
+    }
+
+    .r-role {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(0,0,0,0.42);
+      margin-top: 3px;
+      font-family: 'Nunito';
+    }
+
+    .card-stars {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 18px;
+      font-size: 1.1rem;
+      color: #ffffff81;
+    }
+
+    .big-quote {
+      position: absolute;
+      bottom: 14px;
+      right: 34px;
+      font-size: 9rem;
+      line-height: 1;
+      font-family: Georgia, serif;
+      color: rgba(0, 0, 0, 0.201);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .review-text {
+      font-size: 1.06rem;
+      line-height: 1.68;
+      font-weight: 500;
+      color: #b1b1b1;
+      max-width: 520px;
+      font-family: 'Nunito';
+    }
+
+    .review-text strong { font-weight: 900; }
+
+    .card-bar {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 5px;
+      background: #000;
+      border-radius: 0 0 28px 28px;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .testimonials-section { flex-direction: column; }
+      .left-col {
+        position: relative;
+        height: auto;
+        width: 100%;
+        padding: 60px 0 40px;
+      }
+      .right-col { padding-top: 0; padding-bottom: 60px; }
+      .review-card {
+        transform: translateX(0) !important;
+        opacity: 1 !important;
+      }
+    }
+
+
+      .faq-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .faq-title {
+            font-size: 8rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 100px;
+            letter-spacing: -4px;
+            line-height: 0.9;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .faq-item {
+            margin-bottom: 0;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .faq-item:nth-child(2) { animation-delay: 0.3s; }
+        .faq-item:nth-child(3) { animation-delay: 0.4s; }
+        .faq-item:nth-child(4) { animation-delay: 0.5s; }
+        .faq-item:nth-child(5) { animation-delay: 0.6s; }
+        .faq-item:nth-child(6) { animation-delay: 0.7s; }
+
+        .faq-question-wrapper {
+            cursor: pointer;
+            padding: 50px 0;
+            border-top: 2px solid rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .faq-item:last-child .faq-question-wrapper {
+            border-bottom: 2px solid #fff;
+        }
+
+        .faq-question-wrapper:hover {
+            padding-left: 20px;
+        }
+
+        .faq-question-wrapper:hover .faq-question {
+            color: #fff;
+        }
+
+        .faq-question {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+            line-height: 1.3;
+            transition: all 0.3s ease;
+            letter-spacing: -1px;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0;
+            opacity: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+            opacity: 1;
+            padding: 40px 0 20px 0;
+            animation: fadeIn 0.5s ease-out 0.2s backwards;
+        }
+
+        .faq-answer-content {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: #fff;
+            font-weight: 400;
+            max-width: 90%;
+            font-family: 'Nunito';
+        }
+
+        .faq-answer-content p {
+            margin-bottom: 20px;
+        }
+
+        .faq-answer-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .faq-answer-content li {
+            padding-left: 30px;
+            position: relative;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        .faq-answer-content li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .faq-answer-content strong {
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* Plus/Minus Indicator */
+        .faq-indicator {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            display: none;
+        }
+
+        .faq-indicator::before,
+        .faq-indicator::after {
+            content: '';
+            position: absolute;
+            background: #000000;
+            transition: all 0.3s ease;
+        }
+
+        .faq-indicator::before {
+            width: 40px;
+            height: 3px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        .faq-indicator::after {
+            width: 3px;
+            height: 40px;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+
+        .faq-item.active .faq-indicator::after {
+            transform: translateX(-50%) rotate(90deg);
+            opacity: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .faq-title {
+                font-size: 6rem;
+            }
+
+            .faq-question {
+                font-size: 2rem;
+            }
+
+            .faq-answer-content {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 40px 24px;
+            }
+
+            .faq-title {
+                font-size: 4rem;
+                margin-bottom: 60px;
+            }
+
+            .faq-question-wrapper {
+                padding: 35px 0;
+            }
+
+            .faq-question {
+                font-size: 1.6rem;
+                padding-right: 50px;
+            }
+
+            .faq-answer-content {
+                font-size: 1.1rem;
+                max-width: 100%;
+            }
+
+            .faq-answer-content li {
+                font-size: 1.05rem;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 30px 0 15px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 30px 20px;
+            }
+
+            .faq-title {
+                font-size: 3rem;
+                margin-bottom: 40px;
+            }
+
+            .faq-question-wrapper {
+                padding: 25px 0;
+            }
+
+            .faq-question {
+                font-size: 1.3rem;
+            }
+
+            .faq-answer-content {
+                font-size: 1rem;
+            }
+
+            .faq-answer-content li {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection */
+        ::selection {
+            background: #000000;
+            color: var(--purple);
+        }
+
+
+
+        
+  /* ── REQUEST SECTION ── */
+  .request-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 24px 80px;
+    text-align: center;
+  }
+
+  .request-section h1 {
+    font-size: clamp(56px, 9vw, 110px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -2px;
+    color: var(--white);
+    margin-bottom: 52px;
+  }
+
+  .btn-instagram {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border: 2.5px solid var(--yellow);
+    border-radius: 999px;
+    padding: 18px 40px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    margin-bottom: 28px;
+  }
+
+  .btn-instagram:hover {
+    background: var(--yellow);
+    color: var(--black);
+  }
+
+  .btn-instagram .arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--yellow);
+    color: var(--black);
+    font-size: 14px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-instagram:hover .arrow {
+    background: var(--black);
+    color: var(--yellow);
+  }
+
+  .or-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    font-family:'Nunito';
+  }
+
+  /* ── FORM ── */
+  .form-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 40px 60px;
+  }
+
+  .field-group {
+    margin-bottom: 12px;
+  }
+
+  .field-group label {
+    display: block;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 10px;
+    font-family:'Nunito';
+  }
+
+  .field-group input,
+  .field-group textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--yellow);
+    color: var(--white);
+    font-family:'Nunito';
+    font-size: 16px;
+    padding: 12px 0;
+    outline: none;
+    resize: none;
+    transition: border-color 0.2s;
+  }
+
+  .field-group textarea {
+    min-height: 80px;
+  }
+
+  .field-group input::placeholder,
+  .field-group textarea::placeholder {
+    color: transparent;
+  }
+
+  .field-group input:focus,
+  .field-group textarea:focus {
+    border-color: var(--white);
+  }
+
+  /* ── SERVICE SELECTOR ── */
+  .services-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 40px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .service-col h3 {
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.1;
+  }
+
+  /* Checkboxes */
+  .check-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card);
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+    font-family:'Nunito';
+  }
+
+  .check-item:hover { background: #252525; }
+
+  .check-item span {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--white);
+  }
+
+  .check-item .box {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--black);
+    border: 2px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+    flex-shrink: 0;
+  }
+
+  .check-item.checked .box {
+    background: var(--yellow);
+    border-color: var(--yellow);
+  }
+
+  .check-item .box svg {
+    display: none;
+    width: 16px;
+    height: 16px;
+    stroke: var(--black);
+    stroke-width: 3;
+    fill: none;
+  }
+
+  .check-item.checked .box svg { display: block; }
+
+  /* Dropdowns */
+  .drop-item {
+    background: var(--card);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .drop-item label {
+    display: block;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 6px;
+    pointer-events: none;
+    font-family:'Nunito';
+  }
+
+  .drop-item select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--yellow);
+    color: var(--white);
+    font-family:'Nunito';
+    font-size: 15px;
+    font-weight: 600;
+    padding: 4px 0;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .drop-item select option { background: var(--dark); color: var(--white); }
+
+  .drop-arrow {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    pointer-events: none;
+    color: var(--white);
+    font-size: 14px;
+  }
+
+  /* ── SUBMIT ── */
+  .submit-row {
+    max-width: 1200px;
+    margin: 30px auto 80px;
+    padding: 0 40px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    border-radius: 999px;
+    padding: 20px 48px;
+    background: var(--white);
+    color: var(--black);
+    font-family:'Nunito' !important;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+  }
+
+  .btn-submit:hover {
+    background: var(--yellow);
+    transform: scale(1.03);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .services-section { grid-template-columns: 1fr; gap: 40px; }
+    .form-section, .services-section, .submit-row { padding-left: 24px; padding-right: 24px; }
+  }
+
+         /* REVEAL FOOTER - FIXED POSITION */
+      /* PREMIUM FOOTER STYLES */
+        .footer-wrapper {
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-top-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(70, 52, 232, 0.5), transparent);
+            margin: 0 8%;
+            opacity: 0;
+        }
+
+        .footer-container {
+            padding: 100px 8% 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+            opacity: 0;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .footer-logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .footer-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--purple);
+            line-height: 1.4;
+            max-width: 320px;
+        }
+
+        .footer-description {
+            font-family: 'Nunito';
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #888;
+            max-width: 350px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-link {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--purple);
+            transform: scale(0);
+            border-radius: 50%;
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+
+        .social-link:hover::before {
+            transform: scale(1);
+        }
+
+        .social-link:hover {
+            border-color: var(--purple);
+            transform: translateY(-3px);
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-column-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .footer-link {
+            font-family: 'Nunito';
+            font-size: 0.95rem;
+            color: #888;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--purple);
+            transition: width 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--purple);
+            transform: translateX(5px);
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+        }
+
+        .footer-newsletter {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .newsletter-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 14px 18px;
+            border-radius: 8px;
+            color: white;
+            font-family: 'Nunito';
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--purple);
+            background: rgba(70, 52, 232, 0.1);
+        }
+
+        .newsletter-input::placeholder {
+            color: #666;
+        }
+
+        .newsletter-btn {
+            background: var(--purple);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 30px;
+            font-family: 'Nunito';
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: white;
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        .newsletter-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-btn:hover::before {
+            transform: translateX(0);
+        }
+
+        .newsletter-btn:hover span {
+            color: var(--purple);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Nunito';
+            font-size: 0.85rem;
+            color: #666;
+            opacity: 0;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-legal a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--purple);
+        }
+
+        .footer-heart {
+            color: var(--purple);
+            display: inline-block;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.1); }
+            20%, 40% { transform: scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .font-heavy { font-size: 5rem; }
+            .font-serif { font-size: 5rem; }
+            .left-side { left: 5%; }
+            .right-side { right: 5%; }
+        }
+
+        @media (max-width: 768px) {
+            .font-heavy { font-size: 3.5rem; letter-spacing: -2px;}
+            .font-serif { font-size: 3rem; }
+            .left-side, .right-side { 
+                position: relative; 
+                left: auto;
+                right: auto;
+                margin: 0;
+                text-align: center;
+            }
+            .main-content { 
+                flex-direction: column; 
+                gap: 1rem; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+     <!-- NAV BAR SECTION -->
+    <nav class="navbar-container" id="navbar">
+      <div class="navbar-pill">
+        <div class="logo">
+         <img src="/assets/logo.png" alt="NiaLure-Tech" class="logo-img">
+         <span class="logo-text">Nialure Tech</span>
+       </div>
+       <div class="menu-toggle" id="menuToggle">
+         <span></span>
+         <span></span>
+         <span></span>
+       </div>
+     </div>
+    </nav>
+
+  <div class="menu-overlay" id="menuOverlay">
+  <div class="menu-content">
+    <div class="menu-grid">
+      <div class="menu-item">
+        <a href="/index.html" style="text-decoration:none;color:inherit;display:contents;">
+          <span>COMPANY</span>
+          <svg class="menu-item-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="35" width="60" height="40" fill="none" stroke="#4634e8" stroke-width="3" rx="5"/>
+            <circle cx="50" cy="55" r="8" fill="#4634e8"/>
+            <path d="M 50 47 L 50 30 M 50 30 L 35 40 M 50 30 L 65 40" stroke="#4634e8" stroke-width="3" fill="none"/>
+          </svg>
+        </a>
+      </div>
+      <div class="menu-item">
+        <a href="/pages/work.html" style="text-decoration:none;color:inherit;display:contents;">
+          <span>OUR WORK</span>
+          <svg class="menu-item-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="15" y="25" width="70" height="50" fill="none" stroke="#4634e8" stroke-width="3" rx="3"/>
+            <line x1="15" y1="35" x2="85" y2="35" stroke="#4634e8" stroke-width="3"/>
+            <circle cx="22" cy="30" r="2" fill="#4634e8"/>
+            <circle cx="30" cy="30" r="2" fill="#4634e8"/>
+            <circle cx="38" cy="30" r="2" fill="#4634e8"/>
+            <rect x="25" y="45" width="50" height="3" fill="#4634e8"/>
+            <rect x="25" y="54" width="35" height="3" fill="#4634e8"/>
+          </svg>
+        </a>
+      </div>
+      <div class="menu-item full-width">
+        <a href="/start-a-project" style="text-decoration:none;color:inherit;display:contents;">
+          <svg class="menu-item-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="30" width="60" height="45" fill="none" stroke="#4634e8" stroke-width="3" rx="3"/>
+            <path d="M 20 30 L 50 55 L 80 30" stroke="#4634e8" stroke-width="3" fill="none"/>
+          </svg>
+          <span>START A PROJECT</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="tagline">Trusted by clients Nationwide</div>
+
+  </div>
+</div>
+
+     <!-- WORK HERO: intro loader + infinite gallery + case view (built by the WORK HERO script) -->
+    <div class="wk is-intro" id="wk">
+        <header class="wk-header" aria-label="Site">
+            <div class="wk-slot" aria-live="off">
+                <span class="wk-mask"><span data-wk-line>Nialure</span></span>
+                <span class="wk-mask"><span data-wk-line>Tech</span></span>
+            </div>
+            <div class="wk-sign-wrap">
+                <a href="/index.html" aria-label="NiaLure Tech home">
+                    <svg class="wk-sign" viewBox="0 0 120 56" aria-hidden="true">
+                        <path pathLength="1" d="M6 46 C 12 34, 18 18, 24 10 C 27 6, 29 9, 29 16 C 29 27, 31 40, 35 45 C 38 48, 41 40, 44 30 C 47 20, 50 11, 55 8 C 58 6, 57 14, 52 22"/>
+                        <path pathLength="1" d="M60 33 C 66 31, 74 29, 82 27 M70 17 C 67 28, 66 40, 71 44 C 75 47, 80 43, 84 38"/>
+                        <path pathLength="1" d="M93 44 l 0.6 0.6"/>
+                    </svg>
+                </a>
+            </div>
+            <nav class="wk-nav">
+                <span class="wk-mask"><span data-wk-line><button type="button" id="wkMenu">Menu</button></span></span>
+                <span class="wk-mask"><span data-wk-line><a href="/pages/contact.html">Contact</a></span></span>
+            </nav>
+            <div class="wk-clock">
+                <span class="wk-mask"><span data-wk-line>Local time</span></span>
+                <span class="wk-mask"><span data-wk-line id="wkTime">00&nbsp;&nbsp;&nbsp;00</span></span>
+            </div>
+            <button type="button" class="wk-circle" id="wkCircle" aria-label="Skip to content">
+                <svg viewBox="0 0 52 52" aria-hidden="true">
+                    <circle class="wk-ring" pathLength="1" cx="26" cy="26" r="25.5" transform="rotate(-90 26 26)"/>
+                    <circle class="wk-dot" cx="13" cy="26" r="2.5"/>
+                </svg>
+            </button>
+        </header>
+
+        <section class="wk-hero" id="wkHero" aria-label="Selected work">
+            <div class="wk-track" id="wkTrack"></div>
+            <div class="wk-stack" id="wkStack" aria-hidden="true"></div>
+        </section>
+
+        <div class="wk-case" id="wkCase" data-lenis-prevent tabindex="-1" role="dialog" aria-modal="true" aria-label="Case study"></div>
+    </div>
+
+ <!-- Main Content -->
+    <main class="workflow-container">
+        <h1 class="main-title">WHAT WE DO</h1>
+        <!-- Step 01 -->
+        <section class="step-section" data-step="1">
+            <div class="illustration-container">
+                <div class="step-number-large">01</div>
+                <img src="/assets/medium-shot-man-working-desk.jpg" alt="Step 1 illustration" class="illustration">
+                <div class="floating-element circle" style="width: 30px; height: 30px; top: 20%; left: 10%;"></div>
+                <div class="floating-element plus" style="top: 60%; left: 5%;">+</div>
+            </div>
+            <div class="step-content">
+                <h2 class="step-title">Website Design<br>& Development</h2>
+                <p class="step-description">Custom-built websites that convert vistors into customers, load fast, and that are responsive on mobile devices.</p>
+              
+            </div>
+        </section>
+
+        <!-- Step 02 -->
+        <section class="step-section" data-step="2">
+            <div class="step-content">
+                <h2 class="step-title">Website<br>Redesign</h2>
+                <p class="step-description">Refresh your existing website with modern design, better performance, and improved user experience.</p>
+                
+            </div>
+            <div class="illustration-container">
+                <div class="step-number-large">02</div>
+                  <img src="/assets/homepage-seen-laptop-screen.jpg" alt="Step 1 illustration" class="illustration">
+                <div class="floating-element circle" style="width: 25px; height: 25px; top: 25%; right: 15%;"></div>
+                <div class="floating-element circle" style="width: 35px; height: 35px; bottom: 20%; left: 10%;"></div>
+                <div class="floating-element plus" style="bottom: 10%; right: 10%;">+</div>
+            </div>
+        </section>
+
+         <!-- Step 03 -->
+        <section class="step-section" data-step="4">
+            <div class="illustration-container">
+                <div class="step-number-large">03</div>
+                 <img src="/assets/industrial-designer-working-3d-model.jpg" alt="Step 1 illustration" class="illustration">
+                <div class="floating-element circle" style="width: 25px; height: 25px; top: 30%; left: 20%;"></div>
+                <div class="floating-element plus" style="top: 15%; right: 25%;">+</div>
+                <div class="floating-element circle" style="width: 20px; height: 20px; bottom: 25%; left: 5%;"></div>
+                <div class="floating-element plus" style="bottom: 30%; right: 10%;">+</div>
+                <div class="floating-element circle" style="width: 15px; height: 15px; top: 50%; right: 5%;"></div>
+            </div>
+            <div class="step-content">
+                <h2 class="step-title">Website<br>Maintenance</h2>
+                <p class="step-description">Regular updates, security monitoring, and technical support to keep your website running smoothly.</p>
+                
+            </div>
+        </section>
+
+        <!-- Step 04 -->
+        <section class="step-section" data-step="3">
+            <div class="step-content">
+                <h2 class="step-title">AI<br>Solutions</h2>
+                <p class="step-description">Custom AI solutions that automate workflows, reduce manual effort, and enable scalable growth.</p>
+            
+            </div>
+            <div class="illustration-container">
+                <div class="step-number-large">04</div>
+                 <img src="/assets/closeup-programmer-man-hand-typing-website-script-computer-working-remote-from-home-african-american-hacker-worker-programming-binary-code-using-network-security-system-concept-coding.jpg" alt="Step 1 illustration" class="illustration">
+                <div class="floating-element circle" style="width: 20px; height: 20px; top: 15%; left: 5%;"></div>
+                <div class="floating-element plus" style="top: 70%; left: 15%;">+</div>
+                <div class="floating-element circle" style="width: 30px; height: 30px; bottom: 15%; right: 5%;"></div>
+            </div>
+        </section>
+
+       
+
+        <!-- CTA -->
+        <div class="cta-container">
+            <button class="quote-btn">Request a quote</button>
+        </div>
+
+    </main>
+
+
+    <!--TESTIMONALS-->
+<section class="testimonials-section" id="testimonials">
+
+  <!-- STICKY LEFT -->
+  <div class="left-col">
+    <p class="eyebrow"></p>
+    <h2>What Our<br/><em class="action">Clients</em><br/>Say</h2>
+    <p class="left-sub">Real words from real businesses we've helped grow online.</p>
+  </div>
+
+  <!-- CARDS -->
+  <div class="right-col">
+
+    <div class="review-card">
+      <div class="card-num">01</div>
+      <div class="reviewer-row">
+        <div class="avatar">SK</div>
+        <div>
+          <div class="r-name">Sarah K.</div>
+          <div class="r-role">Founder, Bloom Boutique</div>
+        </div>
+      </div>
+      <div class="card-stars">★★★★★</div>
+      <p class="review-text">
+        Working with this team completely <strong>transformed our online presence</strong>. Our sales doubled within two months of the new site going live. The design is absolutely stunning — exactly what we envisioned but couldn't put into words.
+      </p>
+      <div class="big-quote">"</div>
+      <div class="card-bar"></div>
+    </div>
+
+    <div class="review-card">
+      <div class="card-num">02</div>
+      <div class="reviewer-row">
+        <div class="avatar">MR</div>
+        <div>
+          <div class="r-name">Marcus R.</div>
+          <div class="r-role">CEO, Apex Consulting</div>
+        </div>
+      </div>
+      <div class="card-stars">★★★★★</div>
+      <p class="review-text">
+        I was blown away by how <strong>fast and responsive</strong> the final product was. The team communicated clearly throughout, delivered on time, and the results speak for themselves. 10/10 would recommend to anyone.
+      </p>
+      <div class="big-quote">"</div>
+      <div class="card-bar"></div>
+    </div>
+
+    <div class="review-card">
+      <div class="card-num">03</div>
+      <div class="reviewer-row">
+        <div class="avatar">PL</div>
+        <div>
+          <div class="r-name">Priya L.</div>
+          <div class="r-role">Owner, Luma Photography</div>
+        </div>
+      </div>
+      <div class="card-stars">★★★★★</div>
+      <p class="review-text">
+        My portfolio site is <strong>exactly what I dreamed of</strong> — beautiful, minimal, and lightning fast. Client inquiries have increased by 40% since launch. Best investment I've ever made for my business.
+      </p>
+      <div class="big-quote">"</div>
+      <div class="card-bar"></div>
+    </div>
+
+    <div class="review-card">
+      <div class="card-num">04</div>
+      <div class="reviewer-row">
+        <div class="avatar">JT</div>
+        <div>
+          <div class="r-name">James T.</div>
+          <div class="r-role">Director, Urban Eats</div>
+        </div>
+      </div>
+      <div class="card-stars">★★★★★</div>
+      <p class="review-text">
+        The backend CMS they built is so <strong>easy to use</strong> — I update menus and events myself without needing a developer. That independence is invaluable for a small business. The site looks incredible too.
+      </p>
+      <div class="big-quote">"</div>
+      <div class="card-bar"></div>
+    </div>
+
+  </div>
+</section>
+
+
+    <!--STEPS SECTION-->
+     <section class="steps-header-section">
+        <h2>Our 4-Step Project Launch Process</h2>
+    </section>
+
+    <div class="cards-container-steps">
+        <div class="card-wrapper-steps">
+            <div class="steps-card">
+                 <span class="step-label">01 · Discover</span>
+                <p class="steps-quote">We start with a focused conversation to understand your business, goals, and what you need your website to achieve.</p>
+            </div>
+        </div>
+
+        <div class="card-wrapper-steps">
+            <div class="steps-card">
+                 <span class="step-label">02 · Design & Build</span>
+                <p class="steps-quote">Your website is carefully designed and developed to be fast, responsive, and aligned with your brand.</p>
+            </div>
+        </div>
+
+        <div class="card-wrapper-steps">
+            <div class="steps-card">
+                 <span class="step-label">03 · Refine</span>
+                <p class="steps-quote">You review the work, share feedback, and we refine the details until everything feels right.</p>
+            </div>
+        </div>
+
+        <div class="card-wrapper-steps">
+            <div class="steps-card">
+                 <span class="step-label">04 · Launch & Support</span>
+                <p class="steps-quote">Once approved, we launch your site and remain available for ongoing updates and maintenance.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="cta-section-steps">
+        <button class="request-btn-steps">Request a quote</button>
+    </section>
+
+   
+
+
+<!-- FIXED FAQ SECTION - REPLACE YOUR ENTIRE FAQ SECTION WITH THIS -->
+
+<section class="faq-section" style="background: linear-gradient(135deg, #000 0%, #2858b6 50%, #4634e8 100%); padding: 80px 40px; min-height: 100vh;">
+  <div class="faq-container">
+        <h1 class="faq-title">FAQ</h1>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question-wrapper">
+                    <h2 class="faq-question">How much will my website actually cost?</h2>
+                    <div class="faq-indicator"></div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>We know budgets are a big deal. That's why we provide a clear breakdown of costs before we start—no hidden fees, no surprises. Whether it's a small business site or a complex platform, we'll tailor the project to fit your needs and budget.</p>
+                        <p>All pricing is transparent and discussed upfront during our discovery call.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question-wrapper">
+                    <h2 class="faq-question">How long will it take to complete my website?</h2>
+                    <div class="faq-indicator"></div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Timeline varies based on the complexity and scope of your project. Here's what you can typically expect:</p>
+                        <ul>
+                            <li><strong>Landing Pages:</strong> 1-2 weeks</li>
+                            <li><strong>3-Page Websites:</strong> 2-3 weeks</li>
+                            <li><strong>5-Page Business Websites:</strong> 3-4 weeks</li>
+                            <li><strong>7+ Page Professional Sites:</strong> 5-7 weeks</li>
+                        </ul>
+                        <p>We work efficiently without compromising quality. Your timeline starts after we receive your deposit and all necessary content. If you need your website faster, we offer express delivery options for an additional fee.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question-wrapper">
+                    <h2 class="faq-question">Will my website work on mobile phones?</h2>
+                    <div class="faq-indicator"></div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p><strong>Absolutely.</strong> Every website we build at Nialure is fully mobile-responsive and optimized for all devices—smartphones, tablets, and desktops.</p>
+                        <p>We follow a mobile-first design approach, which means we prioritize how your site looks and performs on mobile devices first, then enhance it for larger screens. With over 60% of web traffic coming from mobile, this ensures your visitors get a perfect experience no matter how they access your site.</p>
+                        <p>We test rigorously on multiple devices and browsers before launch to guarantee everything works flawlessly.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question-wrapper">
+                    <h2 class="faq-question">What do I need to provide to get started?</h2>
+                    <div class="faq-indicator"></div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>To get your project started, we’ll need your website content (or let us know if you’d like copywriting support), your logo and brand assets, any images or graphics, your domain and hosting details (we can assist with setup if needed), and 2–3 website examples you like for inspiration. Once the contract is signed, we’ll send a clear onboarding checklist outlining everything required and the timelines.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question-wrapper">
+                    <h2 class="faq-question">Do you offer support after the website launches?</h2>
+                    <div class="faq-indicator"></div>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p><strong>Yes, we're with you for the long run!</strong> At Nialure, we don't just build your website and vanish.</p>
+                        <p>After launch, you receive <strong>30 days of complimentary support</strong> to fix any bugs or technical issues directly related to our work. Beyond that, we offer flexible monthly maintenance packages.</p>
+                        <p>We're committed to building long-term partnerships. Your success is our success, and we're always here to help your website grow with your business.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</section>
+
+
+<!-- REQUEST SECTION -->
+<section class="request-section">
+  <h1>Request a quote</h1>
+  <p class="or-text">Fill the form below</p>
+</section>
+
+<!-- CONTACT FIELDS -->
+<section class="form-section">
+  <div class="field-group">
+    <label>Name</label>
+    <input type="text" placeholder="Name">
+  </div>
+  <div class="field-group">
+    <label>Email</label>
+    <input type="email" placeholder="Email">
+  </div>
+  <div class="field-group">
+    <label>Phone</label>
+    <input type="tel" placeholder="Phone">
+  </div>
+  <div class="field-group">
+    <label>Briefly describe your project</label>
+    <textarea placeholder="Project description"></textarea>
+  </div>
+</section>
+
+<!-- SERVICE SELECTION -->
+<section class="services-section">
+
+  <!-- Website Goals -->
+  <div class="service-col">
+    <h3>Website &amp;<br>Goals</h3>
+    <div class="check-item" onclick="toggle(this)">
+      <span>Generate leads</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+    <div class="check-item" onclick="toggle(this)">
+      <span>Showcase services</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+    <div class="check-item" onclick="toggle(this)">
+      <span>Sell products (E-commerce)</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+    <div class="check-item" onclick="toggle(this)">
+      <span>Promote services or programmes</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+    <div class="check-item" onclick="toggle(this)">
+      <span>Improve existing website</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+  </div>
+
+  <!-- Websites -->
+  <div class="service-col">
+    <h3>Websites</h3>
+    <div class="drop-item">
+      <label>Website Type</label>
+      <select>
+        <option value="" disabled selected>Select an option</option>
+        <option>Landing Page</option>
+        <option>E-commerce</option>
+        <option>Portfolio</option>
+        <option>Corporate</option>
+        <option>Blog</option>
+      </select>
+      <span class="drop-arrow">&#10551;</span>
+    </div>
+    <div class="drop-item">
+      <label>Complexity</label>
+      <select>
+        <option value="" disabled selected>Select an option</option>
+        <option>Simple</option>
+        <option>Moderate</option>
+        <option>Complex</option>
+      </select>
+      <span class="drop-arrow">&#10551;</span>
+    </div>
+    <div class="drop-item">
+      <label>Website Size</label>
+      <select>
+        <option value="" disabled selected>Select an option</option>
+        <option>1–5 pages</option>
+        <option>6–15 pages</option>
+        <option>16–30 pages</option>
+        <option>30+ pages</option>
+      </select>
+      <span class="drop-arrow">&#10551;</span>
+    </div>
+    <div class="drop-item">
+      <label>Languages</label>
+      <select>
+        <option value="" disabled selected>Select an option</option>
+        <option>1 Language</option>
+        <option>2 Languages</option>
+        <option>3+ Languages</option>
+      </select>
+      <span class="drop-arrow">&#10551;</span>
+    </div>
+  </div>
+
+  <!-- Advanced Services -->
+  <div class="service-col">
+    <h3>Advanced<br>Services</h3>
+    <div class="check-item" onclick="toggle(this)">
+      <span>App development</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+    <div class="check-item" onclick="toggle(this)">
+      <span>AI Automation</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+    <div class="check-item" onclick="toggle(this)">
+      <span>API Integrations</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+    <div class="check-item" onclick="toggle(this)">
+      <span>SEO</span>
+      <div class="box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- SUBMIT -->
+<div class="submit-row">
+  <button class="btn-submit" onclick="handleSubmit()">Request Quote</button>
+</div>
+
+
+     <!-- PREMIUM FOOTER -->
+    <footer class="footer-wrapper">
+        <div class="footer-top-divider"></div>
+        
+        <div class="footer-container">
+            <div class="footer-main">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    
+                    <p class="footer-tagline">Build With Purpose.<br>Designed With Allure.</p>
+                    
+                   
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © 2026 NiaLure Tech. 
+                </div>
+                <div class="footer-legal">
+                    <a href="/pages/work.html">Our Work</a>
+                    <a href="/index.html">Company </a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+        /*SMOOTH SCROLL: one Lenis instance, driven by GSAP's ticker so ScrollTrigger stays in sync*/
+        gsap.registerPlugin(ScrollTrigger, Flip);
+        ScrollTrigger.config({ ignoreMobileResize: true });
+
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+
+        // NAVBAR HIDE/SHOW ON HERO
+        const navbar = document.getElementById('navbar');
+
+        // Add transition to your navbar via JS so it's guaranteed to apply
+        navbar.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+
+        function showNavbar() {
+            gsap.fromTo(navbar,
+                { opacity: 0, y: -60 },
+                { opacity: 1, y: 0, duration: 0.6, ease: "power3.out",
+                  onStart: () => { navbar.style.pointerEvents = 'auto'; }
+                }
+            );
+        }
+
+        function hideNavbar() {
+            gsap.to(navbar, {
+                opacity: 0, y: -60, duration: 0.4, ease: "power2.in",
+                onComplete: () => { navbar.style.pointerEvents = 'none'; }
+            });
+        }
+
+        /*WORK HERO: intro loader -> infinite gallery -> click-to-case transition*/
+        (() => {
+            // Case copy is placeholder: replace year / services / summary with each project's real details.
+            const PROJECTS = [
+                { slug: 'marathon-m', name: 'Marathon M', video: '/assets/videos/MARATHON-M.mp4', year: '',
+                  services: ['Website design', 'Development'],
+                  summary: 'We partnered with Marathon M to design and develop their website: a fast, responsive build shaped around the brand and made to turn visitors into customers.' },
+                { slug: 'velvet-edge', name: 'Velvet & Edge Solutions', video: '/assets/videos/VELVET & EDGE.mp4', year: '',
+                  services: ['Website design', 'Development'],
+                  summary: 'We partnered with Velvet & Edge Solutions to design and develop their website: a fast, responsive build shaped around the brand and made to turn visitors into customers.' },
+                { slug: 'geffphotography', name: 'GeffPhotography', video: '/assets/videos/GEFFPHOTOGRAPHY.mp4', year: '',
+                  services: ['Website design', 'Development'],
+                  summary: 'We partnered with GeffPhotography to design and develop their website: a fast, responsive build shaped around the brand and made to turn visitors into customers.' },
+                { slug: 'niaimani', name: 'Niaimani Cleaning Services', video: '/assets/videos/NIAIMANI.mp4', year: '',
+                  services: ['Website design', 'Development'],
+                  summary: 'We partnered with Niaimani Cleaning Services to design and develop their website: a fast, responsive build shaped around the brand and made to turn visitors into customers.' }
+            ];
+            const SLOT_TEXT = [['Nialure', 'Tech'], ['Build with', 'purpose'], ['Designed', 'with allure']];
+            const TIME_ZONE = 'Africa/Johannesburg';   // studio clock in the header
+            const SETS = 3;                             // copies of the list in the loop so the row always overfills the screen
+            const EASE = 'expo.out';
+            const BG = 'rgba(245, 243, 239, 1)';
+            const BG_CLEAR = 'rgba(245, 243, 239, 0)';
+            const CARD_SIZES = '(max-width: 767px) 94vw, (max-width: 1023px) 54vw, 34vw';
+
+            const $ = (s, el = document) => el.querySelector(s);
+            const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+            const clamp = gsap.utils.clamp;
+            const lerp = (a, b, t) => a + (b - a) * t;
+            const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+            const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const img = (slug, n, small) => `/assets/work/${slug}-${n}${small ? '-sm' : ''}.jpg`;
+            const srcset = (slug, n) => `${img(slug, n, true)} 480w, ${img(slug, n)} 828w`;
+            const caseUrl = (slug) => `${location.pathname}?case=${slug}`;
+            const bySlug = (slug) => PROJECTS.find((p) => p.slug === slug);
+            const urlSlug = () => { const s = new URLSearchParams(location.search).get('case'); return bySlug(s) ? s : null; };
+
+            const root = $('#wk'), header = $('.wk-header', root), hero = $('#wkHero'), track = $('#wkTrack'),
+                  stack = $('#wkStack'), caseEl = $('#wkCase'), circle = $('#wkCircle');
+
+            /* ---------- cards ---------- */
+            const cards = [];
+            for (let s = 0; s < SETS; s++) {
+                PROJECTS.forEach((p) => {
+                    const a = document.createElement('a');
+                    a.className = 'wk-card';
+                    a.href = caseUrl(p.slug);
+                    a.draggable = false;
+                    if (s) { a.tabIndex = -1; a.setAttribute('aria-hidden', 'true'); }
+                    a.innerHTML = `<span class="wk-card-label wk-mask"><span>${esc(p.name)}</span></span>
+                        <div class="wk-card-media" data-flip-id="wk-${p.slug}"><div class="wk-card-zoom">
+                            <img class="wk-card-img" src="${img(p.slug, 0)}" srcset="${srcset(p.slug, 0)}" sizes="${CARD_SIZES}" alt="" draggable="false">
+                        </div></div>`;
+                    track.appendChild(a);
+                    cards.push({ el: a, media: $('.wk-card-media', a), img: $('img', a), label: $('.wk-card-label > span', a),
+                                 index: cards.length, project: p, rank: -1 });
+                });
+            }
+
+            /* ---------- gallery physics ---------- */
+            const g = { cur: 0, tgt: 0, vel: 0, scale: 1, w: 0, h: 0, gap: 0, step: 0, total: 0, vw: 0, vh: 0,
+                        locked: true, intro: null, dirty: true };
+
+            function measure() {
+                const oldStep = g.step;
+                g.vw = innerWidth; g.vh = innerHeight;
+                g.w = cards[0].media.offsetWidth; g.h = cards[0].media.offsetHeight;
+                g.gap = parseFloat(getComputedStyle(track).columnGap) || 8;
+                g.step = g.w + g.gap; g.total = g.step * cards.length;
+                if (oldStep) { g.cur *= g.step / oldStep; g.tgt *= g.step / oldStep; } // keep the same card in place
+                g.dirty = true;
+            }
+
+            const wrap = (v, min, max) => { const r = max - min; return ((((v - min) % r) + r) % r) + min; };
+            // left padding equals the gap, so the card wrapped to the far left sits exactly off-screen
+            const restX = (c) => g.gap + wrap(c.index * g.step + g.cur, -g.step, g.total - g.step);
+            const inView = (c) => { const x = restX(c); return x >= -1 && x + g.w <= g.vw + 1; };
+
+            function render() {
+                const it = g.intro;
+                for (const c of cards) {
+                    let x = restX(c), y = 0, s = g.scale;
+                    if (it && c.rank >= 0) {
+                        // intro: dealt out from behind card #1 (centred, scaled to the loader size), then travel to rest
+                        const dealX = g.vw / 2 - g.w / 2 + c.rank * g.step * it.k * it.p1;
+                        x = lerp(dealX, x, it.p2);
+                        y = lerp(it.dy, 0, it.p2);
+                        s = lerp(it.k, 1, it.p2);
+                    } else if (s !== 1) {
+                        y = (1 - s) * g.h * 0.05 * (c.index % 2 ? 1 : -1);
+                    }
+                    c.el.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) scale(${s.toFixed(4)})`;
+                    if (!reduced) {
+                        const n = clamp(-1, 1, (x + g.w / 2 - g.vw / 2) / (g.vw / 2 + g.w));
+                        c.img.style.transform = `translate3d(${(-n * g.w * 0.09).toFixed(2)}px, 0, 0)`;
+                    }
+                }
+            }
+
+            function tick() {
+                const dr = gsap.ticker.deltaRatio(60);
+                const prev = g.cur, prevScale = g.scale;
+                g.cur += (g.tgt - g.cur) * (1 - Math.pow(1 - 0.09, dr));
+                if (Math.abs(g.tgt - g.cur) < 0.05) g.cur = g.tgt;
+                g.vel = (g.cur - prev) / dr;
+                const s = reduced ? 1 : 1 - Math.min(Math.abs(g.vel) / 35, 1) * 0.11;
+                g.scale += (s - g.scale) * (1 - Math.pow(1 - 0.12, dr));
+                if (Math.abs(g.scale - s) < 0.0005) g.scale = s;
+                if (g.dirty || g.intro || g.cur !== prev || g.scale !== prevScale) { render(); g.dirty = false; }
+            }
+
+            /* ---------- input: drag / swipe, horizontal wheel, keys, page scroll while pinned ---------- */
+            let drag = null, suppressClick = false;
+            track.addEventListener('pointerdown', (e) => {
+                if (g.locked || e.button > 0) return;
+                drag = { id: e.pointerId, x0: e.clientX, y0: e.clientY, tgt0: g.tgt, lastX: e.clientX, lastT: e.timeStamp, v: 0, moved: false, touch: e.pointerType !== 'mouse' };
+                suppressClick = false;
+            });
+            addEventListener('pointermove', (e) => {
+                if (!drag || e.pointerId !== drag.id) return;
+                const dx = e.clientX - drag.x0;
+                if (!drag.moved) {
+                    if (Math.abs(dx) <= 5) return;
+                    if (drag.touch && Math.abs(e.clientY - drag.y0) > Math.abs(dx)) { drag = null; return; } // vertical: leave it to the page
+                    drag.moved = suppressClick = true;
+                    track.classList.add('is-dragging');
+                }
+                const dt = Math.max(e.timeStamp - drag.lastT, 1);
+                drag.v = drag.v * 0.8 + ((e.clientX - drag.lastX) / dt) * 0.2;
+                drag.lastX = e.clientX; drag.lastT = e.timeStamp;
+                g.tgt = drag.tgt0 + dx * (drag.touch ? 1.4 : 1);
+            });
+            const endDrag = (e) => {
+                if (!drag || e.pointerId !== drag.id) return;
+                if (drag.moved && e.type === 'pointerup') g.tgt += clamp(-g.vw, g.vw, drag.v * 220); // fling
+                drag = null;
+                track.classList.remove('is-dragging');
+            };
+            addEventListener('pointerup', endDrag);
+            addEventListener('pointercancel', endDrag);
+            track.addEventListener('click', (e) => {
+                if (suppressClick) { e.preventDefault(); e.stopImmediatePropagation(); suppressClick = false; }
+            }, true);
+
+            hero.addEventListener('wheel', (e) => {
+                if (g.locked || Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return; // vertical wheel scrolls the page (see pin)
+                e.preventDefault(); e.stopPropagation();
+                g.tgt -= e.deltaX;
+            }, { passive: false });
+
+            const heroOnScreen = () => scrollY <= pin.end;
+            addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && openSlug) { requestClose(); return; }
+                if (g.locked || openSlug || !heroOnScreen()) return;
+                if (e.key === 'ArrowRight') { g.tgt -= g.step; e.preventDefault(); }
+                if (e.key === 'ArrowLeft') { g.tgt += g.step; e.preventDefault(); }
+            });
+            track.addEventListener('focusin', (e) => {
+                const c = cards.find((c) => c.el === e.target);
+                hero.scrollLeft = 0;
+                if (c && !inView(c)) g.tgt += g.gap - restX(c);
+            });
+
+            // The hero pins for a stretch of page scroll; vertical scrolling inside it drives the row.
+            let lastY = 0;
+            const pin = ScrollTrigger.create({
+                trigger: hero, start: 'top top', end: '+=120%', pin: true,
+                onUpdate(self) {
+                    const y = clamp(self.start, self.end, self.scroll());
+                    if (!g.locked) g.tgt -= (y - lastY) * 1.1;
+                    lastY = y;
+                },
+                onLeave: () => { showNavbar(); gsap.to(header, { autoAlpha: 0, duration: 0.3 }); },
+                onEnterBack: () => { hideNavbar(); gsap.to(header, { autoAlpha: 1, duration: 0.4 }); }
+            });
+
+            /* ---------- header ---------- */
+            const hdrLines = $$('[data-wk-line]', header);
+            const slotLines = $$('.wk-slot [data-wk-line]', header);
+            const menuBtn = $('#wkMenu'), timeEl = $('#wkTime');
+
+            function headerIn(tl, at) {
+                tl.fromTo(hdrLines, { y: 0, yPercent: 100 }, { yPercent: 0, duration: 1, ease: EASE, stagger: 0.08 }, at)
+                  .fromTo($$('.wk-sign path', header), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.6, ease: 'power2.inOut', stagger: 0.45 }, at + 0.2)
+                  .fromTo($('.wk-ring', header), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1, ease: 'power2.inOut' }, at + 0.3)
+                  .fromTo($('.wk-dot', header), { attr: { r: 0 }, opacity: 1 }, { attr: { r: 2.5 }, duration: 0.5, ease: EASE }, at + 1.2);
+            }
+
+            let slotIndex = 0, slotTimer = null;
+            function rotateSlot() {
+                slotIndex = (slotIndex + 1) % SLOT_TEXT.length;
+                gsap.timeline()
+                    .to(slotLines, { yPercent: -100, duration: 0.5, ease: 'power3.in', stagger: 0.06 })
+                    .add(() => slotLines.forEach((l, i) => { l.textContent = SLOT_TEXT[slotIndex][i]; }))
+                    .fromTo(slotLines, { yPercent: 100 }, { yPercent: 0, duration: 0.9, ease: EASE, stagger: 0.06 });
+            }
+
+            const timeFmt = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: TIME_ZONE });
+            function clock() {
+                const [hh, mm] = timeFmt.format(new Date()).split(':');
+                timeEl.textContent = `${hh}   ${mm}`;
+            }
+
+            const menuToggleEl = document.getElementById('menuToggle');
+            menuBtn.addEventListener('click', () => menuToggleEl.click());
+            // the page menu flips its own `isOpen`; read it once that handler has run
+            menuToggleEl.addEventListener('click', () => setTimeout(() => { menuBtn.textContent = isOpen ? 'Close' : 'Menu'; }));
+            circle.addEventListener('click', () => { if (openSlug) requestClose(); else lenis.scrollTo(pin.end + 2); });
+
+            /* ---------- intro ---------- */
+            function playIntro() {
+                g.locked = true;
+                lenis.stop();
+                if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+                scrollTo(0, 0);
+
+                // reverse card order, so the stack ends on card #1
+                stack.innerHTML = PROJECTS.slice().reverse().map((p, i) =>
+                    `<div class="wk-stack-layer"${i ? ' style="clip-path: inset(100% 0% 0% 0%)"' : ''}>
+                        <img src="${img(p.slug, 0)}" srcset="${srcset(p.slug, 0)}" sizes="${CARD_SIZES}" alt="">
+                    </div>`).join('');
+                const layers = $$('.wk-stack-layer', stack);
+                const F = { w: stack.offsetWidth, h: stack.offsetHeight };
+                const cw = g.w;
+                // the visible window (ww x wh) shows the stack image "cover"-scaled into it; sweep = progress line
+                const st = { ww: cw * 0.4, wh: 2, sweep: 0 };
+                const draw = () => {
+                    const sc = Math.max(st.ww / F.w, st.wh / F.h);
+                    const ix = (F.w - st.ww / sc) / 2, iy = (F.h - st.wh / sc) / 2;
+                    const ir = ix + (1 - st.sweep) * (F.w - 2 * ix);
+                    stack.style.transform = `translate(-50%, -50%) scale(${sc})`;
+                    stack.style.clipPath = `inset(${iy}px ${ir}px ${iy}px ${ix}px)`;
+                };
+                draw();
+
+                // the line doubles as the real preload progress
+                const imgs = $$('img', stack);
+                let loaded = 0;
+                const loads = imgs.map((im) =>
+                    (im.complete ? Promise.resolve() : new Promise((r) => { im.onload = im.onerror = r; }))
+                        .then(() => im.decode ? im.decode().catch(() => {}) : null)
+                        .then(() => { loaded++; gsap.to(st, { sweep: loaded / imgs.length, duration: 0.35, ease: 'none', overwrite: true, onUpdate: draw }); }));
+                Promise.all([...loads, new Promise((r) => setTimeout(r, 750))]).then(() =>
+                    gsap.to(st, { sweep: 1, duration: 0.25, ease: 'none', overwrite: true, onUpdate: draw, onComplete: run }));
+
+                function run() {
+                    const tl = gsap.timeline({ onUpdate: draw });
+                    tl.to(st, { wh: cw * 0.26, duration: 0.6, ease: EASE }, 0)         // sliver opens vertically
+                      .to(st, { wh: cw * 0.4, duration: 0.7, ease: EASE }, 0.45);
+                    headerIn(tl, 0.3);
+                    // each new image wipes in bottom -> top while the stack swells toward 4:5
+                    const steps = [[0.45, 0.52], [0.5, 0.6], [0.55, 0.68], [0.6, 0.74]];
+                    layers.slice(1).forEach((layer, i) => {
+                        const at = 0.85 + i * 0.45, [w, h] = steps[Math.min(i, steps.length - 1)];
+                        tl.to(layer, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.75, ease: EASE }, at)
+                          .to(st, { ww: cw * w, wh: cw * h, duration: 0.75, ease: EASE }, at);
+                    });
+                    const end = 0.85 + (layers.length - 1) * 0.45 + 0.25;
+                    tl.to(st, { ww: F.w, wh: F.h, duration: 0.9, ease: 'expo.inOut' }, end)
+                      .add(() => handoff(F), end + 0.9);
+                }
+            }
+
+            // swap the loader for the real cards (same rect), deal them out, then travel to rest
+            function handoff(F) {
+                const it = { p1: 0, p2: 0, k: F.w / g.w, dy: g.vh / 2 - (track.getBoundingClientRect().bottom - g.h / 2) };
+                cards.forEach((c) => {
+                    const x = restX(c);
+                    c.rank = x >= 0 && x < g.vw ? Math.round((x - g.gap) / g.step) : -1;
+                    c.el.style.zIndex = c.rank >= 0 ? 50 - c.rank : '';
+                });
+                const dealt = cards.filter((c) => c.rank >= 0).sort((a, b) => a.rank - b.rank);
+                gsap.set(cards.map((c) => c.label), { yPercent: 100 });
+                g.intro = it;
+                render();
+                root.classList.remove('is-intro');
+
+                gsap.timeline({ onComplete: introDone })
+                    .to(it, { p1: 1, duration: 1.2, ease: EASE }, 0.05)
+                    .to(it, { p2: 1, duration: 1.4, ease: 'expo.inOut' }, 0.2)
+                    .to(dealt.map((c) => c.label), { yPercent: 0, duration: 0.9, ease: EASE, stagger: 0.08 }, 1.25)
+                    .set(cards.filter((c) => c.rank < 0).map((c) => c.label), { yPercent: 0 }, 1.25);
+            }
+
+            function introDone() {
+                g.intro = null;
+                g.dirty = true;
+                cards.forEach((c) => { c.el.style.zIndex = ''; });
+                stack.innerHTML = '';
+                try { sessionStorage.setItem('wk-intro', '1'); } catch (e) {}
+                ready();
+            }
+
+            function ready() {
+                g.locked = false;
+                lenis.start();
+                if (!slotTimer && !reduced) slotTimer = setInterval(rotateSlot, 6000);
+            }
+
+            /* ---------- case view ---------- */
+            let openSlug = null, busy = false, lastCard = null, io = null;
+
+            // wrap each rendered line of `el` in a mask; returns the inner spans to animate
+            function splitLines(el) {
+                const words = el.textContent.trim().split(/\s+/);
+                el.textContent = '';
+                const spans = words.map((w, i) => {
+                    const s = document.createElement('span');
+                    s.textContent = w;
+                    el.append(s);
+                    if (i < words.length - 1) el.append(' ');
+                    return s;
+                });
+                const lines = [];
+                let top = null;
+                spans.forEach((s) => {
+                    if (s.offsetTop !== top) { lines.push([]); top = s.offsetTop; }
+                    lines[lines.length - 1].push(s.textContent);
+                });
+                el.textContent = '';
+                return lines.map((ws) => {
+                    const line = document.createElement('span'), inner = document.createElement('span');
+                    line.className = 'wk-line';
+                    inner.textContent = ws.join(' ');
+                    line.append(inner);
+                    el.append(line);
+                    return inner;
+                });
+            }
+
+            function caseHTML(p) {
+                const next = PROJECTS[(PROJECTS.indexOf(p) + 1) % PROJECTS.length];
+                const pic = (slug, n, sizes, alt) =>
+                    `<div class="wk-img wk-reveal"><img src="${img(slug, n)}" srcset="${srcset(slug, n)}" sizes="${sizes}" alt="${esc(alt)}" loading="lazy"></div>`;
+                const lines = (arr) => arr.filter(Boolean).map((t) => `<span class="wk-mask"><span data-wk-line>${esc(t)}</span></span>`).join('');
+                return `
+                    <div class="wk-case-intro">
+                        <div class="wk-case-media">
+                            <div class="wk-case-frame" data-flip-id="wk-${p.slug}">
+                                <video src="${encodeURI(p.video)}" poster="${img(p.slug, 0)}" muted loop playsinline preload="none" aria-label="${esc(p.name)} website walkthrough"></video>
+                            </div>
+                        </div>
+                        <div class="wk-case-head">
+                            <h1 class="wk-case-title">${esc(p.name)}</h1>
+                            <div class="wk-meta"><div>${lines([p.name, p.year])}</div><div>${lines(p.services)}</div></div>
+                        </div>
+                    </div>
+                    <div class="wk-case-body wk-col">
+                        ${pic(p.slug, 1, '(max-width: 767px) 92vw, 30vw', `${p.name} website`)}
+                        <p class="wk-copy">${esc(p.summary)}</p>
+                    </div>
+                    <section class="wk-section">
+                        <h2 class="wk-section-title">01. ${esc(p.services[0])}</h2>
+                        <div class="wk-grid">${[2, 3, 4].map((n) => pic(p.slug, n, '(max-width: 767px) 92vw, 33vw', `${p.name} website, screen ${n}`)).join('')}</div>
+                    </section>
+                    <section class="wk-section"><div class="wk-col">
+                        <h2 class="wk-section-title">02. ${esc(p.services[1])}</h2>
+                        ${pic(p.slug, 5, '(max-width: 767px) 92vw, 30vw', `${p.name} website, screen 5`)}
+                    </div></section>
+                    <a class="wk-next" href="${caseUrl(next.slug)}" data-slug="${next.slug}">
+                        <span><small>Next case</small><strong>${esc(next.name)}</strong></span>
+                        ${pic(next.slug, 0, '(max-width: 767px) 28vw, 12vw', '')}
+                    </a>`;
+            }
+
+            function buildCase(p) {
+                io?.disconnect();
+                caseEl.innerHTML = caseHTML(p);
+                caseEl.scrollTop = 0;
+                caseEl.classList.add('is-open');
+                const copy = $('.wk-copy', caseEl);
+                const parts = {
+                    frame: $('.wk-case-frame', caseEl),
+                    video: $('video', caseEl),
+                    title: splitLines($('.wk-case-title', caseEl)),
+                    meta: $$('.wk-meta [data-wk-line]', caseEl),
+                    copy, copyLines: splitLines(copy)
+                };
+                if (reduced) gsap.set($$('.wk-reveal', caseEl), { clipPath: 'none' });
+                else gsap.set([...parts.title, ...parts.meta, ...parts.copyLines], { yPercent: 100 });
+
+                $('.wk-next', caseEl).addEventListener('click', (e) => {
+                    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+                    e.preventDefault();
+                    if (busy) return;
+                    history.pushState({ wkDepth: (history.state?.wkDepth || 0) + 1 }, '', e.currentTarget.href);
+                    swapCase(e.currentTarget.dataset.slug);
+                });
+                return parts;
+            }
+
+            // body copy and images reveal as they scroll into the case view
+            function observeReveals(parts) {
+                if (reduced) return;
+                io = new IntersectionObserver((entries) => entries.forEach((en) => {
+                    if (!en.isIntersecting) return;
+                    io.unobserve(en.target);
+                    if (en.target === parts.copy) gsap.to(parts.copyLines, { yPercent: 0, duration: 1.1, ease: EASE, stagger: 0.06 });
+                    else gsap.to(en.target, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.3, ease: EASE });
+                }), { root: caseEl, rootMargin: '0px 0px -12% 0px' });
+                [parts.copy, ...$$('.wk-reveal', caseEl)].forEach((t) => io.observe(t));
+            }
+
+            function afterOpen(parts) {
+                busy = false;
+                parts.video.preload = 'auto';
+                parts.video.play().catch(() => {});
+                observeReveals(parts);
+                caseEl.focus({ preventScroll: true });
+                syncUrl();
+            }
+
+            function openCase(slug, fromCard) {
+                busy = true; openSlug = slug; lastCard = fromCard;
+                g.locked = true; g.tgt = g.cur;
+                lenis.stop();
+                circle.setAttribute('aria-label', 'Close case study');
+                const parts = buildCase(bySlug(slug));
+                const reveal = (tl, at) => tl
+                    .to(parts.title, { yPercent: 0, duration: 1.1, ease: EASE, stagger: 0.08 }, at)
+                    .to(parts.meta, { yPercent: 0, duration: 1, ease: EASE, stagger: 0.05 }, at + 0.2);
+
+                if (reduced || !fromCard) {
+                    gsap.set(caseEl, { backgroundColor: BG, autoAlpha: 0 });
+                    reveal(gsap.timeline({ onComplete: () => afterOpen(parts) })
+                        .to(caseEl, { autoAlpha: 1, duration: 0.5, ease: 'power2.out' }), 0.2);
+                    return;
+                }
+
+                // others collapse to their centre line, then the clicked image FLIPs into the case hero
+                const others = cards.filter((c) => c !== fromCard);
+                gsap.set(caseEl, { backgroundColor: BG_CLEAR, autoAlpha: 1 });
+                gsap.set(parts.frame, { visibility: 'hidden' });
+                const tl = gsap.timeline({ onComplete: () => afterOpen(parts) })
+                    .to(cards.map((c) => c.label), { yPercent: -100, duration: 0.45, ease: 'power3.inOut', stagger: 0.02 }, 0)
+                    .to(fromCard.media, { scale: 1.04, duration: 0.6, ease: EASE }, 0)
+                    .to(others.map((c) => c.media), {
+                        scaleY: 0, scaleX: 0.9, y: () => gsap.utils.random(-40, 40),
+                        duration: 0.55, ease: 'expo.inOut', stagger: 0.025
+                    }, 0)
+                    .add(() => {
+                        const state = Flip.getState(fromCard.media);
+                        fromCard.media.style.visibility = 'hidden';
+                        gsap.set(caseEl, { backgroundColor: BG });
+                        gsap.set(parts.frame, { visibility: 'visible' });
+                        Flip.from(state, { targets: parts.frame, duration: 1.1, ease: 'expo.inOut', scale: false, absolute: true });
+                    }, 0.5);
+                reveal(tl, 1.1);
+            }
+
+            function swapCase(slug) {
+                busy = true; io?.disconnect();
+                gsap.to(caseEl, { autoAlpha: 0, duration: 0.4, ease: 'power2.out', onComplete: () => {
+                    openSlug = slug; lastCard = null;
+                    const parts = buildCase(bySlug(slug));
+                    gsap.set(parts.frame, { clipPath: reduced ? 'none' : 'inset(100% 0% 0% 0%)' });
+                    gsap.timeline({ onComplete: () => { gsap.set(parts.frame, { clearProps: 'clipPath' }); afterOpen(parts); } })
+                        .to(caseEl, { autoAlpha: 1, duration: 0.2 })
+                        .to(parts.frame, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: EASE }, 0.1)
+                        .to(parts.title, { yPercent: 0, duration: 1.1, ease: EASE, stagger: 0.08 }, 0.4)
+                        .to(parts.meta, { yPercent: 0, duration: 1, ease: EASE, stagger: 0.05 }, 0.6);
+                } });
+            }
+
+            function closeCase() {
+                busy = true; io?.disconnect();
+                const p = bySlug(openSlug);
+                const frame = $('.wk-case-frame', caseEl);
+                $('video', caseEl).pause();
+                const tl = gsap.timeline({ onComplete: () => (reduced ? fadeBack() : flipBack(p, frame)) })
+                    .to($$('.wk-case-head, .wk-case-body, .wk-section, .wk-next', caseEl), { autoAlpha: 0, duration: 0.35, ease: 'power2.out' }, 0);
+                if (caseEl.scrollTop > 0) tl.to(caseEl, { scrollTop: 0, duration: 0.8, ease: 'expo.inOut' }, 0);
+            }
+
+            function fadeBack() {
+                gsap.to(caseEl, { autoAlpha: 0, duration: 0.4, onComplete: () => finishClose(lastCard) });
+            }
+
+            // the case hero flies back into its gallery card; the rest of the row un-collapses around it
+            function flipBack(p, frame) {
+                let target = lastCard && lastCard.project === p && inView(lastCard) ? lastCard : cards.find((c) => c.project === p && inView(c));
+                if (!target) { // opened via "next case" or a deep link: bring that project to the left edge first
+                    target = cards.find((c) => c.project === p && !c.el.hasAttribute('aria-hidden'));
+                    g.cur += g.gap - restX(target); g.tgt = g.cur;
+                    render();
+                }
+                const others = cards.filter((c) => c !== target);
+                gsap.set(target.media, { clearProps: 'transform,visibility' });
+                gsap.set(others.map((c) => c.media), { visibility: 'visible', scale: 1, scaleX: 0.9, scaleY: 0, y: () => gsap.utils.random(-40, 40) });
+                gsap.set(cards.map((c) => c.label), { yPercent: 100 });
+
+                const state = Flip.getState(frame);
+                frame.style.visibility = 'hidden';
+                gsap.set(caseEl, { backgroundColor: BG_CLEAR });
+                Flip.from(state, { targets: target.media, duration: 1.1, ease: 'expo.inOut', scale: false, absolute: true });
+                gsap.timeline({ onComplete: () => finishClose(target) })
+                    .to(others.map((c) => c.media), { scaleX: 1, scaleY: 1, y: 0, duration: 0.9, ease: EASE, stagger: 0.03 }, 0.8)
+                    .to(cards.map((c) => c.label), { yPercent: 0, duration: 0.9, ease: EASE, stagger: 0.02 }, 1);
+            }
+
+            function finishClose(target) {
+                io?.disconnect();
+                caseEl.classList.remove('is-open');
+                gsap.set(caseEl, { clearProps: 'all' });
+                caseEl.innerHTML = '';
+                gsap.set(cards.map((c) => c.media), { clearProps: 'transform,visibility' });
+                gsap.set(cards.map((c) => c.label), { yPercent: 0 });
+                openSlug = null; lastCard = null; busy = false;
+                g.locked = false;
+                lenis.start();
+                circle.setAttribute('aria-label', 'Skip to content');
+                if (target && !target.el.hasAttribute('aria-hidden')) target.el.focus({ preventScroll: true });
+                syncUrl();
+            }
+
+            // close from the UI (circle / Escape): unwind the case entries we pushed, so Back stays sane
+            function requestClose() {
+                if (busy || !openSlug) return;
+                const depth = history.state?.wkDepth || 0;
+                if (depth > 0) history.go(-depth);
+                else { history.replaceState(null, '', location.pathname); closeCase(); }
+            }
+
+            // bring the view in line with the URL (after Back/Forward, or once a transition finishes)
+            function syncUrl() {
+                if (busy) return;
+                const slug = urlSlug();
+                if (slug && !openSlug) openCase(slug, cards.find((c) => c.project.slug === slug && inView(c)));
+                else if (!slug && openSlug) closeCase();
+                else if (slug && slug !== openSlug) swapCase(slug);
+            }
+            addEventListener('popstate', syncUrl);
+
+            track.addEventListener('click', (e) => {
+                const a = e.target.closest('.wk-card');
+                if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return; // new-tab clicks behave normally
+                e.preventDefault();
+                if (busy || g.locked) return;
+                history.pushState({ wkDepth: 1 }, '', a.href);
+                openCase(cards.find((c) => c.el === a).project.slug, cards.find((c) => c.el === a));
+            });
+
+            /* ---------- boot ---------- */
+            measure();
+            addEventListener('resize', measure);
+            gsap.ticker.add(tick);
+            clock();
+            setInterval(clock, 10000);
+
+            let seen = false;
+            try { seen = sessionStorage.getItem('wk-intro') === '1'; } catch (e) {}
+            const deepSlug = urlSlug();
+            if (reduced || seen || deepSlug) {
+                root.classList.remove('is-intro');
+                ready();
+                if (deepSlug) openCase(deepSlug, null);
+            } else {
+                playIntro();
+            }
+        })();
+
+           /*NAVIGATION*/
+        const menuToggle = document.getElementById('menuToggle');
+const menuOverlay = document.getElementById('menuOverlay');
+const menuItems = document.querySelectorAll('.menu-item');
+const tagline = document.querySelector('.tagline');
+
+let isOpen = false;
+
+menuToggle.addEventListener('click', () => {
+  if (!isOpen) {
+    // Open Menu
+    gsap.set(menuOverlay, { display: 'flex' });
+    
+    // Fade in overlay
+    gsap.fromTo(menuOverlay, 
+      { opacity: 0 }, 
+      { opacity: 1, duration: 0.4, ease: "power2.out" }
+    );
+    
+    // High-end staggered pop-in effect for menu items
+    gsap.fromTo(menuItems, 
+      { y: 60, opacity: 0, scale: 0.85, rotationX: -15 }, 
+      { 
+        y: 0, 
+        opacity: 1, 
+        scale: 1, 
+        rotationX: 0,
+        duration: 0.7, 
+        stagger: 0.12, 
+        ease: "back.out(1.5)",
+        delay: 0.1
+      }
+    );
+    
+    // Animate tagline
+    gsap.fromTo(tagline,
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", delay: 0.5 }
+    );
+
+    
+    // Transform hamburger to X with smooth animation
+    gsap.to(menuToggle.children[0], { rotate: 45, y: 8, duration: 0.4, ease: "power2.inOut" });
+    gsap.to(menuToggle.children[1], { opacity: 0, duration: 0.3, ease: "power2.inOut" });
+    gsap.to(menuToggle.children[2], { rotate: -45, y: -8, duration: 0.4, ease: "power2.inOut" });
+    
+  } else {
+    // Close Menu - reverse animations
+    gsap.to(menuItems, { 
+      y: -40, 
+      opacity: 0, 
+      scale: 0.9,
+      duration: 0.3, 
+      stagger: 0.05,
+      ease: "power2.in"
+    });
+    
+    gsap.to([ tagline], { 
+      opacity: 0, 
+      duration: 0.3,
+      ease: "power2.in"
+    });
+    
+    gsap.to(menuOverlay, { 
+      opacity: 0, 
+      duration: 0.4, 
+      delay: 0.2,
+      ease: "power2.in",
+      onComplete: () => {
+        gsap.set(menuOverlay, { display: 'none' });
+      }
+    });
+    
+    // Reverse Hamburger
+    gsap.to(menuToggle.children[0], { rotate: 0, y: 0, duration: 0.4, ease: "power2.inOut" });
+    gsap.to(menuToggle.children[1], { opacity: 1, duration: 0.3, ease: "power2.inOut" });
+    gsap.to(menuToggle.children[2], { rotate: 0, y: 0, duration: 0.4, ease: "power2.inOut" });
+  }
+  
+  isOpen = !isOpen;
+});
+
+// Close menu when clicking on menu items
+menuItems.forEach(item => {
+  item.addEventListener('click', () => {
+    if (isOpen) {
+      menuToggle.click();
+    }
+  });
+});
+
+/*STEPS SECTION*/
+    const cardsSteps = gsap.utils.toArray('.card-wrapper-steps');
+        
+        cardsSteps.forEach((card, i) => {
+            if (i !== cardsSteps.length - 1) { // Don't animate the last card away
+                gsap.to(card, {
+                    scale: 0.9,
+                    opacity: 0,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top top", 
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
+            }
+        });
+
+        // Background transition for the CTA section
+        gsap.from(".cta-section-steps", {
+            scrollTrigger: {
+                trigger: ".cta-section-steps",
+                start: "top bottom",
+                end: "top center",
+                scrub: true
+            }
+        });
+
+
+/*WHAT WE DO SECTION*/
+        // Animate each step section
+        const stepSections = document.querySelectorAll('.step-section');
+
+        stepSections.forEach((section, index) => {
+            const fill = section.querySelector('.progress-bar-fill');
+            const illustration = section.querySelector('.illustration');
+            const floatingElements = section.querySelectorAll('.floating-element');
+            
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    end: "top 20%",
+                    scrub: 1,
+                }
+            });
+
+            // Fade in section
+            tl.to(section, {
+                opacity: 1,
+                y: 0,
+                duration: 1
+            })
+            // Grow progress bar
+            .to(fill, {
+                width: "100%",
+                duration: 1
+            }, 0)
+            // Scale illustration
+            .from(illustration, {
+                scale: 0.8,
+                rotation: -5,
+                duration: 1
+            }, 0.2)
+            // Animate floating elements
+            .from(floatingElements, {
+                scale: 0,
+                opacity: 0,
+                stagger: 0.1,
+                duration: 0.5
+            }, 0.3);
+        });
+
+        // Animate CTA button
+        gsap.to('.cta-container', {
+            scrollTrigger: {
+                trigger: '.cta-container',
+                start: "top 85%",
+                end: "top 50%",
+                scrub: 1,
+            },
+            opacity: 1,
+            y: 0,
+            duration: 1
+        });
+
+        // Parallax effect for large step numbers
+        document.querySelectorAll('.step-number-large').forEach(num => {
+            gsap.to(num, {
+                scrollTrigger: {
+                    trigger: num,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: 1
+                },
+                y: 100,
+                opacity: 0.1
+            });
+        });
+
+
+        /*TESTIMONALS*/
+         if (window.innerWidth > 768) {
+    const cards = gsap.utils.toArray('.review-card');
+
+    cards.forEach((card) => {
+      gsap.fromTo(card,
+        { x: 140, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.0,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 82%',
+            toggleActions: 'play none none reverse',
+          }
+        }
+      );
+    });
+  }
+
+  // Register GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // GSAP Animation for FAQ Section entrance
+        gsap.to('.faq-section', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '.faq-section',
+                start: 'top 80%',
+                end: 'top 50%',
+                toggleActions: 'play none none reverse',
+                // markers: true  // Uncomment for debugging
+            }
+        });
+
+        // GSAP Animation for FAQ Title
+        gsap.to('.faq-title', {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '.faq-title',
+                start: 'top 85%',
+                toggleActions: 'play none none reverse',
+            }
+        });
+
+        // GSAP Animation for each FAQ item (staggered)
+        gsap.to('.faq-item', {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.faq-list',
+                start: 'top 75%',
+                toggleActions: 'play none none reverse',
+            }
+        });
+
+        // FAQ Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const questionWrapper = item.querySelector('.faq-question-wrapper');
+                
+                questionWrapper.addEventListener('click', function() {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    if (!isActive) {
+                        item.classList.add('active');
+                        
+                        // Smooth scroll to keep question visible
+                        setTimeout(() => {
+                            const itemTop = item.getBoundingClientRect().top + window.pageYOffset - 100;
+                            window.scrollTo({
+                                top: itemTop,
+                                behavior: 'smooth'
+                            });
+                        }, 100);
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+
+                // Keyboard accessibility
+                questionWrapper.setAttribute('tabindex', '0');
+                questionWrapper.setAttribute('role', 'button');
+                questionWrapper.setAttribute('aria-expanded', 'false');
+                
+                questionWrapper.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        questionWrapper.click();
+                        questionWrapper.setAttribute(
+                            'aria-expanded', 
+                            item.classList.contains('active') ? 'true' : 'false'
+                        );
+                    }
+                });
+            });
+        });
+
+        // Refresh ScrollTrigger after page load to recalculate positions
+        window.addEventListener('load', () => {
+            ScrollTrigger.refresh();
+        });
+
+
+        /*REQUEEST QUOTE SECTION*/
+
+         function toggle(el) {
+    el.classList.toggle('checked');
+  }
+
+  function handleSubmit() {
+    const name = document.querySelector('input[type="text"]').value.trim();
+    const email = document.querySelector('input[type="email"]').value.trim();
+    if (!name || !email) {
+      alert('Please fill in at least your name and email.');
+      return;
+    }
+    alert('Quote request submitted! We\'ll be in touch shortly.');
+  }
+
+         // FOOTER ANIMATIONS
+        gsap.to(".footer-top-divider", {
+            opacity: 1,
+            scrollTrigger: {
+                trigger: ".footer-wrapper",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        gsap.to(".footer-main", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".footer-wrapper",
+                start: "top 70%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        gsap.to(".footer-bottom", {
+            opacity: 1,
+            scrollTrigger: {
+                trigger: ".footer-bottom",
+                start: "top 90%",
+                toggleActions: "play none none reverse"
+            }
+        });
+    </script>
+</body>
+</html>
