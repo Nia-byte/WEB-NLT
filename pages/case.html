@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-ZA" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case study | NiaLure Tech</title>
+    <meta name="description" content="A NiaLure Tech case study.">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/png" href="/assets/android-chrome-512x512.png">
+
+    <!-- Before first paint: JS flag, and the logo loader once per session (never with reduced motion) -->
+    <script>
+        (function () {
+            var d = document.documentElement;
+            d.classList.replace('no-js', 'js');
+            try {
+                if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('nlt-intro')) d.classList.add('has-loader');
+            } catch (e) {}
+            setTimeout(function () { if (!window.__nltReady) d.classList.remove('has-loader', 'js'); }, 4000);
+        })();
+    </script>
+
+    <link rel="preload" href="/assets/fonts/nunito-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="/css/site.css">
+
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
+    <script defer src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script defer src="/js/projects.js"></script>
+    <script defer src="/js/case.js"></script>
+    <script defer src="/js/site.js"></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Shared icons -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <symbol id="i-ne" viewBox="0 0 16 16"><path d="M3.5 12.5 12.5 3.5M5 3.5h7.5V11" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+            <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+            <symbol id="i-circuit" viewBox="0 0 120 170"><g fill="none" stroke="currentColor" stroke-width="3"><circle cx="22" cy="150" r="9"/><path d="M22 141V70L58 34V8"/><path d="M50 170V96L84 62"/><circle cx="90" cy="56" r="9"/></g></symbol>
+            <symbol id="i-circuit-b" viewBox="0 0 140 120"><g fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="20" r="9"/><path d="M21 20h40l30 30h49"/><path d="M0 64h56l26 26h58"/><circle cx="96" cy="100" r="9"/></g></symbol>
+        </defs>
+    </svg>
+
+    <!-- ── LOADER (logo builds itself; see js/site.js loader()) ── -->
+    <div class="loader" id="loader" aria-hidden="true">
+        <div class="loader__lockup">
+            <svg class="loader__mark" viewBox="84 53 368 316">
+                <circle class="lm-indigo" cx="324.8" cy="242.4" r="125" fill="#4634e8"/>
+                <circle class="lm-blue" cx="210.5" cy="180" r="125" fill="#1446aa"/>
+                <circle class="lm-dot" cx="138" cy="330.5" r="18" fill="#1446aa"/>
+                <g fill="none" stroke="#fff" stroke-width="9" stroke-linejoin="round">
+                    <circle class="lm-line lm-r1" cx="165.5" cy="195" r="13.25" pathLength="1" transform="rotate(-90 165.5 195)"/>
+                    <path class="lm-line lm-l1" pathLength="1" d="M165.5 181.75V149.5L202 113.2Q211.5 103.7 217.2 107.5Q221.25 111.3 221.25 120.8V165L204.75 181.5V266.5"/>
+                    <path class="lm-line lm-l2" pathLength="1" d="M224.75 270V190L253.38 161.37"/>
+                    <circle class="lm-line lm-r2" cx="262.75" cy="152" r="13.25" pathLength="1" transform="rotate(135 262.75 152)"/>
+                </g>
+            </svg>
+            <div class="loader__words">
+                <p class="loader__name"><b>NIALURE</b> <span>TECH</span></p>
+                <p class="loader__tag">Build with purpose, designed with allure</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── NAVBAR (existing) ── -->
+    <div class="chrome" id="chrome">
+        <nav class="navbar-container" id="navbar" aria-label="Primary">
+            <div class="navbar-pill">
+                <a class="logo" href="/index.html">
+                    <img src="/assets/home/logo-96.png" class="logo-img" width="40" height="40" alt="">
+                    <span class="logo-text">Nialure Tech</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="menuOverlay" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="menu-content">
+            <div class="menu-grid">
+                <a class="menu-item" href="/index.html">
+                    <span>COMPANY</span>
+                    <svg class="menu-item-icon" viewBox="0 0 100 100" aria-hidden="true">
+                        <rect x="20" y="35" width="60" height="40" fill="none" stroke="#4634e8" stroke-width="3" rx="5"/>
+                        <circle cx="50" cy="55" r="8" fill="#4634e8"/>
+                        <path d="M 50 47 L 50 30 M 50 30 L 35 40 M 50 30 L 65 40" stroke="#4634e8" stroke-width="3" fill="none"/>
+                    </svg>
+                </a>
+                <a class="menu-item" href="/pages/work.html">
+                    <span>OUR WORK</span>
+                    <svg class="menu-item-icon" viewBox="0 0 100 100" aria-hidden="true">
+                        <rect x="15" y="25" width="70" height="50" fill="none" stroke="#4634e8" stroke-width="3" rx="3"/>
+                        <line x1="15" y1="35" x2="85" y2="35" stroke="#4634e8" stroke-width="3"/>
+                        <circle cx="22" cy="30" r="2" fill="#4634e8"/>
+                        <circle cx="30" cy="30" r="2" fill="#4634e8"/>
+                        <circle cx="38" cy="30" r="2" fill="#4634e8"/>
+                        <rect x="25" y="45" width="50" height="3" fill="#4634e8"/>
+                        <rect x="25" y="54" width="35" height="3" fill="#4634e8"/>
+                    </svg>
+                </a>
+                <a class="menu-item full-width" href="/pages/contact.html">
+                    <svg class="menu-item-icon" viewBox="0 0 100 100" aria-hidden="true">
+                        <rect x="20" y="30" width="60" height="45" fill="none" stroke="#4634e8" stroke-width="3" rx="3"/>
+                        <path d="M 20 30 L 50 55 L 80 30" stroke="#4634e8" stroke-width="3" fill="none"/>
+                    </svg>
+                    <span>START A PROJECT</span>
+                </a>
+            </div>
+            <div class="tagline">Trusted by clients Nationwide</div>
+        </div>
+    </div>
+
+    <main id="main">
+        <!-- Rendered from js/projects.js by js/case.js (min-height keeps the footer below the fold until then) -->
+        <div id="case" style="min-height:200vh"></div>
+    </main>
+    </main>
+
+    <!-- ── FOOTER (existing) ── -->
+    <footer class="footer">
+        <div class="wrap footer__top">
+            <div class="footer__brand">
+                <span class="footer__logo"><img src="/assets/home/logo-96.png" width="34" height="34" alt="NiaLure Tech"></span>
+                <p class="footer__tagline">Built With Purpose.<br>Designed With Allure.</p>
+                <p class="footer__desc">We transform visionary ideas into digital realities that captivate audiences and drive meaningful results.</p>
+            </div>
+            <div class="footer__col">
+                <h3>Services</h3>
+                <ul>
+                    <li><a class="u-link" href="/index.html#services">Web Development</a></li>
+                    <li><a class="u-link" href="/index.html#services">Web Revamps</a></li>
+                    <li><a class="u-link" href="/index.html#services">Ongoing Maintenance</a></li>
+                    <li><a class="u-link" href="/index.html#services">AI Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h3>Company</h3>
+                <ul>
+                    <li><a class="u-link" href="/pages/work.html">Our Work</a></li>
+                    <li><a class="u-link" href="/pages/careers.html">Careers</a></li>
+                    <li><a class="u-link" href="/pages/contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a class="u-link" href="mailto:info@nialuretech.co.za">info@nialuretech.co.za</a></li>
+                    <li><p>We reply within 1 business day.</p></li>
+                </ul>
+            </div>
+        </div>
+        <div class="wrap footer__bottom">
+            <span>© 2026 NiaLure Tech.</span>
+            <span class="footer__legal">
+                <a class="u-link" href="/pages/privacy.html">Privacy Policy</a>
+                <a class="u-link" href="/pages/terms.html">Terms of Service</a>
+            </span>
+        </div>
+        <div class="footer__mark" aria-hidden="true"><span>NIALURE</span></div>
+    </footer>
+</body>
+</html>
